@@ -1,0 +1,160 @@
+header {
+    background: url(img/background2.jpg);
+    height: 550px;
+    font-family: math;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+
+
+body {
+    background: rgb(206,206,206);
+background: radial-gradient(circle, rgba(206,206,206,1) 0%, rgba(255,255,255,1) 100%);
+    width: 100%;
+    font-family: 'Yeon Sung'serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.category{
+    width:100rem ;
+
+}
+.navbar {
+    height: 30%;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 1%, rgba(206,206,206,1) 100%);
+}
+
+.nameSite {
+    margin-left: 1000px;
+}
+.imgTab{
+width: 600px;
+height: 500px;
+
+}
+
+.boutons {
+    box-shadow: 2px 2px 2px rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 1%, rgba(206,206,206,1) 100%);
+
+
+}
+
+
+.corps {
+    height: 500px;
+}
+
+.photo {
+    height: 30%;
+    width: 30%;
+}
+.photoCard{
+    height: 80%;
+    width: 80%;
+}
+.logo {
+    margin-left: -80px;
+    height: 20%;
+    width: 20%;
+}
+
+.carousel-inner {
+    height: 400px;
+}
+
+.footerHome {
+    /* Height of the footer */
+    flex-shrink: 0;
+    background: rgb(206,206,206);
+    background: linear-gradient(0deg, rgba(206,206,206,1) 39%, rgba(255,255,255,1) 100%);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    margin-top: 10rem;
+}
+.footerApropos{
+    /* Height of the footer */
+    flex-shrink: 0;
+    background: rgb(206,206,206);
+    background: linear-gradient(0deg, rgba(206,206,206,1) 39%, rgba(255,255,255,1) 100%);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    margin-top: 10rem;
+}
+.footerTarifs{
+    /* Height of the footer */
+    flex-shrink: 0;
+    background: rgb(206,206,206);
+    background: linear-gradient(0deg, rgba(206,206,206,1) 39%, rgba(255,255,255,1) 100%);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    margin-top: 50rem;
+}
+.adresse {
+    font-size: x-large;
+}
+.vertical { 
+    border-right: 2px solid black; 
+    height: 400px; 
+    display: inline-block;
+    } 
+    .vertical1 { 
+        border-left: 2px solid black; 
+        height: 400px; 
+        display: inline-block;
+        } 
+
+.logoFooter {
+    height: 10rem;
+    width: 15rem;
+}
+.logoFB{
+    height: 10rem;
+    width: 15rem;
+
+}
+.cardTab{
+    width: 70rem;
+}
+.photoCardCat{
+    height: 30rem;
+    width: 30rem;
+}
+.cardTarif{
+    width: 20rem;
+    height: 25rem;
+}
+.imgTarif{
+    width: 15rem;
+    height: 15rem;
+}
+.modalTarifs{
+    height: 100%;
+    width: 100%;
+}
+#imgPreviewPicture {
+    width: 150px;
+    max-height: 150px;
+  
+}
+#imgPreviewMini {
+    width: 150px;
+    max-height: 150px;
+  
+}
+.upload {
+    height: 600px;
+    box-shadow: 6px 6px 0px rgb(237, 233, 233)k;
+}
