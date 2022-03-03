@@ -64,14 +64,25 @@ if (isset($_POST["btn-submit-presta"])) {
         $miniature = htmlspecialchars(trim($_POST['miniToUpload']));
         $catId = htmlspecialchars(trim($_POST['categories']));
         $intro = htmlspecialchars(trim($_POST['intro']));
+
+        //Je creer un nouveau service puis je recupere son ID à l'aide de la methode addService
         $Services = new Services();
         $idService = $Services->addService($name, $intro, $description, $price, $time, $picture, $miniature, $catId);
-        $addBenefitsToService = new Services();
-        $addBenefitsToService->addBenefitsToService(3, $idService);
-        $addContraindicationToService = new  Contraindication();
-        $addContraindicationToService->addContraindicationToService($idService, 1);
 
-        $addServicesOk = true;
+        //Je recupere les benefice sous forme de tableau, et j'effectue une boucle pour lancer la methode addService
+        foreach ($_POST['benefits'] as $benefit) {
+            $addBenefitsToService = new Services();
+            $addBenefitsToService->addBenefitsToService($benefit, $idService);
+        }
+
+        //Je recupere les contres indications sous forme de tableau, et j'effectue une boucle pour lancer la methode addService 
+        foreach($_POST['contraindication'] as $contraindication){
+            $addContraindicationToService = new  Contraindication();
+            $addContraindicationToService->addContraindicationToService($idService, $contraindication);
+    
+    
+        }       
+              $addServicesOk = true;
     }
 };
 

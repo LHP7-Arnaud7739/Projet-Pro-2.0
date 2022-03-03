@@ -76,16 +76,16 @@ require '../controllers/addPrestaController.php';
 
                             <option value="<?= $cat["cat_id"] ?>" <?= isset($_POST["categories"]) && $_POST["categories"] == $cat["cat_name"] ? "selected" : ""  ?>><?= $cat['cat_name'] ?></option>
                         <?php } ?>
-                        <?php foreach ($arrayBenCat as $benByCat) { ?>
+                        
                     </select>
                     <a name="categories" class="btn btn-outline-success text-dark" type="button" href="../views/addPresta.php?benefits=<?= $benByCat["cat_id"] ?>">+ d'info</a>
-                <?php } ?>
+               
                 </div>
             </form>
             
 
 
-            </body>
+         
     <!-- FOOTER -->
     <footer class="footerHome border border-secondary">
         <div class="row text-center">
@@ -151,7 +151,7 @@ require '../controllers/addPrestaController.php';
         </div>
     </footer>
     <!-- Footer end -->
-
+    </body>
     <script src="../assets/js/lightbox-plus-jquery.js"></script>
 
     <script src="../assets/script/script.js"></script>

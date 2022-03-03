@@ -43,30 +43,27 @@ require '../controllers/prestaController.php';
             </div>
         </div>
     </header>
-        <!-- LOGO -->
-        <div class="">
-            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
-
-            <!-- FIN LOGO -->
-            <div>
-                <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
-
-            </div>
-        </div>
-    </header>
+           
     <!-- DEBUT TABLEAU 2 D -->
-    <div class=" mt-5 row row-cols-1 row-cols-md-3 g-4">
+
+
+    <div class="container">
+
+    </div>
+    <div class="mt-5 mx-auto row row-cols-1 row-cols-md-3 g-4">
         
         <?php foreach ($arrayPresta as $allPresta) { ?>
             <div class="col">
-                <div class="boutons h-100 text-center card">
-                    <img src="../assets/img/<?= $allPresta["ser_picture"] ?>" class="d-flex justify-content-center photoCardCat " alt="...">
+                <div class="boutons h-100 card">
+                    <img src="../assets/img/<?= $allPresta["ser_picture"] ?>" class="mx-auto text-center photoCardCat " alt="...">
                     <div class="card-body">
-                        <h2 class="card-title"><?= $allPresta['ser_name'] ?></h2>
+                        <h2 class="text-center card-title"><?= $allPresta['ser_name'] ?></h2>
                         <p class="descri card-text"><?= $allPresta['ser_description'] ?></p>
                     </div>
                     <div class="text-center card-footer">
-                        <h3 class="card-text">Temps de la séance : <?= $allPresta['ser_time'] ?><br> Prix de la séance : <?= $allPresta['ser_price'] ?> </h3>
+                       <p><h3 class="card-text">Temps de la séance : <?= $allPresta['ser_time'] ?></h3></p>
+                        <hr>
+                        <p><h3 class="card-text">Prix de la séance : <?= $allPresta['ser_price'] ?> </h3></p>
                     </div>
                     <a class="boutons btn btn-outline-success text-dark" type="button" href="pageInscription.php">Prendre un rendez-vous</a>
 
@@ -76,7 +73,7 @@ require '../controllers/prestaController.php';
 
         <?php } ?>
     </div>
-
+    </div>
     <!-- FOOTER -->
     <footer class="footerHome border border-secondary">
         <div class="row text-center">

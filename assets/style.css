@@ -61,7 +61,7 @@ height: 500px;
 }
 .logo {
     margin-left: -80px;
-    height: 20%;
+    height: 50%;
     width: 20%;
 }
 
@@ -105,11 +105,13 @@ height: 500px;
 .adresse {
     font-size: x-large;
 }
+
 .vertical { 
     border-right: 2px solid black; 
     height: 400px; 
     display: inline-block;
     } 
+
     .vertical1 { 
         border-left: 2px solid black; 
         height: 400px; 
@@ -120,6 +122,7 @@ height: 500px;
     height: 10rem;
     width: 15rem;
 }
+
 .logoFB{
     height: 10rem;
     width: 15rem;
@@ -127,23 +130,29 @@ height: 500px;
 }
 .cardTab{
     width: 70rem;
+    height: 70rem;
 }
+
 .photoCardCat{
     height: 30rem;
     width: 30rem;
 }
+
 .cardTarif{
     width: 20rem;
     height: 25rem;
 }
+
 .imgTarif{
     width: 15rem;
     height: 15rem;
 }
+
 .modalTarifs{
     height: 100%;
     width: 100%;
 }
+
 #imgPreviewPicture {
     width: 150px;
     max-height: 150px;
