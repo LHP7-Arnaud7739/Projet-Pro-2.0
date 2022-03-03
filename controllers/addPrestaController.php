@@ -1,5 +1,5 @@
 <?php
-var_dump($_POST);
+
 require '../config.php';
 require '../models/DataBase.php';
 require '../models/clients.php';
@@ -53,10 +53,10 @@ if (isset($_POST["btn-submit-presta"])) {
             $arrayError["price"] = "Veuillez indiquer un ou des biens faits";
         }
     }
-    var_dump($arrayError);
+ 
     if (count($arrayError) == 0) {
         // strtoupper = en majuscule / ucwords = 1ere lettre en majuscule
-        $name = htmlspecialchars(strtoupper(trim($_POST['name'])));
+        $name = htmlspecialchars(trim($_POST['name']));
         $description = htmlspecialchars(trim($_POST['description']));
         $price = htmlspecialchars(trim($_POST['price']));
         $time = htmlspecialchars(trim($_POST['time']));
@@ -93,7 +93,6 @@ $arrayPresta = $allPresta->allPresta();
 $allCatName = new Categories();
 $arrayCatName = $allCatName->catName();
 
-
 $allContraindication = new Contraindication();
 $arrayCont = $allContraindication->allContraindication();
 
@@ -101,7 +100,3 @@ $allBenefits = new Benefits();
 $arrayBen = $allBenefits->allBenefits();
 
 
-if (isset($_GET["benefits"])) {
-    $category = new Benefits();
-    $arrayBenCat = $category->getBenefitsByCategory($_GET["benefits"]);
-};

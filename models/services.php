@@ -32,6 +32,18 @@ class Contraindication extends DataBase
         $query->execute();
     }
 
+    public function getServiceContraindication(int $idServiceContraindication): array
+    {
+        $db = $this->connectDb();
+        $sql = "SELECT `mp_contraindication`.`cont_id`, `mp_contraindication`.`cont_name`  FROM `mp_services`
+        INNER JOIN `mp_servicesCi` ON `mp_servicesCi`.`ser_id` = `mp_services`.`ser_id`
+        INNER JOIN `mp_contraindication` ON `mp_contraindication`.`cont_id` = `mp_servicesCi`.`cont_id`
+        WHERE `mp_services`.`ser_id` = :ser_id;";
+        $query = $db->prepare($sql);
+        $query->bindValue(":ser_id", $idServiceContraindication,  PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetchAll();
+    }
 };
 
 class Benefits extends DataBase
@@ -52,6 +64,19 @@ class Benefits extends DataBase
         WHERE `mp_category`.`cat_id` = :cat_id;";
         $query = $db->prepare($sql);
         $query->bindValue(":id_cat", $id_cat, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getServiceBenefits(int $idService): array
+    {
+        $db = $this->connectDb();
+        $sql = "SELECT `mp_benefits`.`ben_id`, `mp_benefits`.`ben_names`  FROM `mp_services`
+        INNER JOIN `mp_servicesBEN` ON `mp_servicesBEN`.`ser_id` = `mp_services`.`ser_id`
+        INNER JOIN `mp_benefits` ON  `mp_benefits`.`ben_id` = `mp_servicesBEN`.`ben_id`
+        WHERE `mp_services`.`ser_id` = :ser_id";
+        $query = $db->prepare($sql);
+        $query->bindValue(":ser_id", $idService,  PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll();
     }
@@ -101,7 +126,7 @@ class Prestation extends DataBase
     public function getPrestaByCategory(int $id_cat): array
     {
         $db = $this->connectDb();
-        $sql = "SELECT `mp_category`.`cat_id`, `cat_name`, `ser_name`, `ser_intro`, `ser_description`, `ser_price`, `ser_time`, `ser_picture`, `ser_miniature` FROM mp_services
+        $sql = "SELECT `ser_id`, `mp_category`.`cat_id`, `cat_name`, `ser_name`, `ser_intro`, `ser_description`, `ser_price`, `ser_time`, `ser_picture`, `ser_miniature` FROM mp_services
         INNER JOIN `mp_category` ON `mp_category`.`cat_id` = `mp_services`.`cat_id`
     WHERE `mp_category`.`cat_id` = :id_cat;";
         $query = $db->prepare($sql);

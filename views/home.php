@@ -1,5 +1,5 @@
 <?php
-
+require '../data/array.php';
 require '../controllers/addPrestaController.php';
 ?>
 
@@ -51,16 +51,16 @@ require '../controllers/addPrestaController.php';
     <div class="d-flex justify-content-evenly">
 
         <div class="d-flex justify-content-center mt-5 row row-cols-1 row-cols-md-3 g-4">
-            <?php foreach ($arrayPresta as $presta) { ?>
+            <?php foreach ($arrayCat as $cat) { ?>
                 <div class="col">
                     <div class="boutons text-center card">
-                        <img src="../assets/img/<?= $presta["ser_picture"] ?>" class="mx-auto border border-dark photoCardCat" alt="...">
+                        <img src="../assets/img/<?= $cat["pictureCat"] ?>" class="mx-auto border border-dark photoCardCat" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $presta["ser_name"] ?></h5>
-                            <p class="card-text"><?= $presta["ser_intro"] ?></p>
+                            <h5 class="card-title"><?= $cat["nameCat"] ?></h5>
+                            <p class="card-text"><?= $cat["introCat"] ?></p>
                         </div>
                         <div class="card-body">
-                            <a class="boutons btn btn-outline-success text-dark" type="button" href="prestations.php?category=<?= $presta["cat_id"] ?>">+ d'info</a>
+                            <a class="boutons btn btn-outline-success text-dark" type="button" href="prestations.php?category=<?= $cat["idCat"] ?>">+ d'info</a>
                         </div>
                     </div>
                 </div>

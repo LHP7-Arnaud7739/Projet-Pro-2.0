@@ -43,7 +43,7 @@ require '../controllers/prestaController.php';
             </div>
         </div>
     </header>
-           
+
     <!-- DEBUT TABLEAU 2 D -->
 
 
@@ -51,7 +51,7 @@ require '../controllers/prestaController.php';
 
     </div>
     <div class="mt-5 mx-auto row row-cols-1 row-cols-md-3 g-4">
-        
+
         <?php foreach ($arrayPresta as $allPresta) { ?>
             <div class="col">
                 <div class="boutons h-100 card">
@@ -60,10 +60,41 @@ require '../controllers/prestaController.php';
                         <h2 class="text-center card-title"><?= $allPresta['ser_name'] ?></h2>
                         <p class="descri card-text"><?= $allPresta['ser_description'] ?></p>
                     </div>
+                    <div class="">
+                        <!-- Recuperation et affichage des benefices lors de l'ajout -->
+                        <ul><p class="h3">Benefices</p>
+                            <?php
+                            $serviceBenefits = new Benefits();
+                            $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($allPresta['ser_id']);
+                            foreach ($arrayServiceBenefits as $ServiceBenefits) { ?>
+                                <li><?= $ServiceBenefits['ben_names'] ?></li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    
+                    <!-- Recuperation et affichage des contres indications lors de l'ajout -->
+                   
+                    <ul><p class="h3">Contres Indications</p>
+                            <?php
+                            $serviceContraindication = new Contraindication();
+                            $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($allPresta['ser_id']);
+                            foreach ($arrayServiceContraindication as $ServiceContraindication) { ?>
+                                <li><?= $ServiceContraindication['cont_name'] ?></li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+
+                    </div>
                     <div class="text-center card-footer">
-                       <p><h3 class="card-text">Temps de la séance : <?= $allPresta['ser_time'] ?></h3></p>
+                        <p>
+                        <h3 class="card-text">Temps de la séance : <?= $allPresta['ser_time'] ?></h3>
+                        </p>
                         <hr>
-                        <p><h3 class="card-text">Prix de la séance : <?= $allPresta['ser_price'] ?> </h3></p>
+                        <p>
+                        <h3 class="card-text">Prix de la séance : <?= $allPresta['ser_price'] ?> </h3>
+                        </p>
                     </div>
                     <a class="boutons btn btn-outline-success text-dark" type="button" href="pageInscription.php">Prendre un rendez-vous</a>
 
