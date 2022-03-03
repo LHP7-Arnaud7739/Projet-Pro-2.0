@@ -50,14 +50,14 @@ require '../controllers/addPrestaController.php';
     <!-- CARDS -->
     <div class="d-flex justify-content-evenly">
 
-        <div class="d-flex justify-content-center mt-5 row row-cols-1 row-cols-md-3 g-4">
+        <div class=" d-flex justify-content-center mt-5 row row-cols-1 row-cols-md-3 g-4">
             <?php foreach ($arrayCat as $cat) { ?>
                 <div class="col">
                     <div class="boutons text-center card">
                         <img src="../assets/img/<?= $cat["pictureCat"] ?>" class="mx-auto border border-dark photoCardCat" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $cat["nameCat"] ?></h5>
-                            <p class="card-text"><?= $cat["introCat"] ?></p>
+                            <h5 class="fs-1 card-title"><?= $cat["nameCat"] ?></h5>
+                            <p class="fs-3 card-text"><?= $cat["introCat"] ?></p>
                         </div>
                         <div class="card-body">
                             <a class="boutons btn btn-outline-success text-dark" type="button" href="prestations.php?category=<?= $cat["idCat"] ?>">+ d'info</a>

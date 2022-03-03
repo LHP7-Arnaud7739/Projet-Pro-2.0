@@ -29,7 +29,7 @@ require '../controllers/addPrestaController.php';
         <div class="navbar border border-dark">
 
             <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
-            <a href=".../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
+            <a href="../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
             <a href="../views/adminConnexion.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Connexion</a>
         </div>
@@ -55,56 +55,51 @@ require '../controllers/addPrestaController.php';
                         Bonjour <b class="text-danger"><?= $_SESSION['login'] ?></b> </p>
             </div>
         <?php } ?>
-        <div class="fs-3 text-center">
+        <div class="fs-1 text-center">
             Rajouts de nouveaux soins
         </div>
 
 
-        <form class="d_flex justify-content-center row pt-5" action="" method="POST">
-        <div class="col-3 justify-content-center border border-dark mb-3 form-group">
+        <form class="fs-3 d_flex justify-content-center row pt-5" action="" method="POST">
+            <div class="col-3 justify-content-center border border-dark mb-3 form-group">
 
                 <!-- SELECT CATEGORIES -->
-                <label for="category" class="fs-4 form-label mt-3">Categories: </label><span class="text-danger"></span>
-
-                <select name="categories" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"></span>
+                <select name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                     <option selected disabled>Choisir une categorie</option>
                     <?php foreach ($arrayCatName as $cat) { ?>
                         <option value="<?= $cat["cat_id"] ?>" <?= isset($_POST["categories"]) && $_POST["categories"] == $cat["cat_name"] ? "selected" : ""  ?>><?= $cat['cat_name'] ?></option>
                     <?php } ?>
                 </select>
+
                 <!-- FORMULAIRE NOM DU SOIN -->
-
-                <label for="name" class="fs-4 form-label mt-3">Nom du soin: </label><span class="text-danger">
-
+                <label for="name" class="fs-1 form-label mt-3">Nom du soin: </label><span class="text-danger">
                 </span>
-                <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : "" ?>" name="name" type="text" class="form-control" id="name" required>
+                <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : "" ?>" name="name" type="text" class="fs-2 form-control" id="name" required>
 
                 <!-- FORMULAIRE INTRO -->
-                <label for="intro" class="fs-4 form-label mt-3"> Introduction du soin: </label><span class="text-danger">
+                <label for="intro" class="fs-1 form-label mt-3"> Introduction du soin: </label><span class="text-danger">
                 </span>
-                <input value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : "" ?>" name="intro" type="text" class="form-control" id="intro" required>
+                <input value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : "" ?>" name="intro" type="text" class="fs-2 form-control" id="intro" required>
 
                 <!-- FORMULAIRE DESCRIPTION -->
-
-                <label for="description" class="fs-4 form-label mt-3"> Descriptif du soin: </label><span class="text-danger">
-
+                <label for="description" class="fs-1 form-label mt-3"> Descriptif du soin: </label><span class="text-danger">
                 </span>
-                <input value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : "" ?>" name="description" type="text" class="form-control" id="description" required>
+                <input value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : "" ?>" name="description" type="text" class="fs-2 form-control" id="description" required>
+
                 <!-- SELECT DUREE SEANCE -->
-                <label for="time" class="fs-4 form-label mt-3">Durée du soin: </label><span class="text-danger"></span>
-                <select name="time" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <label for="time" class="fs-1 form-label mt-3">Durée du soin: </label><span class="text-danger"></span>
+                <select name="time" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                     <option selected>Choisir une durée</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
                     <option value="45">45</option>
                     <option value="60">60</option>
-
                 </select>
 
                 <!-- SELECT tarifs SEANCE -->
-                <label for="price" class="fs-4 form-label mt-3">Prix du soin: </label><span class="text-danger"></span>
-
-                <select name="price" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <label for="price" class="fs-1 form-label mt-3">Prix du soin: </label><span class="text-danger"></span>
+                <select name="price" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                     <option selected>Choisir un prix</option>
                     <option value="25">25</option>
                     <option value="30">30</option>
@@ -113,60 +108,47 @@ require '../controllers/addPrestaController.php';
                     <option value="45">45</option>
                     <option value="55">55</option>
                 </select>
+           
             </div>
-
+            <!-- Bien-faits CHECKBOX -->
             <div class="text-start col-3 justify-content-center border border-dark mb-3 form-group">
-                <!-- Bien-faits CHECKBOX -->
-                <label for="benefits" class="d-flex justify-content-center row fs-4 form-label mt-3">Biens-Faits: </label><span class="text-danger"> </span>
+                <label for="benefits" class="d-flex justify-content-center row fs-1 form-label mt-3">Biens-Faits: </label><span class="text-danger"> </span>
                 <?php foreach ($arrayBen as $ben) { ?>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="benefits[]" value="<?= $ben["ben_id"] ?>">
                         <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $ben["ben_names"] ?></label>
                     </div>
                 <?php } ?>
-
                 <hr>
+               
                 <!-- CONTRE INDICATION CHECKBOX -->
-                <label for="text-start contraindication" class="d-flex justify-content-center  fs-4 form-label mt-3">Contres-Indications: </label><span class="text-danger"> </span>
+                <label for="text-start contraindication" class="d-flex justify-content-center fs-1 form-label mt-3">Contres-Indications: </label><span class="text-danger"> </span>
                 <?php foreach ($arrayCont as $cont) { ?>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="contraindication[]" value="<?= $cont["cont_id"] ?>">
                         <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $cont["cont_name"] ?></label>
                     </div>
                 <?php } ?>
-
-            
             </div>
-
             <div class="col-3 border border-dark form-group">
-                <!-- UPLOAD PICTURES -->
-
-                <label for="pictureToUpload" class="fs-4 form-label mt-3">Telecharger une image : </label><span class="text-danger"></span>
+                
+            <!-- UPLOAD PICTURES -->
+                <label for="pictureToUpload" class="fs-1 form-label mt-3">Telecharger une image : </label><span class="text-danger"></span>
                 <p><input value="<?= isset($_POST["pictureToUpload"]) ? htmlspecialchars($_POST["pictureToUpload"]) : "" ?>" type="file" name="pictureToUpload" id="pictureToUpload"></p>
                 <p><img class="text-center" id="imgPreviewPicture"></p>
 
-
-
                 <!-- upload miniature -->
-                <label for="miniToUpload" class="fs-4 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
+                <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
                 <p><input value="<?= isset($_POST["miniToUpload"]) ? htmlspecialchars($_POST["miniToUpload"]) : "" ?>" type="file" name="miniToUpload" id="miniToUpload"></p>
                 <p><img class="text-center" id="imgPreviewMini"></p>
-
-
-
-
                 <button type="submit" name="btn-submit-presta" href="" class="p-2 m-2 boutons">Enregistrer le nouveau soin</button>
                 <div><a href="home.php" class="btn btn-outline-danger justify-conter-center  boutons p-2 m-2" type="button" value="Retour">Retour </a></div>
                 <div><a href="deconnexion.php" class=" btn justify-conter-center  boutons p-2 m-2" type="button" value="Deconnexion">Deconnexion </a></div>
             </div>
         </div>
         </form>
-
         </div>
-
     </body>
-
-
 
     <!-- JAVASCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -226,7 +208,6 @@ require '../controllers/addPrestaController.php';
                 </div>
             </div>
         </div>
-
         <div class="text-center">
             <div class="">
                 <a class="" href="../index.php"><input class="logoFooter" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
@@ -239,7 +220,6 @@ require '../controllers/addPrestaController.php';
     <!-- Footer end -->
 
     <script src="../assets/js/lightbox-plus-jquery.js"></script>
-
     <script src="../assets/script/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <!-- Footer script -->
@@ -272,6 +252,4 @@ require '../controllers/addPrestaController.php';
         })
     </script>
 </body>
-
-
 </html>

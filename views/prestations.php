@@ -26,7 +26,7 @@ require '../controllers/prestaController.php';
         <div class="navbar border border-dark">
 
             <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
-            <a href=".../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
+            <a href="../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
             <a href="../views/adminConnexion.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Connexion</a>
         </div>
@@ -58,34 +58,61 @@ require '../controllers/prestaController.php';
                     <img src="../assets/img/<?= $allPresta["ser_picture"] ?>" class="mx-auto text-center photoCardCat " alt="...">
                     <div class="card-body">
                         <h2 class="text-center card-title"><?= $allPresta['ser_name'] ?></h2>
-                        <p class="descri card-text"><?= $allPresta['ser_description'] ?></p>
+                        <p class="h4 descri card-text"><?= $allPresta['ser_description'] ?></p>
                     </div>
-                    <div class="">
-                        <!-- Recuperation et affichage des benefices lors de l'ajout -->
-                        <ul><p class="h3">Benefices</p>
-                            <?php
-                            $serviceBenefits = new Benefits();
-                            $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($allPresta['ser_id']);
-                            foreach ($arrayServiceBenefits as $ServiceBenefits) { ?>
-                                <li><?= $ServiceBenefits['ben_names'] ?></li>
-                            <?php
-                            }
-                            ?>
-                        </ul>
-                    
-                    <!-- Recuperation et affichage des contres indications lors de l'ajout -->
-                   
-                    <ul><p class="h3">Contres Indications</p>
-                            <?php
-                            $serviceContraindication = new Contraindication();
-                            $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($allPresta['ser_id']);
-                            foreach ($arrayServiceContraindication as $ServiceContraindication) { ?>
-                                <li><?= $ServiceContraindication['cont_name'] ?></li>
-                            <?php
-                            }
-                            ?>
-                        </ul>
+                    <!-- Recuperation et affichage des benefices lors de l'ajout -->
+                    <div id="global">
+                        <div id="left">
 
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#benefices">
+                                Voir les bénéfices
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="benefices" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="benefices">BÉNÉFICES</h5>
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <?php $serviceBenefits = new Benefits();
+                                            $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($allPresta['ser_id']);
+                                            foreach ($arrayServiceBenefits as $ServiceBenefits) { ?>
+                                                <ul>
+                                                    <li><?= $ServiceBenefits['ben_names'] ?></li>
+                                                <?php
+                                            }
+                                                ?>
+                                                </ul>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recuperation et affichage des contres indications lors de l'ajout -->
+                        <div id="right">
+                            <ul>
+                                <p class="h3">Contres Indications</p>
+                                <?php
+                                $serviceContraindication = new Contraindication();
+                                $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($allPresta['ser_id']);
+                                foreach ($arrayServiceContraindication as $ServiceContraindication) { ?>
+                                    <li class="h4"><?= $ServiceContraindication['cont_name'] ?></li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
                     </div>
                     <div class="text-center card-footer">
                         <p>

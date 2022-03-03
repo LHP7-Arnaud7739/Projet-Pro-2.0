@@ -52,7 +52,7 @@ require '../controllers/adminConnexionController.php'
 
     <body>
     <h1 class="text-center p-5">Connexion ADMIN</h1>
-            <form action="" method="POST">
+            <form class="h1" action="" method="POST">
 
                 <div class="text-center p-4 ">
                     <label><b>Login</b></label>

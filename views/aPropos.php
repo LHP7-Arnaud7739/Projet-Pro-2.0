@@ -49,8 +49,8 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h1 class="card-title">A Propos de moi</h1>
-                        <p class="card-text"> Aller voir un réflexologue est une démarche responsable, de prise de conscience personnelle.<br>
+                        <h1 class="fs-1 card-title">A Propos de moi</h1>
+                        <p class="fs-2 card-text"> Aller voir un réflexologue est une démarche responsable, de prise de conscience personnelle.<br>
                             Le massage est une aide au travail personnel que chacun doit faire.<br> Le praticien est un jardinier qui arrache les mauvaises herbes et met de l’engrais. <br>À chacun le soin de replanter les fleurs. Dans le cadre d’une prise en charge globale de la personne et non du problème isolé, il est indispensable d’associer des conseils aux massages.<br>
                             Chez moi vous ne trouverez pas de jugement, que du soutient, de la compassion, une main tendu sur la voie de la guérison.</p>
                     </div>

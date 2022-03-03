@@ -2,6 +2,7 @@
 
 class Categories extends DataBase
 {
+    // Fonction qui reupere l affichage des categories
     public function catName(): array
     {
         $db = $this->connectDb();
@@ -14,6 +15,7 @@ class Categories extends DataBase
 
 class Contraindication extends DataBase
 {
+    // Fonction qui reupere l affichage des contres indications
     public function allContraindication(): array
     {
         $dB = $this->connectDb();
@@ -22,6 +24,7 @@ class Contraindication extends DataBase
         return $resultsQuery->fetchAll();
     }
 
+      // Fonction qui permet de lier l'ID des contres indications aux services
     public function addContraindicationToService(int $serId, int $contId): void
     {
         $dB = $this->connectDb();
@@ -32,6 +35,7 @@ class Contraindication extends DataBase
         $query->execute();
     }
 
+    // Fonction qui permet d'afficher l'ID des contres indications aux services
     public function getServiceContraindication(int $idServiceContraindication): array
     {
         $db = $this->connectDb();
@@ -48,6 +52,7 @@ class Contraindication extends DataBase
 
 class Benefits extends DataBase
 {
+    // fonction qui permet d afficher les benefices
     public function allBenefits(): array
     {
         $dB = $this->connectDb();
@@ -56,6 +61,7 @@ class Benefits extends DataBase
         return $resultsQuery->fetchAll();
     }
 
+    // fonction qui permet d afficher les benefices lier aux categories
     public function getBenefitsByCategory(int $id_cat): array
     {
         $db = $this->connectDb();
@@ -68,6 +74,7 @@ class Benefits extends DataBase
         return $query->fetchAll();
     }
 
+    // Fonction qui permet d'afficher l'ID des benefices aux services
     public function getServiceBenefits(int $idService): array
     {
         $db = $this->connectDb();
@@ -84,6 +91,7 @@ class Benefits extends DataBase
 
 class Services extends DataBase
 {
+    // fonction qui permet d'ajouter un services
     public function addService(string $name, string $intro, string $description, string $price, string $time, string $picture, string $miniature, int $catId): int
     {
         $dB = $this->connectDb();
@@ -101,6 +109,7 @@ class Services extends DataBase
         return $dB->lastInsertId();
     }
 
+    // fonction qui permet d'ajouter l'ID aux sercices
     public function addBenefitsToService(int $benId, int $serId): void
     {
         $dB = $this->connectDb();

@@ -22,7 +22,7 @@ if (isset($_POST['btn-submit'])) {
                 // Recuperation du login et du cota lors de la connexions 
                 session_start();
                 $_SESSION['login'] = $_POST['login'];
-                header("location:../views/addCategory.php");
+                header("location:../views/addPresta.php");
             } else {
                 echo 'Mot de passe incorrect';
             }
