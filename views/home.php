@@ -45,7 +45,7 @@ require '../controllers/addPrestaController.php';
     </header>
 
     <div class="d-flex justify-content-center mt-4">
-        <h2>Bienvenue ici vous trouverez tous les soins de réflexologies, massages et hypnoses selon vos problémes </h2>
+    <h1 class="text-center"> Découvrez ici toutes les categories que je propose</h1>
     </div>
     <!-- CARDS -->
     <div class="d-flex justify-content-evenly">

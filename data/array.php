@@ -154,16 +154,17 @@ $arrayCat = [
 
     [
         'idCat' => '2',
-        'nameCat' => 'Hypnose',
-        'introCat' => 'Découvrez ce que l hypnose peut vous apporter ',
-        'pictureCat' => 'hypnose_clé.jpeg',
+        'nameCat' => 'Massages ',
+        'introCat' => 'Decouvrez les differents massage',
+        'pictureCat' => 'massage-dos.jpg',
     ],
 
     [
         'idCat' => '3',
-        'nameCat' => 'Massages ',
-        'introCat' => 'Decouvrez les differents massage',
-        'pictureCat' => 'massage-dos.jpg',
+        'nameCat' => 'Hypnose',
+        'introCat' => 'Découvrez ce que l hypnose peut vous apporter ',
+        'pictureCat' => 'hypnose_clé.jpeg',
+        
     ],
     [
         'idCat' => '4',
