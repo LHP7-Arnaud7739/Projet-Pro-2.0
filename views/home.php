@@ -60,7 +60,8 @@ require '../controllers/addPrestaController.php';
                             <p class="fs-3 card-text"><?= $cat["introCat"] ?></p>
                         </div>
                         <div class="card-body">
-                            <a class="boutons btn btn-outline-success text-dark" type="button" href="prestations.php?category=<?= $cat["idCat"] ?>">+ d'info</a>
+                            
+                        <a class="boutons btn btn-outline-success text-dark" type="button" href="prestations.php?category=<?= $cat["idCat"] ?>">+ d'info</a>
                         </div>
                     </div>
                 </div>

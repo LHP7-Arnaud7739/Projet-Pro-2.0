@@ -24,7 +24,7 @@ require '../controllers/prestaController.php';
 <body>
     <div class="row d-sm-block sticky-top  ">
         <div class="navbar border border-dark">
-
+    
             <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
             <a href="../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
@@ -34,80 +34,110 @@ require '../controllers/prestaController.php';
     <header class="header border border-dark">
         <!-- LOGO -->
         <div class="">
-            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+            <a class="img-fluid" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
 
             <!-- FIN LOGO -->
             <div>
                 <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
-
             </div>
         </div>
     </header>
-
     <!-- DEBUT TABLEAU 2 D -->
-
-
     <div class="mt-4 pt-4 row row-cols-md-2 g-6">
-
         <?php foreach ($arrayPresta as $allPresta) { ?>
-          
-                <div class="pt-4">
-                    <div class="boutons h-100 card">
-                        <img src="../assets/img/<?= $allPresta["ser_picture"] ?>" class="mx-auto text-center photoCardCat " alt="...">
-                        <div class="card-body">
-                            <h2 class="text-center card-title"><?= $allPresta['ser_name'] ?></h2>
-                            <p class="h4 descri card-text"><?= $allPresta['ser_description'] ?></p>
+            <div class="pt-4">
+                <div class="boutons h-100 card">
+                    <img src="../assets/img/<?= $allPresta["ser_picture"] ?>" class="img-fluid mx-auto text-center photoCardCat " alt="...">
+                    <div class="card-body">
+                        <h2 class="text-center card-title"><?= $allPresta['ser_name'] ?></h2>
+                        <p class="h4 descri card-text"><?= $allPresta['ser_description'] ?></p>
+                    </div>
+                    <hr>
+                    <!-- Recuperation et affichage des benefices lors de l'ajout -->
+                    <div class="h-50" id="global">
+                        <div id="left">
+                            <ul class="p-3 ">
+                                <p class="h3 text-center"><u>BÉNÉFICES</u></p>
+                                <?php $serviceBenefits = new Benefits();
+                                $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($allPresta['ser_id']);
+                                foreach ($arrayServiceBenefits as $ServiceBenefits) { 
+                                    
+                                    ?>
+
+                                    <li class="m-4 h4 text-start"><?= $ServiceBenefits['ben_names'] ?></li>
+                                <?php
+                                }
+                                var_dump($arrayServiceBenefits);
+                                ?>
+                            </ul>
+
                         </div>
+                        <!-- Recuperation et affichage des contres indications lors de l'ajout -->
+                        <div id="right">
+                            <ul class="p-3">
+                                <p class="h3 text-center"><u> CONTRES-INDICATIONS</u></p>
+                                <?php
+                                $serviceContraindication = new Contraindication();
+                                $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($allPresta['ser_id']);
+                                foreach ($arrayServiceContraindication as $ServiceContraindication) { ?>
+                                    <li class="m-4 h4"><?= $ServiceContraindication['cont_name'] ?></li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center card-footer">
+                        <p>
+                        <h3 class="card-text">Temps de la séance : <?= $allPresta['ser_time'] ?></h3>
+                        </p>
                         <hr>
-                        <!-- Recuperation et affichage des benefices lors de l'ajout -->
-                        <div id="global">
-                            <div id="left">
-                                <ul class="p-3 border border-dark">
-                                    <p class="h3 text-center"><u> BÉNÉFICES</u></p>
-                                    <?php $serviceBenefits = new Benefits();
-                                    $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($allPresta['ser_id']);
-                                    foreach ($arrayServiceBenefits as $ServiceBenefits) { ?>
+                        <p>
+                        <h3 class="card-text">Prix de la séance : <?= $allPresta['ser_price'] ?> </h3>
+                        </p>
+                    </div>
+                    <form class="text-center" action="infoPresta.php" method="POST">
+                        <!-- input de type hidden = input non visible coté FRONT 
+                            il permet de recuperer une valeur à l'aide du Name-->
+                        <input type="hidden" name="idPresta" value="<?= $allPresta["ser_id"] ?>">
+                        <button class="col-2 btn btn-outline-primary btn-sm">Modifier le soin</button>
+                        <button type="button" class="col-2 btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-<?= $allPresta["ser_id"] ?>">
+                            Supprimer le soin
+                        </button>
 
-                                        <li class="h4 text-start"><?= $ServiceBenefits['ben_names'] ?></li>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
 
-                            </div>
-                            <!-- Recuperation et affichage des contres indications lors de l'ajout -->
-                            <div id="right">
-                            <ul class="p-3 border border-dark">
-                                    <p class="h3 text-center"><u> CONTRES-INDICATIONS</u></p>
-                                    <?php
-                                    $serviceContraindication = new Contraindication();
-                                    $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($allPresta['ser_id']);
-                                    foreach ($arrayServiceContraindication as $ServiceContraindication) { ?>
-                                        <li class="h4"><?= $ServiceContraindication['cont_name'] ?></li>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
+                    </form>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal-<?= $allPresta["ser_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-1" id="exampleModalLabel">Supprimer le soin</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="text-center fs-3 modal-body">
+                                    <p> Vous êtes sur le point de supprimer le soin</p>
+                                    <p> <b class="text-danger"> <?= $allPresta["ser_name"] ?></b></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
+                                    <form action="" method="POST">
+                                        <input type="hidden" name="deleteService" value="<?= $allPresta["ser_id"] ?>">
+                                        <button type="submit" name="idDeleteService" class="btn btn-danger">Supprimer</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                        <div class="text-center card-footer">
-                            <p>
-                            <h3 class="card-text">Temps de la séance : <?= $allPresta['ser_time'] ?></h3>
-                            </p>
-                            <hr>
-                            <p>
-                            <h3 class="card-text">Prix de la séance : <?= $allPresta['ser_price'] ?> </h3>
-                            </p>
-                        </div>
-                        <a class="boutons btn btn-outline-success text-dark" type="button" href="pageInscription.php">Prendre un rendez-vous</a>
-
                     </div>
 
-
-
                 </div>
-            <?php } ?>
-           
+
+
+
+            </div>
+        <?php } ?>
+
     </div>
     <!-- FOOTER -->
     <footer class="footerHome border border-secondary">

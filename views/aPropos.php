@@ -41,13 +41,13 @@
     </header>
 
 
-    <div class="d-flex justify-content-center pt-5">
-        <div class="card mb-3 p-5" style="max-width: 1000px;">
+    <div class=" d-flex justify-content-center pt-5">
+        <div class="boutons card mb-3 p-5" style="max-width: 1000px;">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img class="img-fluid rounded-start" src="../assets/img/FB_IMG_1616799275763.jpg" alt="">
                 </div>
-                <div class="col-md-8">
+                <div class=" col-md-8">
                     <div class="card-body">
                         <h1 class="fs-1 card-title">A Propos de moi</h1>
                         <p class="fs-2 card-text"> Aller voir un réflexologue est une démarche responsable, de prise de conscience personnelle.<br>

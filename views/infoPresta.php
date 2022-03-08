@@ -1,8 +1,6 @@
 <?php
-require '../adminConfig.php';
-require '../controllers/addPrestaController.php';
 
-
+require '../controllers/infoPrestaController.php';
 
 ?>
 
@@ -48,125 +46,152 @@ require '../controllers/addPrestaController.php';
     </header>
 
     <body>
-        <div class="text-center  ">
-            <div class="p-5col-8 m-4  justify-content-center  ">
-                <?php if (!empty($_SESSION)) {  ?>
-                    <p>
-                        Bonjour <b class="text-danger"><?= $_SESSION['login'] ?></b> </p>
-            </div>
-        <?php } ?>
-        <div class="fs-1 text-center">
-            Rajouts de nouveaux soins
-        </div>
-        <?php if ($addServicesOk ) { ?>
-            <p>Le soin a bien été enregistré</p>
-            <a href="addPresta.php" class="btn btn-primary">Ajout d'un nouveau soin</a>
-        <?php } else { ?>
+<!-- 
+        <div class="container mycontainer col-12 mb-5 mt-5 shadow p-5"> -->
 
 
-        <form class="fs-3 d_flex justify-content-center row pt-5" action="" method="POST" novalidate>
-            <div class="col-3 justify-content-center border border-dark mb-3 form-group">
+            <!-- cassé car avant le "toast" -->
+            <!-- <?php if ($modifyPrestaOk == true) { ?>
+            <p class="text-center text-success">
+                La modification a été effectué avec succès.
+            </p>
+          <?php } ?> -->
 
-                <!-- SELECT CATEGORIES -->
-                <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?=
-                        $arrayError["categories"] ?? " ";
-                        ?></span>
-                <select name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected disabled>Choisir une categorie</option>
-                    <?php foreach ($arrayCatName as $cat) { ?>
-                        <option value="<?= $cat["cat_id"] ?>" <?= isset($_POST["categories"]) && $_POST["categories"] == $cat["cat_name"] ? "selected" : ""  ?>><?= $cat['cat_name'] ?></option>
-                    <?php } ?>
-                </select>
+            <?php
+            // Nous mettons en place une condition pour s'assurer que nous avons selectionné un soin avec le bouton Modifier
+            if (isset($prestaInfo)) { ?>
+                <form class="justify-content-center container col-4" action="" method="POST" novalidate>
+                    <h1 class="mt-5">Information du soin</h1>
 
-                <!-- FORMULAIRE NOM DU SOIN -->
-                <label for="name" class="fs-1 form-label mt-3">Nom du soin: </label><span class="text-danger"><?=
-                        $arrayError["name"] ?? " ";
-                        ?></span>
-                <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : "" ?>" name="name" type="text" class="fs-2 form-control" id="name" required>
+                    <div class="mb-3">
+                        <div>
+                            <img src="../assets/img/<?= $prestaInfo["ser_picture"] ?>" class="mx-auto text-center photoCardCat " alt="..." value="<?= isset($_POST["pictureToUpload"]) ? htmlspecialchars($_POST["pictureToUpload"]) : $prestaInfo['ser_picture'] ?>">
 
-                <!-- FORMULAIRE INTRO -->
-                <label for="intro" class="fs-1 form-label mt-3"> Introduction du soin: </label><span class="text-danger"><?=
-                        $arrayError["intro"] ?? " ";
-                        ?></span>
-                <input value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : "" ?>" name="intro" type="text" class="fs-2 form-control" id="intro" required>
-
-                <!-- FORMULAIRE DESCRIPTION -->
-                <label for="description" class="fs-1 form-label mt-3"> Descriptif du soin: </label><span class="text-danger"><?=
-                        $arrayError["description"] ?? " ";
-                        ?>
-                </span>
-                <input value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : "" ?>" name="description" type="text" class="fs-2 form-control" id="description" required>
-
-                <!-- SELECT DUREE SEANCE -->
-                <label for="time" class="fs-1 form-label mt-3">Durée du soin: </label><span class="text-danger"><?=
-                        $arrayError["time"] ?? " ";
-                        ?></span>
-                <select name="time" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Choisir une durée</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="45">45</option>
-                    <option value="60">60</option>
-                   </select>
-
-                <!-- SELECT tarifs SEANCE -->
-                <label for="price" class="fs-1 form-label mt-3">Prix du soin: </label><span class="text-danger"><?=
-                        $arrayError["price"] ?? " ";
-                        ?></span>
-                <select name="price" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Choisir un prix</option>
-                    <option value="25">25</option>
-                    <option value="30">30</option>
-                    <option value="35">35</option>
-                    <option value="40">40</option>
-                    <option value="45">45</option>
-                    <option value="55">55</option>
-                </select>
-           
-            </div>
-            <!-- Bien-faits CHECKBOX -->
-            <div class="text-start col-3 justify-content-center border border-dark mb-3 form-group">
-                <label for="benefits" class="d-flex justify-content-center row fs-1 form-label mt-3">Biens-Faits: </label><span class="text-danger"> <?=
-                        $arrayError["benefits"] ?? " ";
-                        ?></span>
-                <?php foreach ($arrayBen as $ben) { ?>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="benefits[]" value="<?= $ben["ben_id"] ?>">
-                        <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $ben["ben_names"] ?></label>
+                        </div>
                     </div>
-                <?php } ?>
-                <hr>
+                    <div class="mb-3">
+                        <label for="name" class="form-label mt-3">Nom du soin : </label><span class="text-danger">
+                            <?=
+                            $arrayError["name"] ?? " ";
+                            ?>
+                        </span>
+                        <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : $prestaInfo['ser_name'] ?>" name="name" type="text" class="form-control" id="name" <?= (isset($_POST["modifyBtn"]) || count($arrayError) != 0) ? "" : 'disabled' ?>>
+                        <div>
+                            <label for="intro" class="form-label mt-3">intro: </label><span class="text-danger">
+                                <?=
+                                $arrayError["intro"] ?? "";
+                                ?>
+                            </span>
+                        </div>
+                        <textarea value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : $prestaInfo['ser_intro'] ?>" id="intro" name="intro" <?= (isset($_POST["modifyBtn"]) || count($arrayError) != 0) ? "" : 'disabled' ?> rows="12" cols="100"> <?= $prestaInfo['ser_intro'] ?></textarea>
+                        <div>
+                            <label for="description" class="form-label mt-3">Description : </label><span class="text-danger">
+                                <?=
+                                $arrayError["description"] ?? "";
+                                ?>
+                            </span>
+                        </div>
+                        <textarea value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : $prestaInfo['ser_description'] ?>" id="description" name="description" <?= (isset($_POST["modifyBtn"]) || count($arrayError) != 0) ? "" : 'disabled' ?> rows="12" cols="100"> <?= $prestaInfo['ser_description'] ?></textarea>
+
+                        <label for="time" class="form-label mt-3">Durée: </label><span class="text-danger">
+                            <?=
+                            $arrayError["time"] ?? " ";
+                            ?>
+                        </span>
+                        <select value="<?= isset($_POST["time"]) ? htmlspecialchars($_POST["time"]) : $prestaInfo['ser_time'] ?>" name="time" type="text" class="form-control" id="time" <?= (isset($_POST["modifyBtn"]) || count($arrayError) != 0) ? "" : 'disabled' ?> name="time" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected><?= $prestaInfo['ser_time'] ?></option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                            <option value="60">60</option>
+                        </select>
+
+
+
+                        <label for="price" class="form-label mt-3">Tarif: </label><span class="text-danger">
+                            <?=
+                            $arrayError["price"] ?? " ";
+                            ?>
+                        </span>
+                        <select value="<?= isset($_POST["price"]) ? htmlspecialchars($_POST["price"]) : $prestaInfo['ser_price'] ?>" name="price" type="text" class="form-control" id="price" <?= (isset($_POST["modifyBtn"]) || count($arrayError) != 0) ? "" : 'disabled' ?> name="price" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected><?= $prestaInfo['ser_price'] ?></option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="55">55</option>
+                        </select>
+                    </div>
+                    <div>
+                        <!-- Bien-faits CHECKBOX -->  
+
+               <?php var_dump($arrayServiceBenefits) ?>
                
-                <!-- CONTRE INDICATION CHECKBOX -->
-                <label for="text-start contraindication" class="d-flex justify-content-center fs-1 form-label mt-3">Contres-Indications: </label><span class="text-danger"> <?=
-                        $arrayError["contraindication"] ?? " ";
-                        ?></span>
-                <?php foreach ($arrayCont as $cont) { ?>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="contraindication[]" value="<?= $cont["cont_id"] ?>">
-                        <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $cont["cont_name"] ?></label>
+                        <label for="benefits" class="d-flex justify-content-center row fs-1 form-label mt-3">Biens-Faits: </label><span class="text-danger"> <?=$arrayError["benefits"] ?? " "; ?></span>
+                        <?php foreach ($arrayBen as $ben) { 
+                            
+                            ?>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="benefits[]" value="<?= $ben["ben_id"] ?>">
+                                <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $ben["ben_names"] ?></label>
+                            </div>
+                        <?php } ?>
+                        <hr>
                     </div>
-                <?php } ?>
-            </div>
-            <div class="col-3 border border-dark form-group">
-                
-            <!-- UPLOAD PICTURES -->
-                <label for="pictureToUpload" class="fs-1 form-label mt-3">Telecharger une image : </label><span class="text-danger"></span>
-                <p><input value="<?= isset($_POST["pictureToUpload"]) ? htmlspecialchars($_POST["pictureToUpload"]) : "" ?>" type="file" name="pictureToUpload" id="pictureToUpload"></p>
-                <p><img class="text-center" id="imgPreviewPicture"></p>
+                    <div>
+                        <!-- CONTRE INDICATION CHECKBOX -->
+                        <label for="text-start contraindication" class="d-flex justify-content-center fs-1 form-label mt-3">Contres-Indications: </label><span class="text-danger"> <?= $arrayError["contraindication"] ?? " "; ?></span>
+                        <?php foreach ($arrayCont as $cont) { ?>
+                     
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="contraindication[]" value="<?= $cont["cont_id"] ?>">
+                                <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $cont["cont_name"] ?></label>
+                            </div>
+                        <?php } ?>
+                    </div>
 
-                <!-- upload miniature -->
-                <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
-                <p><input value="<?= isset($_POST["miniToUpload"]) ? htmlspecialchars($_POST["miniToUpload"]) : "" ?>" type="file" name="miniToUpload" id="miniToUpload"></p>
-                <p><img class="text-center" id="imgPreviewMini"></p>
-                <button type="submit" name="btn-submit-presta" href="" class="p-2 m-2 boutons">Enregistrer le nouveau soin</button>
-                <div><a href="home.php" class="btn btn-outline-danger justify-conter-center  boutons p-2 m-2" type="button" value="Retour">Retour </a></div>
-                <div><a href="deconnexion.php" class=" btn justify-conter-center  boutons p-2 m-2" type="button" value="Deconnexion">Deconnexion </a></div>
-            </div>
+
+        </div>
+        </div>
+
+        <div class="text-center mt-4">
+
+            <a href="prestations.php" class="btn btn-outline-secondary">Retour gestions des patients</a>
+            <input type="hidden" name="idPatient" value="<?= $prestaInfo['ser_id'] ?>">
+
+            <?php if (!isset($_POST["modifyBtn"]) && count($arrayError) == 0) { ?>
+                <button type="submit" name="modifyBtn" class="btn btn-outline-primary">Modifier le soin</button>
+            <?php } else { ?>
+                <button type="submit" name="updateBtn" class="btn btn-outline-success">Enregistrer les modifications</button>
+
+            <?php   } ?>
         </div>
         </form>
-        <?php   } ?>
+
+
+    <?php   } else { ?>
+        <div class="text-center">
+            <p>Veuillez selectionner un soin</p>
+            <a class="btn btn-secondary" href="prestations.php">Listes des soins</a>
         </div>
+    <?php   } ?>
+
+    </div>
+
+    <!-- toast -->
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">SOINS</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                La modification a été effectué avec succès.
+            </div>
+        </div>
+    </div>
     </body>
 
     <!-- JAVASCRIPT -->
@@ -270,5 +295,24 @@ require '../controllers/addPrestaController.php';
             };
         })
     </script>
+    <script>
+        var toastTrigger = document.getElementById('liveToastBtn')
+        var toastLiveExample = document.getElementById('liveToast')
+        // if (toastTrigger) {
+        //     toastTrigger.addEventListener('click', function() {
+        //         var toast = new bootstrap.Toast(toastLiveExample)
+
+        //         toast.show()
+        //     })
+        // }
+
+        if (<?= $modifyPrestaOk ?>) {
+            var toast = new bootstrap.Toast(toastLiveExample)
+
+            toast.show()
+        }
+    </script>
+
 </body>
+
 </html>

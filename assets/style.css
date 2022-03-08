@@ -9,8 +9,10 @@ header {
 
 
 body {
-    background: rgb(206,206,206);
-background: radial-gradient(circle, rgba(206,206,206,1) 0%, rgba(255,255,255,1) 100%);
+    font-family: Clarkson,Helvetica,sans-serif;
+
+    background: rgb(255, 255, 255);
+background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255,255,255,1) 100%);
     width: 100%;
     font-family: 'Yeon Sung'serif;
 }
@@ -179,3 +181,7 @@ height: 500px;
  #right{
     overflow:auto;
  }
+
+
+ 
+  

@@ -24,7 +24,7 @@ class Contraindication extends DataBase
         return $resultsQuery->fetchAll();
     }
 
-      // Fonction qui permet de lier l'ID des contres indications aux services
+    // Fonction qui permet de lier l'ID des contres indications aux services
     public function addContraindicationToService(int $serId, int $contId): void
     {
         $dB = $this->connectDb();
@@ -113,11 +113,23 @@ class Services extends DataBase
     public function addBenefitsToService(int $benId, int $serId): void
     {
         $dB = $this->connectDb();
-        $sql = "INSERT INTO `mp_servicesBEN` Value (:ben_id, :ser_id); ";
+        $sql = "INSERT INTO `mp_servicesBEN` Value (:ben_id, :ser_id);";
         $query = $dB->prepare($sql);
         $query->bindValue(":ben_id", $benId, PDO::PARAM_STR);
         $query->bindValue(":ser_id", $serId, PDO::PARAM_STR);
         $query->execute();
+    }
+
+    public function getOneService(int $serId): array
+    {
+        $dB = $this->connectDb();
+        $sql = "SELECT `ser_id`, `ser_name`, `ser_intro`, `ser_description`, `ser_price`, `ser_time`, `ser_picture`, `ser_miniature`, `cat_id` FROM `mp_services`
+        WHERE `ser_id` = :ser_id;";
+        $resultQuery = $dB->prepare($sql);
+        $resultQuery->bindValue(":ser_id", $serId, PDO::PARAM_INT);
+        $resultQuery->execute();
+
+        return $resultQuery->fetch();
     }
 };
 
@@ -126,7 +138,7 @@ class Prestation extends DataBase
     public function allPresta(): array
     {
         $db = $this->connectDb();
-        $sql = "SELECT `mp_category`.`cat_id`, `cat_name`, `ser_name`, `ser_intro`, `ser_description`, `ser_price`, `ser_time`, `ser_picture`, `ser_miniature` FROM mp_services
+        $sql = "SELECT `mp_services`.`ser_id`, `mp_category`.`cat_id`, `cat_name`, `ser_name`, `ser_intro`, `ser_description`, `ser_price`, `ser_time`, `ser_picture`, `ser_miniature` FROM mp_services
         INNER JOIN `mp_category` ON `mp_category`.`cat_id` = `mp_services`.`cat_id`";
         $resultQuery = $db->query($sql);
         return $resultQuery->fetchAll();
@@ -142,5 +154,33 @@ class Prestation extends DataBase
         $query->bindValue(":id_cat", $id_cat, PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll();
+    }
+
+
+    public function modifyService(string $name, string $intro, string $description, string $price, string $time, string $picture, string $miniature, int $catId)
+    {
+        $dB = $this->connectDb();
+        $sql = "UPDATE `mp_services` SET :ser_name, :ser_intro, :ser_description, :ser_price, :ser_time, :ser_picture, :ser_miniature, :cat_id 
+        WHERE ser_id= :ser_id ;";
+        $resultQuery = $dB->prepare($sql);
+        $resultQuery->bindValue(':ser_name', $name, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_intro', $intro, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_description', $description, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_price', $price, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_time', $time, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_picture', $picture, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_miniature', $miniature, PDO::PARAM_STR);
+        $resultQuery->bindValue(':cat_id', $catId, PDO::PARAM_STR);
+        $resultQuery->execute();
+    }
+
+    public function deletePresta($Ser_id): void
+    {
+        $dB = $this->connectDb();
+        $sql = "DELETE FROM `mp_services` WHERE `ser_id`= :ser_id;";
+        $resultQuery = $dB->prepare($sql);
+        $resultQuery->bindValue(":ser_id", $Ser_id, PDO::PARAM_INT);
+        $resultQuery->execute();
+        var_dump($Ser_id);
     }
 };
