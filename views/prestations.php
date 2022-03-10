@@ -1,5 +1,8 @@
 <?php
 require '../controllers/prestaController.php';
+require '../controllers/adminConnexionController.php';
+
+
 
 ?>
 
@@ -67,7 +70,7 @@ require '../controllers/prestaController.php';
                                     <li class="m-4 h4 text-start"><?= $ServiceBenefits['ben_names'] ?></li>
                                 <?php
                                 }
-                                var_dump($arrayServiceBenefits);
+                              
                                 ?>
                             </ul>
 
@@ -96,6 +99,8 @@ require '../controllers/prestaController.php';
                         <h3 class="card-text">Prix de la séance : <?= $allPresta['ser_price'] ?> </h3>
                         </p>
                     </div>
+
+                    
                     <form class="text-center" action="infoPresta.php" method="POST">
                         <!-- input de type hidden = input non visible coté FRONT 
                             il permet de recuperer une valeur à l'aide du Name-->

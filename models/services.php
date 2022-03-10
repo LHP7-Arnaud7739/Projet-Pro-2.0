@@ -10,6 +10,8 @@ class Categories extends DataBase
         $resultQuery = $db->query($sql);
         return $resultQuery->fetchAll();
     }
+
+   
 };
 
 
@@ -69,7 +71,7 @@ class Benefits extends DataBase
         INNER JOIN `mp_benefits` ON `mp_benefits`.`cat_id` = `mp_category`.`cat_id`
         WHERE `mp_category`.`cat_id` = :cat_id;";
         $query = $db->prepare($sql);
-        $query->bindValue(":id_cat", $id_cat, PDO::PARAM_INT);
+        $query->bindValue(":cat_id", $id_cat, PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll();
     }
@@ -120,16 +122,34 @@ class Services extends DataBase
         $query->execute();
     }
 
-    public function getOneService(int $serId): array
+    public function getOneService(int $id): array
     {
         $dB = $this->connectDb();
         $sql = "SELECT `ser_id`, `ser_name`, `ser_intro`, `ser_description`, `ser_price`, `ser_time`, `ser_picture`, `ser_miniature`, `cat_id` FROM `mp_services`
         WHERE `ser_id` = :ser_id;";
         $resultQuery = $dB->prepare($sql);
-        $resultQuery->bindValue(":ser_id", $serId, PDO::PARAM_INT);
+        $resultQuery->bindValue(":ser_id", $id, PDO::PARAM_INT);
         $resultQuery->execute();
 
         return $resultQuery->fetch();
+    }
+
+    public function modifyService($id, $name, $intro, $description, $price, $time, $picture, $miniature, $catId)
+    {
+        $dB = $this->connectDb();
+        $sql = "UPDATE `mp_services` SET ser_name=:ser_name, ser_intro=:ser_intro, ser_description=:ser_description, ser_price=:ser_price, ser_time=:ser_time, ser_picture=:ser_picture, ser_miniature=:ser_miniature, cat_id=:cat_id
+        WHERE ser_id = :ser_id;";
+        $resultQuery = $dB->prepare($sql);
+        $resultQuery->bindValue(':ser_name', $name, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_intro', $intro, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_description', $description, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_price', $price, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_time', $time, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_picture', $picture, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_miniature', $miniature, PDO::PARAM_STR);
+        $resultQuery->bindValue(':cat_id', $catId, PDO::PARAM_STR);
+        $resultQuery->bindValue(':ser_id', $id, PDO::PARAM_STR);
+        $resultQuery->execute();
     }
 };
 
@@ -157,22 +177,7 @@ class Prestation extends DataBase
     }
 
 
-    public function modifyService(string $name, string $intro, string $description, string $price, string $time, string $picture, string $miniature, int $catId)
-    {
-        $dB = $this->connectDb();
-        $sql = "UPDATE `mp_services` SET :ser_name, :ser_intro, :ser_description, :ser_price, :ser_time, :ser_picture, :ser_miniature, :cat_id 
-        WHERE ser_id= :ser_id ;";
-        $resultQuery = $dB->prepare($sql);
-        $resultQuery->bindValue(':ser_name', $name, PDO::PARAM_STR);
-        $resultQuery->bindValue(':ser_intro', $intro, PDO::PARAM_STR);
-        $resultQuery->bindValue(':ser_description', $description, PDO::PARAM_STR);
-        $resultQuery->bindValue(':ser_price', $price, PDO::PARAM_STR);
-        $resultQuery->bindValue(':ser_time', $time, PDO::PARAM_STR);
-        $resultQuery->bindValue(':ser_picture', $picture, PDO::PARAM_STR);
-        $resultQuery->bindValue(':ser_miniature', $miniature, PDO::PARAM_STR);
-        $resultQuery->bindValue(':cat_id', $catId, PDO::PARAM_STR);
-        $resultQuery->execute();
-    }
+    
 
     public function deletePresta($Ser_id): void
     {

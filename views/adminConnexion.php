@@ -1,6 +1,7 @@
 <?php
+
 require '../adminConfig.php';
-require '../controllers/adminConnexionController.php'
+require '../controllers/adminConnexionController.php';
 
 
 
@@ -73,7 +74,7 @@ require '../controllers/adminConnexionController.php'
                         ?></span> </div>
                 </div>
                 <div class="text-center p-5 ">
-                    <input class="boutons btn btn-outline-success" type="submit" name="btn-submit" value="CONNEXION">
+                    <input class="boutons btn btn-outline-success" type="submit" name="btn-connexion" value="CONNEXION">
 
 
                 </div>

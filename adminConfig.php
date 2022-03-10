@@ -2,7 +2,7 @@
 
 
 // Variable taille max d'image
-$maxSize = 1000000;
+
 //Variable pour determiner l'extension des images autorisées
 $extensions = ['jpg', 'jpeg', 'png',];
 // Création d'un tableau contenant les informations des users 

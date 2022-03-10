@@ -2,7 +2,7 @@
         
 
 // Nous verifions que l'utilisateur a bien cliqué sur le bouton submit
-if (isset($_POST['btn-submit'])) {
+if (isset($_POST['btn-connexion'])) {
 
     // On vérifie que les POST ne sont pas vides
     if (!empty($_POST['login']) && !empty($_POST['password'])) {

@@ -2,22 +2,20 @@
 
 require '../config.php';
 require '../models/DataBase.php';
-require '../models/clients.php';
 require '../models/services.php';
-
 $arrayError = [];
 
-// creer une variable pour cacher ou montrer ton formulaire
-$modifyPrestaOk = 0;
+$modifyPresta = false;
+
 
 if (isset($_POST["idPresta"])) {
-    $ser_Id = htmlspecialchars(trim($_POST["idPresta"]));
+    $id = htmlspecialchars(trim($_POST["idPresta"]));
     $prestaObj = new Services();
-    $prestaInfo = $prestaObj->getOneService($ser_Id);
+    $prestaInfo = $prestaObj->getOneService($id);
 }
 
-
 if (isset($_POST["updateBtn"])) {
+
     if (!isset($_POST["categories"])) {
         $arrayError["categories"] = "Selectionner une categorie";
     }
@@ -39,17 +37,12 @@ if (isset($_POST["updateBtn"])) {
     }
 
     if (isset($_POST["benefits"])) {
-
-        $allBenefits = new Benefits();
-        $arrayBen = $allBenefits->allBenefits();
         if (empty($_POST["benefits"])) {
             $arrayError["benefits"] = "Veuillez indiquer un ou des bénéfices";
         }
     }
 
     if (isset($_POST["contraindication"])) {
-        $allContraindication = new Contraindication();
-        $arrayCont = $allContraindication->allContraindication();
         if (empty($_POST["contraindication"])) {
             $arrayError["contraindication"] = "Veuillez indiquer un ou des contres-indications";
         }
@@ -67,8 +60,19 @@ if (isset($_POST["updateBtn"])) {
         }
     }
 
+    if (isset($_POST['pictureToUpload'])) {
+        
+        }
+    
+
+    if (isset($_POST["miniToUpload"])) {
+        
+    }
+    
+
     if (count($arrayError) == 0) {
         // strtoupper = en majuscule / ucwords = 1ere lettre en majuscule
+        $id = htmlspecialchars(trim($_POST['idPresta']));
         $name = htmlspecialchars(trim($_POST['name']));
         $description = htmlspecialchars(trim($_POST['description']));
         $price = htmlspecialchars(trim($_POST['price']));
@@ -77,22 +81,21 @@ if (isset($_POST["updateBtn"])) {
         $miniature = htmlspecialchars(trim($_POST['miniToUpload']));
         $catId = htmlspecialchars(trim($_POST['categories']));
         $intro = htmlspecialchars(trim($_POST['intro']));
-        $serId = htmlspecialchars(trim($_POST['idPatient']));
 
-        $service = new Prestation ();
-        $service->modifyService($name, $intro, $description, $price, $time, $picture, $miniature, $catId);
-        $serviceInfo = $serviceObj->getOneService($id);
-        $modifyServiceOk = 1;
+        $prestation = new Services();
+        $prestation->modifyService($id, $name, $intro, $description, $price, $time, $picture, $miniature, $catId);
+
+        $modifyPrestaOK = 1;
     }
-};
+    
+
+   var_dump($arrayError);
+}
 
 
-$allPresta = new Prestation();
-$arrayPresta = $allPresta->allPresta();
 
 $allContraindication = new Contraindication();
 $arrayCont = $allContraindication->allContraindication();
 
 $allBenefits = new Benefits();
 $arrayBen = $allBenefits->allBenefits();
-

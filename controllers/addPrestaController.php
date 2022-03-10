@@ -2,7 +2,6 @@
 
 require '../config.php';
 require '../models/DataBase.php';
-require '../models/clients.php';
 require '../models/services.php';
 
 $arrayError = [];
@@ -102,6 +101,7 @@ $arrayCont = $allContraindication->allContraindication();
 
 $allBenefits = new Benefits();
 $arrayBen = $allBenefits->allBenefits();
+
 
 
 

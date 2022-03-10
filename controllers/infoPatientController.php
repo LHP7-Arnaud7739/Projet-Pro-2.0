@@ -7,14 +7,11 @@ require_once '../models/Patient.php';
 var_dump($_POST);
 
 $regexNom = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,30}$/";
-$regexPseudo = "/^[0123456789a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]{2,30}$/";
-$regexMail = "/^([a-z.-]+)@([a-z]+).([a-z]){2,4}$/";
 
-$regexDate = "/^[0-9\-]+$/";
-$regexPhone = "/^(?:(?:\+|00)33[\s.-]{0,3}(?:(0)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/";
+
 $arrayError = [];
 // creer une variable pour cacher ou montrer ton formulaire
-$modifyClientsOk = 0;
+$modifyPrestaOk = 0;
 
 if (isset($_POST["idClient"])) {
     $user_id = htmlspecialchars(trim($_POST["idClient"]));
@@ -22,7 +19,7 @@ if (isset($_POST["idClient"])) {
     $clientInfo = $clientObj->getOneCLient($user_id);
 }
 
-if (isset($_POST['updateBtn'])) {
+if (isset($_POST['modifyBtn'])) {
     if (isset($_POST["nom"])) {
         if (empty($_POST["nom"])) {
             $arrayError["nom"] = "Veuillez saisir votre nom";

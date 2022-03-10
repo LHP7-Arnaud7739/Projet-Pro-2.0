@@ -1,12 +1,12 @@
 <?php
-require '../adminConfig.php';
 session_start();
-session_destroy(); 
+require '../adminConfig.php';
+require '../controllers/addPrestaController.php';
+require '../controllers/adminConnexionController.php';
+
+
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,7 +15,7 @@ session_destroy();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAGE TEST INDEX</title>
+    <title>Ajout présta</title>
     <link rel="stylesheet" href="../assets/css/lightbox.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -31,9 +31,9 @@ session_destroy();
         <div class="navbar border border-dark">
 
             <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
-            <a href="aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
-            <a href="tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
-            <a href="addPresta.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Ajout</a>
+            <a href="../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
+            <a href="../views/tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
+            <a href="../views/adminConnexion.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Connexion</a>
         </div>
     </div>
     <header class="header border border-dark">
@@ -50,19 +50,43 @@ session_destroy();
     </header>
 
     <body>
-    <div class="centrage row justify-content-center">
-        <div class=" col-8 text-center  ">
-           
-            <div class="p-5 ">
-                <p class="justify-content-center"><h2>Vous avez bien été déconnecté.<h2></p>
+        <div class="text-center  ">
+            <div class="p-5col-8 m-4  justify-content-center  ">
+                <?php if (!empty($_SESSION)) {  ?>
+                    <p>
+                        Bonjour <b class="text-danger"><?= $_SESSION['login'] ?></b> </p>
             </div>
-            <div class="p-5">
-            <a href="../index.php" class="justify-content-start   btn" type="button" value="accueil"style="background-color:white;" >Accueil</a>
-</div>
-  
+        <?php } ?>
+        <div class="fs-1 text-center">
+            Rajouts de nouveaux soins
+        </div>
+        <?php if ($addServicesOk) { ?>
+            <p>Le soin a bien été enregistré</p>
+            <a href="addPresta.php" class="btn btn-primary">Ajout d'un nouveau soin</a>
+        <?php } else { ?>
+
+
+            <form class="fs-3 d_flex justify-content-center row pt-5" action="" method="POST" novalidate>
+                <div class="col-3 justify-content-center border border-dark mb-3 form-group">
+
+                    <!-- SELECT CATEGORIES -->
+                    <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?=
+                                                                                                                        $arrayError["categories"] ?? " ";
+                                                                                                                        ?></span>
+                    <select name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option selected disabled>Choisir une categorie</option>
+                        <?php foreach ($arrayCatName as $cat) { ?>
+                            <option value="<?= $cat["cat_id"] ?>" <?= isset($_POST["categories"]) && $_POST["categories"] == $cat["cat_name"] ? "selected" : ""  ?>><?= $cat['cat_name'] ?></option>
+                        <?php } ?>
+                        <button type="submit" name="btn-submit-category" href="" class="p-2 m-2 boutons">Suivant</button>
+
+                    </select>
+
+                </div>
+            </form>
+        <?php   } ?>
+       
     </body>
-
-
 
     <!-- JAVASCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -122,7 +146,6 @@ session_destroy();
                 </div>
             </div>
         </div>
-
         <div class="text-center">
             <div class="">
                 <a class="" href="../index.php"><input class="logoFooter" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
@@ -135,7 +158,6 @@ session_destroy();
     <!-- Footer end -->
 
     <script src="../assets/js/lightbox-plus-jquery.js"></script>
-
     <script src="../assets/script/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <!-- Footer script -->
@@ -144,7 +166,29 @@ session_destroy();
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-</body>
+    <script>
+        // Aperçu de preview picture
+        pictureToUpload.addEventListener("change", function() {
+            let input = this;
+            let oFReader = new FileReader(); // on créé un nouvel objet FileReader
+            oFReader.readAsDataURL(this.files[0]);
+            oFReader.onload = function(oFREvent) {
+                imgPreviewPicture.setAttribute('src', oFREvent.target.result);
+            };
+        })
+    </script>
 
+    <script>
+        // Aperçu de preview miniature
+        miniToUpload.addEventListener("change", function() {
+            let input = this;
+            let oFReader = new FileReader(); // on créé un nouvel objet FileReader
+            oFReader.readAsDataURL(this.files[0]);
+            oFReader.onload = function(oFREvent) {
+                imgPreviewMini.setAttribute('src', oFREvent.target.result);
+            };
+        })
+    </script>
+</body>
 
 </html>
