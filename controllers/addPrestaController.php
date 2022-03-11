@@ -56,14 +56,48 @@ if (isset($_POST["btn-submit-presta"])) {
             $arrayError["price"] = "Veuillez indiquer un prix";
         }
     }
- 
+    if (isset($_FILES['pictureToUpload'])) {
+        var_dump('ok');
+        $tmpName = $_FILES['pictureToUpload']['tmp_name'];
+        $name = $_FILES['pictureToUpload']['name'];
+        $size = $_FILES['pictureToUpload']['size'];
+        $error = $_FILES['pictureToUpload']['error'];
+        $maxSize = 2000000;
+        $tabExtension = explode('.', $name);
+        $extension = strtolower(end($tabExtension));
+        $extensions = ['jpg', 'jpeg', 'png',];
+
+        if (in_array($extension, $extensions) && $size < $maxSize && $error == 0) {
+            $uniqueName = uniqid('', true);
+            $file = $uniqueName . "." . $extension;
+            move_uploaded_file($tmpName, '../assets/img/' . $file);
+        }
+    }
+
+    if (isset($_FILES['miniToUpload'])) {
+        var_dump('ok');
+        $tmpName = $_FILES['miniToUpload']['tmp_name'];
+        $name = $_FILES['miniToUpload']['name'];
+        $size = $_FILES['miniToUpload']['size'];
+        $error = $_FILES['miniToUpload']['error'];
+        $maxSize = 2000000;
+        $tabExtension = explode('.', $name);
+        $extension = strtolower(end($tabExtension));
+        $extensions = ['jpg', 'jpeg', 'png',];
+
+        if (in_array($extension, $extensions) && $size < $maxSize && $error == 0) {
+            $uniqueName = uniqid('', true);
+            $fileMini = $uniqueName . "." . $extension;
+            move_uploaded_file($tmpName, '../assets/img/' . $fileMini);
+        }
+    }
     if (count($arrayError) == 0) {
         // strtoupper = en majuscule / ucwords = 1ere lettre en majuscule
         $name = htmlspecialchars(trim($_POST['name']));
         $description = htmlspecialchars(trim($_POST['description']));
         $price = htmlspecialchars(trim($_POST['price']));
         $time = htmlspecialchars(trim($_POST['time']));
-        $picture = htmlspecialchars(trim($_POST['pictureToUpload']));
+        $picture = $file;
         $miniature = htmlspecialchars(trim($_POST['miniToUpload']));
         $catId = htmlspecialchars(trim($_POST['categories']));
         $intro = htmlspecialchars(trim($_POST['intro']));
@@ -79,13 +113,11 @@ if (isset($_POST["btn-submit-presta"])) {
         }
 
         //Je recupere les contres indications sous forme de tableau, et j'effectue une boucle pour lancer la methode addContraindicationToService
-        foreach($_POST['contraindication'] as $contraindication){
+        foreach ($_POST['contraindication'] as $contraindication) {
             $addContraindicationToService = new  Contraindication();
             $addContraindicationToService->addContraindicationToService($idService, $contraindication);
-    
-    
-        }       
-              $addServicesOk = true;
+        }
+        $addServicesOk = true;
     }
 };
 
@@ -101,15 +133,3 @@ $arrayCont = $allContraindication->allContraindication();
 
 $allBenefits = new Benefits();
 $arrayBen = $allBenefits->allBenefits();
-
-
-
-
-
-
-
-
-
-
-
-

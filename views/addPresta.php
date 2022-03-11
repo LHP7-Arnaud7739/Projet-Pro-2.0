@@ -69,7 +69,7 @@ require '../controllers/adminConnexionController.php';
         <?php } else { ?>
 
 
-            <form class="fs-3 d_flex justify-content-center row pt-5" action="" method="POST" novalidate>
+            <form enctype="multipart/form-data" class="fs-3 d_flex justify-content-center row pt-5" action="" method="POST" novalidate>
                 <div class="col-3 justify-content-center border border-dark mb-3 form-group">
 
                     <!-- SELECT CATEGORIES -->
@@ -157,42 +157,12 @@ require '../controllers/adminConnexionController.php';
 
                     <!-- UPLOAD PICTURES -->
 
-
-
-
-
                     <p><label class="m-2" for="file"></label></p>
                     <p><input type="file" name="pictureToUpload" id="pictureToUpload"></p>
                     <p><img class="text-center" id="imgPreviewPicture"></p>
 
                     </p>
-                    <p class="text-danger"> <?php
-                                            if (isset($_FILES['pictureToUpload'])) {
-
-                                                $tmpName = $_FILES['pictureToUpload']['tmp_name'];
-                                                $name = $_FILES['pictureToUpload']['name'];
-                                                $size = $_FILES['pictureToUpload']['size'];
-                                                $error = $_FILES['pictureToUpload']['error'];
-                                                $maxSize = 2000000;
-                                                $tabExtension = explode('.', $name);
-                                                $extension = strtolower(end($tabExtension));
-                                                $extensions = ['jpg', 'jpeg', 'png',];
-
-
-                                                if (in_array($extension, $extensions) && $size < $maxSize && $error == 0) {
-
-                                                    $uniqueName = uniqid('', true);
-                                                    $file = $uniqueName . "." . $extension;
-                                                    move_uploaded_file($tmpName, '../upload/' . $file);
-
-                                            ?>
-                    <p class="imgUpload p-3 text-center"><strong><b> <?= 'Votre image "' ?> <b class="text-success"><?= $name  ?> </b><b><?= ' "a bien été uploader !'; ?></b></strong></p>
-            <?php
-                                                } else {
-                                                    echo 'Taille ou format incorrect !';
-                                                }
-                                            }
-            ?></p>
+                   
             <!-- upload miniature -->
             <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
             <p><input value="<?= isset($_POST["miniToUpload"]) ? htmlspecialchars($_POST["miniToUpload"]) : "" ?>" type="file" name="miniToUpload" id="miniToUpload"></p>

@@ -1,2 +1,2 @@
 RewriteEngine on 
-ErrorDocument 404 /views/Error404.php
+ErrorDocument 404 http://localhost/projet-pro-master%204/views/Error404.php

@@ -50,6 +50,16 @@ class Contraindication extends DataBase
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function deleteCont($ser_id): void
+    {
+        $dB = $this->connectDb();
+        $sql = "DELETE FROM `mp_servicesCi` WHERE `ser_id` = :ser_id";
+        $resultQuery = $dB->prepare($sql);
+        $resultQuery->bindValue(":ser_id", $ser_id, PDO::PARAM_INT);
+        $resultQuery->execute();
+        var_dump($ser_id);
+    }
 };
 
 class Benefits extends DataBase
@@ -89,6 +99,16 @@ class Benefits extends DataBase
         $query->execute();
         return $query->fetchAll();
     }
+    public function deleteBenefits($idPresta): void
+    {
+        $dB = $this->connectDb();
+        $sql = "DELETE FROM `mp_servicesBEN` WHERE `ser_id` = :ser_id";
+        $resultQuery = $dB->prepare($sql);
+        $resultQuery->bindValue(":ser_id", $idPresta, PDO::PARAM_INT);
+        $resultQuery->execute();
+      
+    }
+
 };
 
 class Services extends DataBase

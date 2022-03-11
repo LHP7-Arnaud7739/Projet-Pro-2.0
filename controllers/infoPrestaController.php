@@ -60,15 +60,47 @@ if (isset($_POST["updateBtn"])) {
         }
     }
 
-    if (isset($_POST['pictureToUpload'])) {
-        
-        }
-    
+    if (isset($_FILES['pictureToUpload'])) {
+        var_dump('ok');
+        $tmpName = $_FILES['pictureToUpload']['tmp_name'];
+        $name = $_FILES['pictureToUpload']['name'];
+        $size = $_FILES['pictureToUpload']['size'];
+        $error = $_FILES['pictureToUpload']['error'];
+        $maxSize = 2000000;
+        $tabExtension = explode('.', $name);
+        $extension = strtolower(end($tabExtension));
+        $extensions = ['jpg', 'jpeg', 'png',];
 
-    if (isset($_POST["miniToUpload"])) {
-        
+        if (in_array($extension, $extensions) && $size < $maxSize && $error == 0) {
+            $uniqueName = uniqid('', true);
+            $file = $uniqueName . "." . $extension;
+            move_uploaded_file($tmpName, '../assets/img/' . $file);
+        }
+    } else {
+        $file = htmlspecialchars(trim($_POST['oldPicture']));
     }
-    
+
+    if (isset($_FILES['miniToUpload'])) {
+        var_dump('ok');
+        $tmpName = $_FILES['miniToUpload']['tmp_name'];
+        $name = $_FILES['miniToUpload']['name'];
+        $size = $_FILES['miniToUpload']['size'];
+        $error = $_FILES['miniToUpload']['error'];
+        $maxSize = 2000000;
+        $tabExtension = explode('.', $name);
+        $extension = strtolower(end($tabExtension));
+        $extensions = ['jpg', 'jpeg', 'png',];
+
+        if (in_array($extension, $extensions) && $size < $maxSize && $error == 0) {
+            $uniqueName = uniqid('', true);
+            $fileMini = $uniqueName . "." . $extension;
+            move_uploaded_file($tmpName, '../assets/img/' . $file);
+        }
+    } else {
+        $fileMini = htmlspecialchars(trim($_POST['oldMini']));
+    }
+
+
 
     if (count($arrayError) == 0) {
         // strtoupper = en majuscule / ucwords = 1ere lettre en majuscule
@@ -77,19 +109,38 @@ if (isset($_POST["updateBtn"])) {
         $description = htmlspecialchars(trim($_POST['description']));
         $price = htmlspecialchars(trim($_POST['price']));
         $time = htmlspecialchars(trim($_POST['time']));
-        $picture = htmlspecialchars(trim($_POST['pictureToUpload']));
-        $miniature = htmlspecialchars(trim($_POST['miniToUpload']));
+        $picture = $file;
+        $miniature = $fileMini;
         $catId = htmlspecialchars(trim($_POST['categories']));
         $intro = htmlspecialchars(trim($_POST['intro']));
+
 
         $prestation = new Services();
         $prestation->modifyService($id, $name, $intro, $description, $price, $time, $picture, $miniature, $catId);
 
+
+
+        // Avant de faire un update, nous effaçons les élements dans les tables intermédiaires
+        $deleteBen = new Benefits();
+        $deleteBen->deleteBenefits($id);
+
+        $deleteCont = new Contraindication();
+        $deleteCont->deleteCont($id);
+
+        //Je recupere les benefice sous forme de tableau, et j'effectue une boucle pour lancer la methode addBenefitsToService
+        foreach ($_POST['benefits'] as $benefit) {
+            $addBenefitsToService = new Services();
+            $addBenefitsToService->addBenefitsToService($benefit, $id);
+        }
+        //Je recupere les contres indications sous forme de tableau, et j'effectue une boucle pour lancer la methode addContraindicationToService
+        foreach ($_POST['contraindication'] as $contraindication) {
+            $addContraindicationToService = new  Contraindication();
+            $addContraindicationToService->addContraindicationToService($id, $contraindication);
+        }
+
+
         $modifyPrestaOK = 1;
     }
-    
-
-   var_dump($arrayError);
 }
 
 

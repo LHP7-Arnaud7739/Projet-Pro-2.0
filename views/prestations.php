@@ -1,7 +1,7 @@
 <?php
 require '../controllers/prestaController.php';
 require '../controllers/adminConnexionController.php';
-
+session_start()
 
 
 ?>
@@ -27,7 +27,7 @@ require '../controllers/adminConnexionController.php';
 <body>
     <div class="row d-sm-block sticky-top  ">
         <div class="navbar border border-dark">
-    
+
             <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
             <a href="../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
@@ -51,6 +51,8 @@ require '../controllers/adminConnexionController.php';
             <div class="pt-4">
                 <div class="boutons h-100 card">
                     <img src="../assets/img/<?= $allPresta["ser_picture"] ?>" class="img-fluid mx-auto text-center photoCardCat " alt="...">
+                    <img src="../assets/img/<?= $allPresta["ser_miniature"] ?>" class="img-fluid mx-auto text-center photoCardCat " alt="...">
+
                     <div class="card-body">
                         <h2 class="text-center card-title"><?= $allPresta['ser_name'] ?></h2>
                         <p class="h4 descri card-text"><?= $allPresta['ser_description'] ?></p>
@@ -63,14 +65,14 @@ require '../controllers/adminConnexionController.php';
                                 <p class="h3 text-center"><u>BÉNÉFICES</u></p>
                                 <?php $serviceBenefits = new Benefits();
                                 $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($allPresta['ser_id']);
-                                foreach ($arrayServiceBenefits as $ServiceBenefits) { 
-                                    
-                                    ?>
+                                foreach ($arrayServiceBenefits as $ServiceBenefits) {
+
+                                ?>
 
                                     <li class="m-4 h4 text-start"><?= $ServiceBenefits['ben_names'] ?></li>
                                 <?php
                                 }
-                              
+
                                 ?>
                             </ul>
 
@@ -100,16 +102,17 @@ require '../controllers/adminConnexionController.php';
                         </p>
                     </div>
 
-                    
-                    <form class="text-center" action="infoPresta.php" method="POST">
-                        <!-- input de type hidden = input non visible coté FRONT 
-                            il permet de recuperer une valeur à l'aide du Name-->
-                        <input type="hidden" name="idPresta" value="<?= $allPresta["ser_id"] ?>">
-                        <button class="col-2 btn btn-outline-primary btn-sm">Modifier le soin</button>
-                        <button type="button" class="col-2 btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-<?= $allPresta["ser_id"] ?>">
-                            Supprimer le soin
-                        </button>
 
+                    <form class="text-center" action="infoPresta.php" method="POST">
+                        <?php if (isset($_SESSION["login"])) { ?>
+                            <!-- input de type hidden = input non visible coté FRONT 
+                            il permet de recuperer une valeur à l'aide du Name-->
+                            <input type="hidden" name="idPresta" value="<?= $allPresta["ser_id"] ?>">
+                            <button class="col-2 btn btn-outline-primary btn-sm">Modifier le soin</button>
+                            <button type="button" class="col-2 btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-<?= $allPresta["ser_id"] ?>">
+                                Supprimer le soin
+                            </button>
+                        <?php } ?>
 
                     </form>
 

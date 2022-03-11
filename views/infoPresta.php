@@ -60,6 +60,7 @@ require '../data/array.php';
 
                 <div class="mt-4 pt-4 row row-cols-md-2 g-6">
                     <div>
+                        <input type="hidden" name="oldPicture" value="<?= $prestaInfo["ser_picture"] ?>">
                         <img src="../assets/img/<?= $prestaInfo["ser_picture"] ?>" class="mx-auto text-center photoCardCat " alt="..." value="<?= isset($_POST["pictureToUpload"]) ? htmlspecialchars($_POST["pictureToUpload"]) : $prestaInfo['ser_picture'] ?>">
 
 
@@ -74,6 +75,8 @@ require '../data/array.php';
                     <div>
                         <img src="../assets/img/<?= $prestaInfo["ser_miniature"] ?>" class="mx-auto text-center photoCardCat " alt="..." value="<?= isset($_POST["miniToUpload"]) ? htmlspecialchars($_POST["miniToUpload"]) : $prestaInfo['ser_miniature'] ?>">
                         <!-- upload miniature -->
+                        <input type="hidden" name="oldMini" value="<?= $prestaInfo["ser_picture"] ?>">
+
                         <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
                         <p><input value="" type="file" name="miniToUpload" id="miniToUpload"></p>
                         <p><img class="text-center" id="imgPreviewMini"></p>
