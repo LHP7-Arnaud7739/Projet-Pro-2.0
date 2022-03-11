@@ -2,6 +2,7 @@
 
 require '../controllers/infoPrestaController.php';
 require '../data/array.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -85,14 +86,13 @@ require '../data/array.php';
                 </div>
 
                 <!-- SELECT CATEGORIES -->
+          
                 <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?= $arrayError["categories"] ?? " "; ?></span>
                 <select name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <?php foreach ($arrayPresta as $allPresta) { ?>
-                        <option selected disabled><?= $allPresta["cat_name"] ?></option>
+                    <?php foreach ($arrayCat as $category) { ?>
+                        <option value="<?= $category['idCat'] ?>" <?= $category['idCat'] == $prestaInfo['cat_id'] ? 'selected' : '' ?> ><?=$category['nameCat'] ?></option>
                     <?php } ?>
-                    <?php foreach ($arrayCat as $cat) { ?>
-                        <option value="<?= $prestaInfo["cat_id"] ?>"><?= $cat['nameCat'] ?></option>
-                    <?php } ?>
+                    
                 </select>
 
                 <div class="mb-3">

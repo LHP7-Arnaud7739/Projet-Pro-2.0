@@ -7,7 +7,7 @@ $arrayError = [];
 
 $modifyPresta = false;
 
-
+var_dump($_POST);
 if (isset($_POST["idPresta"])) {
     $id = htmlspecialchars(trim($_POST["idPresta"]));
     $prestaObj = new Services();
