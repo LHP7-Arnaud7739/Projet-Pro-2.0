@@ -24,24 +24,25 @@ require("../controllers/infoPatientController.php");
 </head>
 
 <body>
-    <div class="row d-sm-block sticky-top  ">
-        <div class="col navbar border border-dark">
-            <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
-            <a href="aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
-            <a href="tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
-            <a href="pageInscription.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Forum</a>
+    <div class="row d-sm-block fixed-top  ">
+        <div class="navbar border border-dark">
+
+            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn "  value="Accueil">Accueil</a>
+            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark"  value="A Propos">A Propos</a>
+            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn "  value="Tarifs">Tarifs</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum">Connexion</a>
         </div>
-    </div>
     </div>
     <header class="header border border-dark">
         <!-- LOGO -->
         <div class="">
-            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accuil"></a>
-        </div>
-        <!-- FIN LOGO -->
-        <div>
-            <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
+            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
 
+            <!-- FIN LOGO -->
+            <div>
+                <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
+
+            </div>
         </div>
     </header>
 

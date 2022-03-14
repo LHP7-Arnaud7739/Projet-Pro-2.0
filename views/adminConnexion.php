@@ -29,13 +29,13 @@ require '../controllers/adminConnexionController.php';
 </head>
 
 <body>
-    <div class="row d-sm-block sticky-top  ">
+    <div class="row d-sm-block fixed-top  ">
         <div class="navbar border border-dark">
 
-            <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
-            <a href="aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
-            <a href="tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Connexion</a>
+            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn "  value="Accueil">Accueil</a>
+            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark"  value="A Propos">A Propos</a>
+            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn "  value="Tarifs">Tarifs</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum">Connexion</a>
         </div>
     </div>
     <header class="header border border-dark">
@@ -50,8 +50,6 @@ require '../controllers/adminConnexionController.php';
             </div>
         </div>
     </header>
-
-    <body>
     <h1 class="text-center p-5">Connexion ADMIN</h1>
             <form class="h1" action="" method="POST">
 
@@ -74,7 +72,7 @@ require '../controllers/adminConnexionController.php';
                         ?></span> </div>
                 </div>
                 <div class="text-center p-5 ">
-                    <input class="boutons btn btn-outline-success" type="submit" name="btn-connexion" value="CONNEXION">
+                    <input class="btn-lg btn btns" type="submit" name="btn-connexion" value="CONNEXION">
 
 
                 </div>

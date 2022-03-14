@@ -98,7 +98,7 @@ if (isset($_POST["btn-submit-presta"])) {
         $price = htmlspecialchars(trim($_POST['price']));
         $time = htmlspecialchars(trim($_POST['time']));
         $picture = $file;
-        $miniature = htmlspecialchars(trim($_POST['miniToUpload']));
+        $miniature =  $fileMini;
         $catId = htmlspecialchars(trim($_POST['categories']));
         $intro = htmlspecialchars(trim($_POST['intro']));
 

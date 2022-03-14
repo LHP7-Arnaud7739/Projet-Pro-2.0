@@ -17,28 +17,29 @@
 </head>
 
 <body>
-    <div class="row d-sm-block sticky-top  ">
+    <div class="row d-sm-block fixed-top  ">
         <div class="navbar border border-dark">
-    
-            <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
-            <a href="../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
-            <a href="../views/tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Connexion</a>
+
+            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn "  value="Accueil">Accueil</a>
+            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark"  value="A Propos">A Propos</a>
+            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn "  value="Tarifs">Tarifs</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum">Connexion</a>
         </div>
     </div>
     <header class="header border border-dark">
         <!-- LOGO -->
         <div class="">
-            <a class="img-fluid" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
 
             <!-- FIN LOGO -->
             <div>
                 <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
+
             </div>
         </div>
     </header>
 
-<body class="body ">
+
     <div class="centrage row justify-content-center">
         <div class=" col-8 text-center  ">
             <div class="text-center">
@@ -48,6 +49,10 @@
                 <p class="justify-content-center">
                 <h2>Bonjour, vous n'avez pas les droits nécessaires pour accéder à cette page<h2>
                         </p>
+                        <div class="p-5 wrap">
+                <a href="../index.php" class="justify-content-start btn-lg btn btnd" type="button" value="accueil">Accueil</a>
+            </div>
+
             </div>
             </p>
 

@@ -148,7 +148,7 @@ $arrayCat = [
     [
         'idCat' => '1',
         'nameCat' => 'Réflexologie ',
-        'introCat' => 'Découvrez les differentes prestations de la reflexologie',
+        'introCat' => 'Découvrez les differents soin de réflexologie',
         'pictureCat' => 'massage-pied1.jpg',
     ],
 

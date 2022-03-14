@@ -19,21 +19,24 @@ require '../controllers/addPrestaController.php';
 
     <!-- STYLE.CSS -->
     <link rel="stylesheet" href="../assets/style.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-    <div class="row d-sm-block sticky-top  ">
+    <div class="row d-sm-block fixed-top  ">
         <div class="navbar border border-dark">
 
-            <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
-            <a href="../views/aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
-            <a href="../views/tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Connexion</a>
+            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn "  value="Accueil">Accueil</a>
+            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark"  value="A Propos">A Propos</a>
+            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn "  value="Tarifs">Tarifs</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum">Connexion</a>
         </div>
     </div>
     <header class="header border border-dark">
         <!-- LOGO -->
-        <div class="">
+        <div class="p-4">
             <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
 
             <!-- FIN LOGO -->
@@ -44,8 +47,8 @@ require '../controllers/addPrestaController.php';
         </div>
     </header>
 
-    <div class="d-flex justify-content-center mt-4">
-    <h1 class="text-center"> Découvrez ici toutes les categories que je propose</h1>
+    <div class="row d-flex justify-content-center mt-4">
+        <h1 class="col-lg text-center"> Découvrez ici toutes les catégories proposées</h1>
     </div>
     <!-- CARDS -->
     <div class="d-flex justify-content-evenly">
@@ -59,9 +62,9 @@ require '../controllers/addPrestaController.php';
                             <h5 class="fs-1 card-title"><?= $cat["nameCat"] ?></h5>
                             <p class="fs-3 card-text"><?= $cat["introCat"] ?></p>
                         </div>
-                        <div class="card-body">
-                            
-                        <a class="boutons btn btn-outline-success text-dark" type="button" href="prestations.php?category=<?= $cat["idCat"] ?>">Acceder aux soins</a>
+                        <div class="card-body wrap">
+                      <a class="btn-lg btns btn " href="prestations.php?category=<?= $cat["idCat"] ?>">Acceder aux soins</a>
+                     
                         </div>
                     </div>
                 </div>
@@ -136,13 +139,15 @@ require '../controllers/addPrestaController.php';
 
     <script src="../assets/js/lightbox-plus-jquery.js"></script>
 
-    <script src="../assets/script/script.js"></script>
+    <script src="../assets/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <!-- Footer script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script>
     </script>
 </body>
 

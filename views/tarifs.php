@@ -23,23 +23,25 @@
 </head>
 
 <body>
-    <div class="row d-sm-block sticky-top  ">
-        <div class="col navbar border border-dark">
-            <a href="../index.php" class="fs-2 col-2 text-center text-dark" type="button" value="Accueil">Accueil</a>
-            <a href="aPropos.php" class="fs-2 col-2 text-center text-dark" type="button" value="A Propos">A Propos</a>
-            <a href="tarifs.php" class="fs-2 col-2 text-center text-dark" type="button" value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-2 col-2 text-center text-dark" type="button" value="Forum">Connexion</a>
+    <div class="row d-sm-block fixed-top  ">
+        <div class="navbar border border-dark">
+
+            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn "  value="Accueil">Accueil</a>
+            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark"  value="A Propos">A Propos</a>
+            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn "  value="Tarifs">Tarifs</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum">Connexion</a>
         </div>
-    </div>
     </div>
     <header class="header border border-dark">
         <!-- LOGO -->
         <div class="">
-            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accuil"></a>
-        </div>
-        <!-- FIN LOGO -->
-        <div>
-            <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
+            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+
+            <!-- FIN LOGO -->
+            <div>
+                <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
+
+            </div>
         </div>
     </header>
     <div class=" corps text-center">
@@ -51,7 +53,7 @@
                     <h2>TARIFS REFLEXOLOGIES</h2>
                 </div>
                 <div class="p-2">
-                    <button class="boutons btn btn-outline-success text-dark" type="button" data-bs-toggle="modal" data-bs-target="#tarifsReflexo">VOIR</button>
+                    <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsReflexo">VOIR</button>
                 </div>
             </div>
             <!-- Modal -->
@@ -79,7 +81,7 @@
                             <hr>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Close</button>
 
                         </div>
                     </div>
@@ -91,7 +93,7 @@
 
                 </div>
                 <div class="p-2">
-                    <button class="boutons btn btn-outline-success text-dark" type="button" data-bs-toggle="modal" data-bs-target="#tarifsHypnoses">VOIR</button>
+                    <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsHypnoses">VOIR</button>
                 </div>
 
             </div>
@@ -120,7 +122,7 @@
                             <hr>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Close</button>
 
                         </div>
                     </div>
@@ -132,7 +134,7 @@
 
                 </div>
                 <div class="p-2">
-                    <button class="boutons btn btn-outline-success text-dark" type="button" data-bs-toggle="modal" data-bs-target="#tarifsMassage">VOIR</button>
+                    <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsMassage">VOIR</button>
                 </div>
             </div>
             <!-- Modal -->
@@ -162,7 +164,7 @@
                             <div class="text-end col-6">45</div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Close</button>
 
                         </div>
                     </div>
@@ -174,7 +176,7 @@
                 <h2>TARIFS AURICULOTHERAPIES</h2>
                 </div>
                 <div class="p-2">
-                    <button class="boutons btn btn-outline-success text-dark" type="button" data-bs-toggle="modal" data-bs-target="#tarifsAuriculo">VOIR</button>
+                    <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsAuriculo">VOIR</button>
                 </div>
             </div>
             <!-- Modal -->
@@ -202,7 +204,7 @@
                             <hr>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Close</button>
 
                         </div>
                     </div>
@@ -214,7 +216,7 @@
 
                 </div>
                 <div class="p-2">
-                    <button class="boutons btn btn-outline-success text-dark" type="button" data-bs-toggle="modal" data-bs-target="#tarifsBougies">VOIR</button>
+                    <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsBougies">VOIR</button>
                 </div>
             </div>
             <!-- Modal -->
@@ -242,7 +244,7 @@
                             <hr>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Close</button>
 
                         </div>
                     </div>
@@ -254,7 +256,7 @@
 
                 </div>
                 <div class="p-2">
-                    <button class="boutons btn btn-outline-success text-dark" type="button" data-bs-toggle="modal" data-bs-target="#cartesCadeaux">VOIR</button>
+                    <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#cartesCadeaux">VOIR</button>
                 </div>
             </div>
             <!-- Modal -->
@@ -269,7 +271,7 @@
                             <img src="../assets/img/carte-cadeaux-img.png" alt="">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Close</button>
 
                         </div>
                     </div>
@@ -283,7 +285,7 @@
 
         <div class="pt-5">
 
-            <a href="../index.php" type="submit" value="ok" class=" btn btn-danger ">Retour </a>
+            <a href="../index.php" type="submit" value="ok" class="btn-lg btn btns ">Retour </a>
 
         </div>
 

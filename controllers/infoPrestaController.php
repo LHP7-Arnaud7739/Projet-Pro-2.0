@@ -5,9 +5,9 @@ require '../models/DataBase.php';
 require '../models/services.php';
 $arrayError = [];
 
-$modifyPresta = false;
+$modifyPrestaOK= false;
 
-var_dump($_POST);
+
 if (isset($_POST["idPresta"])) {
     $id = htmlspecialchars(trim($_POST["idPresta"]));
     $prestaObj = new Services();
@@ -117,7 +117,7 @@ if (isset($_POST["updateBtn"])) {
 
         $prestation = new Services();
         $prestation->modifyService($id, $name, $intro, $description, $price, $time, $picture, $miniature, $catId);
-
+   
 
 
         // Avant de faire un update, nous effaçons les élements dans les tables intermédiaires
@@ -138,8 +138,8 @@ if (isset($_POST["updateBtn"])) {
             $addContraindicationToService->addContraindicationToService($id, $contraindication);
         }
 
-
-        $modifyPrestaOK = 1;
+        $modifyPrestaOK = true;
+     
     }
 }
 

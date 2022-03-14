@@ -68,7 +68,7 @@ class Benefits extends DataBase
     public function allBenefits(): array
     {
         $dB = $this->connectDb();
-        $sql = "SELECT `ben_id`, `ben_names` FROM `projet_pro_Arnaud3`.`mp_benefits`;";
+        $sql = "SELECT `ben_id`, `ben_names` FROM `mp_benefits`;";
         $resultsQuery = $dB->query($sql);
         return $resultsQuery->fetchAll();
     }
@@ -206,6 +206,6 @@ class Prestation extends DataBase
         $resultQuery = $dB->prepare($sql);
         $resultQuery->bindValue(":ser_id", $Ser_id, PDO::PARAM_INT);
         $resultQuery->execute();
-        var_dump($Ser_id);
+        
     }
 };
