@@ -31,7 +31,7 @@ session_start()
             <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
             <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn " value="Forum">Connexion</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"/></a>
         </div>
     </div>
     <header class="header border border-dark">
@@ -165,11 +165,12 @@ session_start()
             </div>
 
 
-
+    </div>
 
 <?php } ?>
-
-
+<div class="pt-5 d-flex justify-content-center">
+<a href="../index.php" class="justify-content-start btn-lg btn btnd" type="button" value="accueil">Retour</a>
+</div>
 <!-- FOOTER -->
 <footer class="footerHome border border-secondary">
     <div class="row text-center">

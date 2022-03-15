@@ -57,7 +57,7 @@ if (isset($_POST["btn-submit-presta"])) {
         }
     }
     if (isset($_FILES['pictureToUpload'])) {
-        var_dump('ok');
+  
         $tmpName = $_FILES['pictureToUpload']['tmp_name'];
         $name = $_FILES['pictureToUpload']['name'];
         $size = $_FILES['pictureToUpload']['size'];
@@ -75,7 +75,7 @@ if (isset($_POST["btn-submit-presta"])) {
     }
 
     if (isset($_FILES['miniToUpload'])) {
-        var_dump('ok');
+   
         $tmpName = $_FILES['miniToUpload']['tmp_name'];
         $name = $_FILES['miniToUpload']['name'];
         $size = $_FILES['miniToUpload']['size'];

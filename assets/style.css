@@ -1,7 +1,7 @@
 header {
     background: url(img/background2.jpg);
     height: 550px;
-    font-family: math;
+  
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
@@ -10,7 +10,7 @@ header {
 
 body {
 
- 
+    font: 18px "Helvetica Neue";
     background: rgb(255, 255, 255);
 background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255,255,255,1) 100%);
     width: 100%;
@@ -66,6 +66,7 @@ height: 500px;
     height: 50%;
     width: 20%;
 }
+
 
 .carousel-inner {
     height: 400px;
@@ -141,7 +142,7 @@ height: 500px;
 }
 
 .cardTarif{
-    width: 20rem;
+    width: 30rem;
     height: 25rem;
 }
 
@@ -257,5 +258,11 @@ height: 500px;
     }
 
 
+.tarifMassage{
+    width: 220px;
+    height: 220px;
+ 
+}
 
-  
+
+   

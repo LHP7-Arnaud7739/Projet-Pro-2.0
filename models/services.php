@@ -58,7 +58,7 @@ class Contraindication extends DataBase
         $resultQuery = $dB->prepare($sql);
         $resultQuery->bindValue(":ser_id", $ser_id, PDO::PARAM_INT);
         $resultQuery->execute();
-        var_dump($ser_id);
+      
     }
 };
 

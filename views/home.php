@@ -28,22 +28,18 @@ require '../controllers/addPrestaController.php';
     <div class="row d-sm-block fixed-top  ">
         <div class="navbar border border-dark">
 
-            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn "  value="Accueil">Accueil</a>
-            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark"  value="A Propos">A Propos</a>
-            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn "  value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum">Connexion</a>
+            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
+            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
+            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
         </div>
     </div>
     <header class="header border border-dark">
         <!-- LOGO -->
-        <div class="p-4">
+        <div class="p-5 ">
             <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
-
             <!-- FIN LOGO -->
-            <div>
-                <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
-
-            </div>
+            <img class="typo" src="../assets/img/Typo.png" alt="">
         </div>
     </header>
 
@@ -63,8 +59,8 @@ require '../controllers/addPrestaController.php';
                             <p class="fs-3 card-text"><?= $cat["introCat"] ?></p>
                         </div>
                         <div class="card-body wrap">
-                      <a class="btn-lg btns btn " href="prestations.php?category=<?= $cat["idCat"] ?>">Acceder aux soins</a>
-                     
+                            <a class="btn-lg btns btn " href="prestations.php?category=<?= $cat["idCat"] ?>">Acceder aux soins</a>
+
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <?php
-var_dump($_POST);
+
 require '../config.php';
 require '../models/DataBase.php';
 require '../models/clients.php';

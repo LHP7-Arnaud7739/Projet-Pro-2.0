@@ -29,7 +29,7 @@
             <a href="../index.php" class="fs-1 col-2 text-center text-dark btn "  value="Accueil">Accueil</a>
             <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark"  value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn "  value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum">Connexion</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"/></a>
         </div>
     </div>
     <header class="header border border-dark">
@@ -44,14 +44,14 @@
             </div>
         </div>
     </header>
-    <div class=" corps text-center">
+    <div class="corps text-center">
 
         <h1>Tarifs</h1>
         <div class="row d-flex justify-content-center ">
-            <div class="cardTarif m-5 boutons card">
+            <div class="cardTarif m-4 boutons card">
                 <div class="card-body">
-                    <h2>TARIFS REFLEXOLOGIES</h2>
-                </div>
+                    <h2>REFLEXOLOGIES</h2>
+                    <img src="https://img.icons8.com/external-icongeek26-glyph-icongeek26/200/000000/external-foot-massage-sauna-icongeek26-glyph-icongeek26.png"/>                </div>
                 <div class="p-2">
                     <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsReflexo">VOIR</button>
                 </div>
@@ -87,10 +87,10 @@
                     </div>
                 </div>
             </div>
-            <div class="cardTarif m-5 boutons card">
+            <div class="cardTarif m-4 boutons card">
                 <div class="card-body">
-                <h2>TARIFS HYPNOSES</h2>
-
+                <h2>HYPNOSES</h2>
+                <img  src="https://img.icons8.com/glyph-neue/200/000000/mental-state.png"/>
                 </div>
                 <div class="p-2">
                     <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsHypnoses">VOIR</button>
@@ -128,10 +128,10 @@
                     </div>
                 </div>
             </div>
-            <div class="cardTarif m-5 boutons card">
+            <div class="cardTarif m-4 boutons card">
                 <div class="card-body">
-                <h2>TARIFS MASSAGES</h2>
-
+                <h2>MASSAGES</h2>
+                <img class="tarifMassage" src="../assets/img/massageStickers-removebg-preview.png">
                 </div>
                 <div class="p-2">
                     <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsMassage">VOIR</button>
@@ -171,12 +171,14 @@
                 </div>
             </div>
 
-            <div class="cardTarif m-5 boutons card">
+            <div class="cardTarif m-4 boutons card">
                 <div class="card-body">
-                <h2>TARIFS AURICULOTHERAPIES</h2>
+                <h2>AURICULOTHERAPIES</h2>
+                <img src="https://img.icons8.com/ios-filled/200/000000/hearing.png"/>
                 </div>
                 <div class="p-2">
                     <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsAuriculo">VOIR</button>
+                   
                 </div>
             </div>
             <!-- Modal -->
@@ -210,10 +212,10 @@
                     </div>
                 </div>
             </div>
-            <div class="cardTarif m-5 boutons card">
+            <div class="cardTarif m-4 boutons card">
                 <div class="card-body">
-                <h2>TARIFS BOUGIES HOPI</h2>
-
+                <h2>BOUGIES HOPI</h2>
+                <img src="https://img.icons8.com/metro/200/000000/christmas-candle.png"/>
                 </div>
                 <div class="p-2">
                     <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#tarifsBougies">VOIR</button>
@@ -250,10 +252,10 @@
                     </div>
                 </div>
             </div>
-            <div class="cardTarif m-5 boutons card">
+            <div class="cardTarif m-4 boutons card">
                 <div class="card-body">
                 <h2>CARTES CADEAUX</h2>
-
+                <img src="https://img.icons8.com/ios-filled/200/000000/gift-card.png"/>
                 </div>
                 <div class="p-2">
                     <button class="btn-lg btn btns" type="button" data-bs-toggle="modal" data-bs-target="#cartesCadeaux">VOIR</button>

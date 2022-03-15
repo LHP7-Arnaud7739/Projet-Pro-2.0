@@ -13,7 +13,7 @@ foreach ($allFiles as $value) {
 $totalPicture = count($usersPicture);
 //?
 if (isset($_POST['submit'])) {
-    var_dump($_FILES);
+   
     $maxSize = 1000000;
 
     if ($_FILES['fileToUpload']['error'] > 0) {

@@ -25,15 +25,15 @@ require '../data/array.php';
 
 <body>
 
-    <div class="row d-sm-block fixed-top  ">
+    <!-- <div class="row d-sm-block fixed-top  ">
         <div class="navbar border border-dark">
 
             <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
             <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn " value="Forum">Connexion</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"/></a>
         </div>
-    </div>
+    </div> -->
     <header class="header border border-dark">
         <!-- LOGO -->
         <div class="">
@@ -49,7 +49,9 @@ require '../data/array.php';
     <!-- 
         <div class="container mycontainer col-12 mb-5 mt-5 shadow p-5"> -->
 
-    <?php if ($modifyPrestaOK) { ?>
+    <?php if ($modifyPrestaOK) {
+
+    ?>
         <p class="pt-4 fs-1 text-center text-success">
             La modification a été effectué avec succès.
         </p>
@@ -62,70 +64,72 @@ require '../data/array.php';
         <?php
         // Nous mettons en place une condition pour s'assurer que nous avons selectionné un soin avec le bouton Modifier
         if (isset($prestaInfo)) { ?>
-            <form class="justify-content-center container col-4" action="" method="POST" novalidate>
-                <h1 class="mt-5">Information du soin</h1>
 
-                <div class="mt-4 pt-4 row row-cols-md-2 g-6">
+            <h1 class="d-flex justify-content-center">Information du soin</h1>
+            <form class="fs-5 d_flex justify-content-center row pt-5" enctype="multipart/form-data" action="" method="POST" novalidate>
+
+
+                <div class="boutons col-5 text-center border border-dark form-group m-4  p-4">
+                    <label for="pictureToUpload" class="fs-1 form-label mt-4">Telecharger une image:</label><span class="text-danger"></span>
                     <div>
                         <input type="hidden" name="oldPicture" value="<?= $prestaInfo["ser_picture"] ?>">
                         <img src="../assets/img/<?= $prestaInfo["ser_picture"] ?>" class="mx-auto text-center photoCardCat " alt="..." value="<?= isset($_POST["pictureToUpload"]) ? htmlspecialchars($_POST["pictureToUpload"]) : $prestaInfo['ser_picture'] ?>">
                         <!-- upload picture -->
-
-                        <label for="pictureToUpload" class="fs-1 form-label mt-3">Telecharger une Image: </label><span class="text-danger"></span>
+                    </div>
+                    <div class="p-3">
                         <p><input value="" type="file" name="pictureToUpload" id="pictureToUpload"></p>
                         <p><img class="text-center" id="imgPreviewPicture"></p>
-
-
-                        <!-- <label for="pictureToUpload" class="fs-1 form-label mt-3">Telecharger une Image: </label><span class="text-danger"></span>
-                        <p><input value="" type="file" name="pictureToUpload" id="pictureToUpload"></p>
-                        <p><img class="text-center" id="imgPreviewPicture"></p> -->
                     </div>
                 </div>
 
-                <div class="mt-4 pt-4 row row-cols-md-2 g-6">
+                <div class="boutons col-6 text-center border border-dark form-group m-4 p-4">
+                    <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
                     <div>
-                        <input type="hidden" name="miniToUpload" value="<?= $prestaInfo["ser_miniature"] ?>">
+
+                        <input type="hidden" name="oldMini" value="<?= $prestaInfo["ser_miniature"] ?>">
                         <img src="../assets/img/<?= $prestaInfo["ser_miniature"] ?>" class="mx-auto text-center photoCardCat " alt="..." value="<?= isset($_POST["miniToUpload"]) ? htmlspecialchars($_POST["miniToUpload"]) : $prestaInfo['ser_miniature'] ?>">
                         <!-- upload miniature -->
-                        <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
+                    </div>
+                    <div class="p-3">
                         <p><input value="" type="file" name="miniToUpload" id="miniToUpload"></p>
                         <p><img class="text-center" id="imgPreviewMini"></p>
-
                     </div>
+
                 </div>
+                <div class="boutons col-5 justify-content-center border border-dark m-4 form-group">
 
-                <!-- SELECT CATEGORIES -->
+                    <!-- SELECT CATEGORIES -->
 
-                <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?= $arrayError["categories"] ?? " "; ?></span>
-                <select name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <?php foreach ($arrayCat as $category) { ?>
-                        <option value="<?= $category['idCat'] ?>" <?= $category['idCat'] == $prestaInfo['cat_id'] ? 'selected' : '' ?>><?= $category['nameCat'] ?></option>
-                    <?php } ?>
+                    <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?= $arrayError["categories"] ?? " "; ?></span>
+                    <select name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <?php foreach ($arrayCat as $category) { ?>
+                            <option value="<?= $category['idCat'] ?>" <?= $category['idCat'] == $prestaInfo['cat_id'] ? 'selected' : '' ?>><?= $category['nameCat'] ?></option>
+                        <?php } ?>
 
-                </select>
+                    </select>
 
-                <div class="mb-3">
+
                     <label for="name" class="fs-1 form-label mt-3">Nom du soin : </label><span class="text-danger">
                         <?=
                         $arrayError["name"] ?? " ";
                         ?>
                     </span>
                     <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : $prestaInfo['ser_name'] ?>" name="name" type="text" class="form-control" id="name">
-                    <div>
-                        <label for="intro" class="fs-1 form-label mt-3">intro: </label><span class="text-danger">
-                            <?=
-                            $arrayError["intro"] ?? "";
-                            ?>
-                        </span>
-                    </div>
+
+                    <label for="intro" class="fs-1 form-label mt-3">intro: </label><span class="text-danger">
+                        <?=
+                        $arrayError["intro"] ?? "";
+                        ?>
+                    </span>
+
                     <textarea value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : $prestaInfo['ser_intro'] ?>" id="intro" name="intro" rows="12" cols="100"> <?= $prestaInfo['ser_intro'] ?></textarea>
-                    <div>
-                        <label for="description" class="fs-1 form-label mt-3">Description : </label><span class="text-danger">
-                            <?=
-                            $arrayError["description"] ?? "";
-                            ?>
-                        </span>
-                    </div>
+
+                    <label for="description" class="fs-1 form-label mt-3">Description : </label><span class="text-danger">
+                        <?=
+                        $arrayError["description"] ?? "";
+                        ?>
+                    </span>
+
                     <textarea value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : $prestaInfo['ser_description'] ?>" id="description" name="description" rows="12" cols="100"> <?= $prestaInfo['ser_description'] ?></textarea>
 
                     <label for="time" class="fs-1 form-label mt-3">Durée: </label><span class="text-danger">
@@ -158,7 +162,8 @@ require '../data/array.php';
                         <option value="55">55</option>
                     </select>
                 </div>
-                <div>
+                <div class="boutons col-4 justify-content-center border border-dark m-4 form-group form-check checkbox-warning-filled">
+
                     <!-- Bien-faits CHECKBOX -->
 
                     <?php
@@ -179,16 +184,15 @@ require '../data/array.php';
                     <?php foreach ($arrayBen as $ben) {
 
                     ?>
-
                         <div class="form-check form-switch">
 
-                        <input class="form-check-input" type="checkbox" name="benefits[]" value="<?= $ben["ben_id"] ?>" <?= in_array($ben["ben_id"], $arrayBenefits) ? "checked" : "" ?>> 
+                            <input class="form-check-input" type="checkbox" name="benefits[]" value="<?= $ben["ben_id"] ?>" <?= in_array($ben["ben_id"], $arrayBenefits) ? "checked" : "" ?>>
                             <label class="text-start form-check-label"><?= $ben["ben_names"] ?></label>
                         </div>
                     <?php } ?>
-                    <hr>
                 </div>
-                <div>
+                <div class="boutons text-start col-4 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
+
                     <?php
                     // Mise en place d'un tableau contenant uniquement les id des contres indications
                     $serviceContraindication = new Contraindication();
@@ -203,6 +207,7 @@ require '../data/array.php';
 
                     ?>
                     <!-- CONTRE INDICATION CHECKBOX -->
+
                     <label for="text-start contraindication" class=" fs-1 form-label mt-3">Contres-Indications: </label><span class="text-danger"> <?= $arrayError["contraindication"] ?? " "; ?></span>
                     <?php foreach ($arrayCont as $cont) { ?>
 
@@ -214,8 +219,7 @@ require '../data/array.php';
                 </div>
 
 
-                </div>
-                </div>
+
 
                 <div class="text-center mt-4">
 
@@ -230,6 +234,7 @@ require '../data/array.php';
             </form>
     <?php }
     }
+
     ?>
 
 

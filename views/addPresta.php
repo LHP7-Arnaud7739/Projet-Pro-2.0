@@ -36,7 +36,7 @@ require '../controllers/adminConnexionController.php';
             <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
             <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn " value="Forum">Connexion</a>
+            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"/></a>
         </div>
     </div>
     <header class="header border border-dark">
@@ -126,6 +126,7 @@ require '../controllers/adminConnexionController.php';
                 <label for="benefits" class="d-flex justify-content-center row fs-1 form-label mt-3">Biens-Faits: </label><span class="text-danger"> <?= $arrayError["benefits"] ?? " "; ?></span>
                 <?php foreach ($arrayBen as $ben) { ?>
                     <div class="form-check form-switch">
+                    
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="benefits[]" value="<?= $ben["ben_id"] ?>">
                         <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $ben["ben_names"] ?></label>
                     </div>
