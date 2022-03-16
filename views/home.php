@@ -25,13 +25,20 @@ require '../controllers/addPrestaController.php';
 </head>
 
 <body>
-    <div class="row d-sm-block fixed-top  ">
-        <div class="navbar border border-dark">
+    <div class="row d-sm-block fixed-top justify-content-center  ">
+        <div class=" navbar border border-dark">
 
-            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
-            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
-            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <a href="../index.php" class="fs-1 col  text-dark btn " value="Accueil">Accueil</a>
+            <a href="../views/prestations.php?category=1" class="btn fs-1 col  text-dark" value="A Propos">Réflexologies</a>
+            <a href="../views/prestations.php?category=2" class="btn fs-1 col  text-dark" value="A Propos">Massages</a>
+
+            <a href="../views/prestations.php?category=3" class="btn fs-1 col  text-dark" value="A Propos">Hypnoses</a>
+
+            <a href="../viewsprestations.php?category=4" class="btn fs-1 col  text-dark" value="A Propos">Auriculothérapie</a>
+
+            <a href="../views/prestations.php?category=5" class="fs-1 col  text-dark btn " value="Tarifs">Bougies Hopi</a>
+            <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+     
         </div>
     </div>
     <header class="header border border-dark">
@@ -127,7 +134,7 @@ require '../controllers/addPrestaController.php';
                 <a class="" href="../index.php"><input class="logoFooter" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
             </div>
             <p class="list-inline-item">Accueil</p>
-            <p class="list-inline-item">Politique de confidentialité</p>
+            <a href="../views/mentionsLegales.php" class="list-inline-item">Mentions légales</a>
             <p class="copyright">©Bien-être des pieds à la tête 2022</p>
         </div>
     </footer>

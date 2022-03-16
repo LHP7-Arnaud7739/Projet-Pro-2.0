@@ -22,7 +22,7 @@ if (isset($_POST['btn-connexion'])) {
                 // Recuperation du login et du cota lors de la connexions 
                 session_start();
                 $_SESSION['login'] = $_POST['login'];
-                header("location:../views/addPresta.php");
+                header("location:../views/adminOK.php");
             } else {
                 echo 'Mot de passe incorrect';
             }

@@ -31,19 +31,21 @@ session_start()
             <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
             <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
             <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
-            <a href="../views/adminConnexion.php" class="fs-1 col-2 text-center text-dark btn "  value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"/></a>
+            <?php if (empty($_SESSION["login"])) { ?>
+            <a href="../views/adminOK.php" class="fs-1 col-2 text-center text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <?php } ?>
+            <?php if (isset($_SESSION["login"])) { ?>
+<a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>     
+<?php } ?>
+       
         </div>
     </div>
     <header class="header border border-dark">
         <!-- LOGO -->
-        <div class="">
+        <div class="p-5 ">
             <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
-
             <!-- FIN LOGO -->
-            <div>
-                <h1 class="nameSite"> <strong>BIEN ÊTRE DES PIEDS À LA TÊTE </strong></h1>
-
-            </div>
+            <img class="typo" src="../assets/img/Typo.png" alt="">
         </div>
     </header>
 
@@ -55,11 +57,11 @@ session_start()
 
                     <div id="carouselExampleFade" class="mx-auto text-center carousel slide carousel-fade " data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="../assets/img/<?= $allPresta["ser_picture"] ?>" class="img-fluid  photoCardCat " alt="...">
+                            <div class="p-2 carousel-item active">
+                                <img src="../assets/img/<?= $allPresta["ser_picture"] ?>" class="m-5 img-fluid  photoCardCat " alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="../assets/img/<?= $allPresta["ser_miniature"] ?>" class="img-fluid  photoCardCat" alt="...">
+                                <img src="../assets/img/<?= $allPresta["ser_miniature"] ?>" class="m-5 img-fluid  photoCardCat" alt="...">
                             </div>
 
                         </div>
@@ -73,8 +75,8 @@ session_start()
                         </button>
                     </div>
                     <div class="card-body">
-                        <h2 class="text-center card-title"><?= $allPresta['ser_name'] ?></h2>
-                        <p class="h4 descri card-text"><?= $allPresta['ser_description'] ?></p>
+                        <h1 class="text-center card-title"><b><?= $allPresta['ser_name'] ?></b></h1>
+                        <p class="m-4 h4 descri card-text"><?= $allPresta['ser_description'] ?></p>
                     </div>
                     <hr>
                     <!-- Recuperation et affichage des benefices lors de l'ajout -->
@@ -123,19 +125,21 @@ session_start()
 
 
                     <form class="text-center" action="infoPresta.php" method="POST">
-                        <?php if (isset($_SESSION["login"])) { ?>
-                            <!-- input de type hidden = input non visible coté FRONT 
-                            il permet de recuperer une valeur à l'aide du Name-->
+          
+
                             <div class="wrap">
+                                              <?php if (isset($_SESSION["login"])) { ?>
                                 <input type="hidden" name="idPresta" value="<?= $allPresta["ser_id"] ?>">
                                 <button type="submit" class="btn-lg btns m-4">Modifier le soin</button>
 
 
-                                <button type="button" class="btn-lg btn btnd " data-bs-toggle="modal" data-bs-target="#deleteModal-<?= $allPresta["ser_id"] ?>">
+                                <button type="button" class="btn-lg btnd " data-bs-toggle="modal" data-bs-target="#deleteModal-<?= $allPresta["ser_id"] ?>">
                                     Supprimer le soin
-                        </button>
+                                </button>
+                                <a href="../views/addPresta.php" class="m-4 btn-lg btn btns" type="button" value="accueil">Ajout d'un nouveau soin</a>
 
                             <?php } ?>
+                            <a href="../index.php" class="m-4 btn-lg btn btnd" type="button" value="accueil">Retour</a>
 
                     </form>
 
@@ -168,9 +172,6 @@ session_start()
     </div>
 
 <?php } ?>
-<div class="pt-5 d-flex justify-content-center">
-<a href="../index.php" class="justify-content-start btn-lg btn btnd" type="button" value="accueil">Retour</a>
-</div>
 <!-- FOOTER -->
 <footer class="footerHome border border-secondary">
     <div class="row text-center">
@@ -231,7 +232,7 @@ session_start()
             <a class="" href="../index.php"><input class="logoFooter" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
         </div>
         <p class="list-inline-item">Accueil</p>
-        <p class="list-inline-item">Politique de confidentialité</p>
+        <a href="../views/mentionsLegales.php" class="list-inline-item">Mentions légales</a>
         <p class="copyright">©Bien-être des pieds à la tête 2022</p>
     </div>
 </footer>

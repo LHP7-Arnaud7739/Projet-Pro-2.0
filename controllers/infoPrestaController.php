@@ -5,7 +5,7 @@ require '../models/DataBase.php';
 require '../models/services.php';
 $arrayError = [];
 
-$modifyPrestaOK= false;
+$modifyPrestaOK = false;
 var_dump($_FILES);
 
 if (isset($_POST["idPresta"])) {
@@ -60,9 +60,9 @@ if (isset($_POST["updateBtn"])) {
         }
     }
 
-    
+
     if (isset($_FILES['pictureToUpload'])) {
-       var_dump("01");
+        var_dump("01");
         $tmpName = $_FILES['pictureToUpload']['tmp_name'];
         $name = $_FILES['pictureToUpload']['name'];
         $size = $_FILES['pictureToUpload']['size'];
@@ -77,13 +77,15 @@ if (isset($_POST["updateBtn"])) {
             $uniqueName = uniqid('', true);
             $file = $uniqueName . "." . $extension;
             move_uploaded_file($tmpName, '../assets/img/' . $file);
+        } else {
+            $file = htmlspecialchars(trim($_POST['oldPicture']));
         }
     } else {
         $file = htmlspecialchars(trim($_POST['oldPicture']));
     }
 
     if (isset($_FILES['miniToUpload'])) {
-   var_dump("02");
+        var_dump("02");
         $tmpName = $_FILES['miniToUpload']['tmp_name'];
         $name = $_FILES['miniToUpload']['name'];
         $size = $_FILES['miniToUpload']['size'];
@@ -98,9 +100,11 @@ if (isset($_POST["updateBtn"])) {
             $uniqueName = uniqid('', true);
             $fileMini = $uniqueName . "." . $extension;
             move_uploaded_file($tmpName, '../assets/img/' . $fileMini);
+        } else {
+            $fileMini = htmlspecialchars(trim($_POST['oldMini']));
         }
     } else {
-        $fileMini = htmlspecialchars(trim($_POST['oldMini']));  
+        $fileMini = htmlspecialchars(trim($_POST['oldMini']));
     }
 
 
@@ -120,7 +124,7 @@ if (isset($_POST["updateBtn"])) {
 
         $prestation = new Services();
         $prestation->modifyService($id, $name, $intro, $description, $price, $time, $picture, $miniature, $catId);
-   
+
 
 
         // Avant de faire un update, nous effaçons les élements dans les tables intermédiaires
@@ -142,7 +146,6 @@ if (isset($_POST["updateBtn"])) {
         }
 
         $modifyPrestaOK = true;
-   
     }
 }
 

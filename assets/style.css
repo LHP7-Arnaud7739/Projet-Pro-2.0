@@ -1,7 +1,7 @@
 header {
     background: url(img/background2.jpg);
     height: 550px;
-  
+
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
@@ -10,9 +10,9 @@ header {
 
 body {
 
-    font: 18px "Helvetica Neue";
+    font-family:Lucida;
     background: rgb(255, 255, 255);
-background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255,255,255,1) 100%);
+    background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 1) 100%);
     width: 100%;
 
 }
@@ -22,28 +22,33 @@ body {
     height: 100%;
 }
 
-.category{
-    width:100rem ;
+
+.category {
+    width: 100rem;
 
 }
+
 .navbar {
     height: 30%;
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 1%, rgba(206,206,206,1) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 1%, rgba(206, 206, 206, 1) 100%);
 }
 
 .nameSite {
     margin-left: 1000px;
 }
-.imgTab{
-width: 600px;
-height: 500px;
+
+.imgTab {
+    width: 600px;
+    height: 500px;
 
 }
 
 .boutons {
     box-shadow: 1px 1px 1px rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 1%, rgba(206,206,206,1) 100%);
+  
+    background: rgb(226,226,226);
+    background: radial-gradient(circle, rgba(226,226,226,1) 0%, rgba(251,251,251,1) 80%);
 
 
 }
@@ -57,10 +62,12 @@ height: 500px;
     height: 30%;
     width: 30%;
 }
-.photoCard{
+
+.photoCard {
     height: 80%;
     width: 80%;
 }
+
 .logo {
     margin-left: -80px;
     height: 50%;
@@ -69,89 +76,106 @@ height: 500px;
 
 
 .carousel-inner {
-    height: 400px;
+    height: 700px;
 }
 
 .footerHome {
     /* Height of the footer */
     flex-shrink: 0;
-    background: rgb(206,206,206);
-    background: linear-gradient(0deg, rgba(206,206,206,1) 39%, rgba(255,255,255,1) 100%);
+    background: rgb(206, 206, 206);
+    background: linear-gradient(0deg, rgba(206, 206, 206, 1) 39%, rgba(255, 255, 255, 1) 100%);
     width: 100%;
     left: 0;
     bottom: 0;
     margin-bottom: 0;
     margin-top: 10rem;
 }
-.footerApropos{
+
+.footerApropos {
     /* Height of the footer */
     flex-shrink: 0;
-    background: rgb(206,206,206);
-    background: linear-gradient(0deg, rgba(206,206,206,1) 39%, rgba(255,255,255,1) 100%);
+    background: rgb(206, 206, 206);
+    background: linear-gradient(0deg, rgba(206, 206, 206, 1) 39%, rgba(255, 255, 255, 1) 100%);
     width: 100%;
     left: 0;
     bottom: 0;
     margin-bottom: 0;
     margin-top: 10rem;
 }
-.footerTarifs{
+
+.footerTarifs {
     /* Height of the footer */
     flex-shrink: 0;
-    background: rgb(206,206,206);
-    background: linear-gradient(0deg, rgba(206,206,206,1) 39%, rgba(255,255,255,1) 100%);
+    background: rgb(206, 206, 206);
+    background: linear-gradient(0deg, rgba(206, 206, 206, 1) 39%, rgba(255, 255, 255, 1) 100%);
     width: 100%;
     left: 0;
     bottom: 0;
     margin-bottom: 0;
     margin-top: 50rem;
 }
+
+
+.footerMentionLegal {
+    /* Height of the footer */
+    flex-shrink: 0;
+    background: rgb(206, 206, 206);
+    background: linear-gradient(0deg, rgba(206, 206, 206, 1) 39%, rgba(255, 255, 255, 1) 100%);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    margin-top: 10rem;
+}
+
 .adresse {
     font-size: x-large;
 }
 
-.vertical { 
-    border-right: 2px solid black; 
-    height: 400px; 
+.vertical {
+    border-right: 2px solid black;
+    height: 400px;
     display: inline-block;
-    } 
+}
 
-    .vertical1 { 
-        border-left: 2px solid black; 
-        height: 400px; 
-        display: inline-block;
-        } 
+.vertical1 {
+    border-left: 2px solid black;
+    height: 400px;
+    display: inline-block;
+}
 
 .logoFooter {
     height: 10rem;
     width: 15rem;
 }
 
-.logoFB{
+.logoFB {
     height: 10rem;
     width: 15rem;
 
 }
-.cardTab{
+
+.cardTab {
     width: 70rem;
     height: 70rem;
 }
 
-.photoCardCat{
-    height: 30rem;
-    width: 30rem;
+.photoCardCat {
+    height: 40rem;
+    width: 50rem;
 }
 
-.cardTarif{
+.cardTarif {
     width: 30rem;
     height: 25rem;
 }
 
-.imgTarif{
+.imgTarif {
     width: 15rem;
     height: 15rem;
 }
 
-.modalTarifs{
+.modalTarifs {
     height: 100%;
     width: 100%;
 }
@@ -159,13 +183,15 @@ height: 500px;
 #imgPreviewPicture {
     width: 150px;
     max-height: 150px;
-  
+
 }
+
 #imgPreviewMini {
     width: 150px;
     max-height: 150px;
-  
+
 }
+
 .upload {
     height: 600px;
     box-shadow: 6px 6px 0px rgb(237, 233, 233)k;
@@ -173,22 +199,24 @@ height: 500px;
 
 
 #global {
-    overflow:auto;
- }
- #left {
-    float:left;
-    width:50%;
- }
- #right{
-    overflow:auto;
- }
-
-.btnAccessPresta{
-    background: #999996
-
+    overflow: auto;
 }
-.btnDeletePresta{
-    
+
+#left {
+    float: left;
+    width: 50%;
+}
+
+#right {
+    overflow: auto;
+}
+
+.btnAccessPresta {
+    background: #999996
+}
+
+.btnDeletePresta {
+
     background: #2c2b29
 }
 
@@ -202,40 +230,40 @@ height: 500px;
 
 .wrap {
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btns {
-  width: 240px;
-  height: 55px;
-  
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: rgb(255, 255, 255);
-  background-color: #2c2b29;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-  }
+    width: 240px;
+    height: 55px;
 
-  .btns:hover {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    background-color: #2c2b29;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btns:hover {
     background-color: #e6ddd2;
     box-shadow: 0px 15px 20px rgba(44, 80, 66, 0.4);
     color: rgb(0, 0, 0);
     transform: translateY(-7px);
-  }
+}
 
-  .btnd {
+.btnd {
     width: 240px;
     height: 55px;
-    
+
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
@@ -248,21 +276,18 @@ height: 500px;
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    }
-  
-    .btnd:hover {
-      background-color: #e6ddd2;
-      box-shadow: 0px 15px 20px rgba(44, 80, 66, 0.4);
-      color: rgb(0, 0, 0);
-      transform: translateY(-7px);
-    }
+}
 
-
-.tarifMassage{
-    width: 220px;
-    height: 220px;
- 
+.btnd:hover {
+    background-color: #db7968;
+    box-shadow: 0px 15px 20px rgba(44, 80, 66, 0.4);
+    color: rgb(0, 0, 0);
+    transform: translateY(-7px);
 }
 
 
-   
+.tarifMassage {
+    width: 220px;
+    height: 220px;
+
+}
