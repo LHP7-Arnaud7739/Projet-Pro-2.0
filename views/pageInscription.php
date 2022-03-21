@@ -23,30 +23,63 @@ require("../controllers/infoPatientController.php");
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
 </head>
 
-<body>
-    <div class="row d-sm-block fixed-top  ">
+<body class="test">
+    <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
-
-            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
-            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
-            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
-            <a href="../views/adminOK.php" class="fs-1 col-2 text-center text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a>
+            <div class="text-center dropdown col">
+                <button class="text-center btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Prestations
+                </button>
+                <div class=" dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a>
+                </div>
+            </div>
+            <div class="dropdown text-center col">
+                <button class=" btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tarifs
+                </button>
+                <div class="dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a>
+                </div>
+            </div>
+            <?php if (empty($_SESSION["login"])) { ?>
+                <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <?php } ?>
+            <?php if (isset($_SESSION["login"])) { ?>
+                <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
+            <?php } ?>
         </div>
     </div>
-    <header class="header border border-dark">
-        <!-- LOGO -->
-        <div class="p-5 ">
-            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
-            <!-- FIN LOGO -->
-            <img class="typo" src="../assets/img/Typo.png" alt="">
-        </div>
-    </header>
+    <div>
+        <header class="header border border-dark">
+            <!-- LOGO -->
+           
+           
+            <div class="p-5">
+                <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+                <div class="d-flex justify-content-end">
+                <!-- FIN LOGO -->
+                <img class="typo" src="../assets/img/typo2.png" alt="">
+            </div>
+            </div>
+
+           
+        </header>
 
     <div class="text-center p-5">
         <h1>Bienvenue sur le Forum!<br>Veuillez vous connecter pour acceder au Forum.</h1>
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="boutons card">
+                    <div class="shadow card">
                         <div class="card-body">
                             <p class="fs-3 card-text">Si vous n'êtes pas encore inscrit, appuyer ci dessous</p>
                             <a href="../views/Inscriptions.php" type="submit" value="ok" class="btn btn-outline-success text-dark ">Inscrivez Vous </a>
@@ -54,7 +87,7 @@ require("../controllers/infoPatientController.php");
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="boutons card">
+                    <div class="shadow card">
                         <div class="card-body">
                             <p class="fs-3 card-text">Deja inscrit? Connectez-vous!</p>
                             <a href="../views/connexion.php" type="submit" value="ok" class="btn btn-outline-success text-dark ">Connectez Vous </a>

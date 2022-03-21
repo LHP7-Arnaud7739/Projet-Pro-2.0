@@ -1,6 +1,7 @@
 <?php
 require '../data/array.php';
 require '../controllers/addPrestaController.php';
+session_start()
 ?>
 
 <!DOCTYPE html>
@@ -24,43 +25,69 @@ require '../controllers/addPrestaController.php';
     <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
-    <div class="row d-sm-block fixed-top justify-content-center  ">
-        <div class=" navbar border border-dark">
-
-            <a href="../index.php" class="fs-1 col  text-dark btn " value="Accueil">Accueil</a>
-            <a href="../views/prestations.php?category=1" class="btn fs-1 col  text-dark" value="A Propos">Réflexologies</a>
-            <a href="../views/prestations.php?category=2" class="btn fs-1 col  text-dark" value="A Propos">Massages</a>
-
-            <a href="../views/prestations.php?category=3" class="btn fs-1 col  text-dark" value="A Propos">Hypnoses</a>
-
-            <a href="../viewsprestations.php?category=4" class="btn fs-1 col  text-dark" value="A Propos">Auriculothérapie</a>
-
-            <a href="../views/prestations.php?category=5" class="fs-1 col  text-dark btn " value="Tarifs">Bougies Hopi</a>
-            <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
-     
+<body class="test">
+    <div class="row d-sm-block fixed-top justify-content-center">
+        <div class="navbar border border-dark">
+            <a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a>
+            <div class="text-center dropdown col">
+                <button class="text-center btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Prestations
+                </button>
+                <div class=" dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a>
+                </div>
+            </div>
+            <div class="dropdown text-center col">
+                <button class=" btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tarifs
+                </button>
+                <div class="dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a>
+                </div>
+            </div>
+            <?php if (empty($_SESSION["login"])) { ?>
+                <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <?php } ?>
+            <?php if (isset($_SESSION["login"])) { ?>
+                <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
+            <?php } ?>
         </div>
     </div>
-    <header class="header border border-dark">
-        <!-- LOGO -->
-        <div class="p-5 ">
-            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
-            <!-- FIN LOGO -->
-            <img class="typo" src="../assets/img/Typo.png" alt="">
-        </div>
-    </header>
+    <div>
+        <header class="header border border-dark">
+            <!-- LOGO -->
+           
+           
+            <div class="p-5">
+                <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+                <div class="d-flex justify-content-end">
+                <!-- FIN LOGO -->
+                <img class="typo" src="../assets/img/typo2.png" alt="">
+            </div>
+            </div>
 
+           
+        </header>
+    </div>
     <div class="row d-flex justify-content-center mt-4">
         <h1 class="col-lg text-center"> Découvrez ici toutes les catégories proposées</h1>
     </div>
     <!-- CARDS -->
     <div class="d-flex justify-content-evenly">
 
-        <div class=" d-flex justify-content-center mt-5 row row-cols-1 row-cols-md-3 g-4">
+        <div class="px-3 d-flex justify-content-center mt-1 row row-cols-1 row-cols-md-3 g-4">
             <?php foreach ($arrayCat as $cat) { ?>
                 <div class="col">
-                    <div class="boutons text-center card">
-                        <img src="../assets/img/<?= $cat["pictureCat"] ?>" class="mx-auto border border-dark photoCardCat" alt="...">
+                    <div class="p-4 shadow text-center card">
+                        <img src="../assets/img/<?= $cat["pictureCat"] ?>" class="mx-auto border border-dark photoCardCatArray" alt="...">
                         <div class="card-body">
                             <h5 class="fs-1 card-title"><?= $cat["nameCat"] ?></h5>
                             <p class="fs-3 card-text"><?= $cat["introCat"] ?></p>
@@ -139,6 +166,15 @@ require '../controllers/addPrestaController.php';
         </div>
     </footer>
     <!-- Footer end -->
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.0/umd/popper.min.js"></script>
+   
+    <script>
+        $('h1').mouseover(function() {
+            $(this).dropdown('toggle')
+        })
+    </script>
 
     <script src="../assets/js/lightbox-plus-jquery.js"></script>
 
@@ -150,8 +186,7 @@ require '../controllers/addPrestaController.php';
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-    <script>
-    </script>
+    
 </body>
 
 

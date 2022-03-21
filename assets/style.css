@@ -1,27 +1,28 @@
+
 header {
     background: url(img/background2.jpg);
-    height: 550px;
+    height: 500px;
 
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-}
-
-
-body {
-
-    font-family:Lucida;
-    background: rgb(255, 255, 255);
-    background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 1) 100%);
-    width: 100%;
+    background-size:cover;
 
 }
 
-html,
+
+ body {
+
+    font-family: fantasy;
+    
+
+}
+
+/* html,
 body {
     height: 100%;
-}
+}  */
+.typo{
 
+width: 60%;    
+}
 
 .category {
     width: 100rem;
@@ -35,7 +36,8 @@ body {
 }
 
 .nameSite {
-    margin-left: 1000px;
+    position:relative;
+  
 }
 
 .imgTab {
@@ -44,15 +46,11 @@ body {
 
 }
 
-.boutons {
-    box-shadow: 1px 1px 1px rgb(0, 0, 0);
-  
-    background: rgb(226,226,226);
-    background: radial-gradient(circle, rgba(226,226,226,1) 0%, rgba(251,251,251,1) 80%);
-
+.miniatureTarif{
+    width:110px;
+	height:100px;
 
 }
-
 
 .corps {
     height: 500px;
@@ -163,6 +161,10 @@ body {
 .photoCardCat {
     height: 40rem;
     width: 50rem;
+}
+.photoCardCatArray {
+    height: 30rem;
+    width: 30rem;
 }
 
 .cardTarif {
@@ -291,3 +293,98 @@ body {
     height: 220px;
 
 }
+
+/* NAVBAR RESPONSIVE */
+
+  
+  .nav {
+    height: 10%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 1%, rgba(206, 206, 206, 1) 100%);
+
+  }
+  
+  
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+
+    float: right;
+    font-size:40px;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  .nav > .nav-links > a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: auto;
+      height: 10px;
+      border-top: 2px solid rgb(0, 0, 0);
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: auto;
+      background: rgb(255, 255, 255);
+
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 50px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: auto;
+    }
+    .nav > #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+
+  /* menu deroulant navbar */
+
+  .dropdown-menu{
+      
+     width: 25rem;
+  }
+  .test{
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 1%, rgba(206, 206, 206, 1) 100%);
+  }

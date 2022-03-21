@@ -2,7 +2,7 @@
 
 require '../controllers/infoPrestaController.php';
 require '../data/array.php';
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,6 @@ require '../data/array.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>modification prestation</title>
-    <link rel="stylesheet" href="../assets/css/lightbox.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- cdn -->
@@ -23,22 +22,51 @@ require '../data/array.php';
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
-<body>
-    <div class="row d-sm-block fixed-top  ">
+<body class="test">
+    <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
-
-            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
-            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
-            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
-            <a href="../views/adminOK.php" class="fs-1 col-2 text-center text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a>
+            <div class="text-center dropdown col">
+                <button class="text-center btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Prestations
+                </button>
+                <div class=" dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a>
+                </div>
+            </div>
+            <div class="dropdown text-center col">
+                <button class=" btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tarifs
+                </button>
+                <div class="dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a>
+                </div>
+            </div>
+            <?php if (empty($_SESSION["login"])) { ?>
+                <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <?php } ?>
+            <?php if (isset($_SESSION["login"])) { ?>
+                <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
+            <?php } ?>
         </div>
     </div>
+
     <header class="header border border-dark">
         <!-- LOGO -->
-        <div class="p-5 ">
-            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+        <div class="p-5">
+            <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+        </div>
+        <div class="d-flex justify-content-end">
             <!-- FIN LOGO -->
-            <img class="typo" src="../assets/img/Typo.png" alt="">
+            <img class="typo" src="../assets/img/typo2.png" alt="">
         </div>
     </header>
     <!-- 
@@ -64,8 +92,8 @@ require '../data/array.php';
             <form class="fs-5 d_flex justify-content-center row pt-5" enctype="multipart/form-data" action="" method="POST" novalidate>
 
 
-                <div class="boutons col-5 text-center border border-dark form-group m-4  p-4">
-                    <label for="pictureToUpload" class="fs-1 form-label mt-4">Telecharger une image:</label><span class="text-danger"></span>
+                <div class="shadow col-5 text-center border border-dark form-group m-4  p-4">
+                    <label for="pictureToUpload" class="fs-1 form-label mt-4">Ajouter une image :</label><span class="text-danger"></span>
                     <div>
                         <input type="hidden" name="oldPicture" value="<?= $prestaInfo["ser_picture"] ?>">
                         <img src="../assets/img/<?= $prestaInfo["ser_picture"] ?>" class="mx-auto text-center photoCardCat " alt="..." value="<?= isset($_POST["pictureToUpload"]) ? htmlspecialchars($_POST["pictureToUpload"]) : $prestaInfo['ser_picture'] ?>">
@@ -77,8 +105,8 @@ require '../data/array.php';
                     </div>
                 </div>
 
-                <div class="boutons col-6 text-center border border-dark form-group m-4 p-4">
-                    <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
+                <div class="shadow col-6 text-center border border-dark form-group m-4 p-4">
+                    <label for="miniToUpload" class="fs-1 form-label mt-3">Ajout d'une miniature pour tarif: </label><span class="text-danger"></span>
                     <div>
 
                         <input type="hidden" name="oldMini" value="<?= $prestaInfo["ser_miniature"] ?>">
@@ -91,12 +119,12 @@ require '../data/array.php';
                     </div>
 
                 </div>
-                <div class="boutons col-5 justify-content-center border border-dark m-4 form-group">
+                <div class="shadow col-5 justify-content-center border border-dark m-4 form-group">
 
                     <!-- SELECT CATEGORIES -->
 
                     <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?= $arrayError["categories"] ?? " "; ?></span>
-                    <select name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <select id="categories" name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                         <?php foreach ($arrayCat as $category) { ?>
                             <option value="<?= $category['idCat'] ?>" <?= $category['idCat'] == $prestaInfo['cat_id'] ? 'selected' : '' ?>><?= $category['nameCat'] ?></option>
                         <?php } ?>
@@ -109,7 +137,7 @@ require '../data/array.php';
                         $arrayError["name"] ?? " ";
                         ?>
                     </span>
-                    <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : $prestaInfo['ser_name'] ?>" name="name" type="text" class="form-control" id="name">
+                    <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : $prestaInfo['ser_name'] ?>" name="name" type="text" class="fs-3 form-control" id="name">
 
                     <label for="intro" class="fs-1 form-label mt-3">intro: </label><span class="text-danger">
                         <?=
@@ -117,7 +145,7 @@ require '../data/array.php';
                         ?>
                     </span>
 
-                    <textarea value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : $prestaInfo['ser_intro'] ?>" id="intro" name="intro" rows="12" cols="100"> <?= $prestaInfo['ser_intro'] ?></textarea>
+                    <textarea class="fs-3" value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : $prestaInfo['ser_intro'] ?>" id="intro" name="intro" rows="12" cols="65"> <?= $prestaInfo['ser_intro'] ?></textarea>
 
                     <label for="description" class="fs-1 form-label mt-3">Description : </label><span class="text-danger">
                         <?=
@@ -125,14 +153,14 @@ require '../data/array.php';
                         ?>
                     </span>
 
-                    <textarea value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : $prestaInfo['ser_description'] ?>" id="description" name="description" rows="12" cols="100"> <?= $prestaInfo['ser_description'] ?></textarea>
+                    <textarea class="fs-3" value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : $prestaInfo['ser_description'] ?>" id="description" name="description" rows="12" cols="65"> <?= $prestaInfo['ser_description'] ?></textarea>
 
                     <label for="time" class="fs-1 form-label mt-3">Durée: </label><span class="text-danger">
                         <?=
                         $arrayError["time"] ?? " ";
                         ?>
                     </span>
-                    <select value="<?= isset($_POST["time"]) ? htmlspecialchars($_POST["time"]) : $prestaInfo['ser_time'] ?>" name="time" type="text" class="form-control" id="time" name="time" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <select value="<?= isset($_POST["time"]) ? htmlspecialchars($_POST["time"]) : $prestaInfo['ser_time'] ?>" name="time" type="text" class="fs-3 form-control" id="time" name="time" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                         <option selected><?= $prestaInfo['ser_time'] ?></option>
                         <option value="20">20</option>
                         <option value="30">30</option>
@@ -147,7 +175,7 @@ require '../data/array.php';
                         $arrayError["price"] ?? " ";
                         ?>
                     </span>
-                    <select name="price" type="text" class="form-control" id="price" name="price" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <select name="price" type="text" class=" fs-3 form-control" id="price" name="price" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                         <option selected><?= $prestaInfo['ser_price'] ?></option>
                         <option value="25">25</option>
                         <option value="30">30</option>
@@ -157,7 +185,7 @@ require '../data/array.php';
                         <option value="55">55</option>
                     </select>
                 </div>
-                <div class="boutons col-4 justify-content-center border border-dark m-4 form-group form-check checkbox-warning-filled">
+                <div class="shadow col-4 justify-content-center border border-dark m-4 form-group form-check checkbox-warning-filled">
 
                     <!-- Bien-faits CHECKBOX -->
 
@@ -172,21 +200,22 @@ require '../data/array.php';
                         // array push va nous permettre de remplir le tableau
                         array_push($arrayBenefits, $benefit['ben_id']);
                     };
-
                     ?>
 
                     <label for="benefits" class=" row fs-1 form-label mt-3">Biens-Faits: </label><span class="text-danger"> <?= $arrayError["benefits"] ?? " "; ?></span>
-                    <?php foreach ($arrayBen as $ben) {
+                    <div id="optionsBenefits">
+                        <?php foreach ($arrayBen as $ben) {
 
-                    ?>
-                        <div class="form-check form-switch">
+                        ?>
 
-                            <input class="form-check-input" type="checkbox" name="benefits[]" value="<?= $ben["ben_id"] ?>" <?= in_array($ben["ben_id"], $arrayBenefits) ? "checked" : "" ?>>
-                            <label class="text-start form-check-label"><?= $ben["ben_names"] ?></label>
-                        </div>
-                    <?php } ?>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="benefits[]" value="<?= $ben["ben_id"] ?>" <?= in_array($ben["ben_id"], $arrayBenefits) ? "checked" : "" ?>>
+                                <label class="fs-3 text-start form-check-label"><?= $ben["ben_names"] ?></label>
+                            </div>
+                        <?php } ?>
+                    </div>
                 </div>
-                <div class="boutons text-start col-4 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
+                <div class="shadow text-start col-4 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
 
                     <?php
                     // Mise en place d'un tableau contenant uniquement les id des contres indications
@@ -208,7 +237,7 @@ require '../data/array.php';
 
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="contraindication[]" value="<?= $cont["cont_id"] ?>" <?= in_array($cont["cont_id"], $arrayContraindications) ? "checked" : "" ?>>
-                            <label class="text-start form-check-label"><?= $cont["cont_name"] ?></label>
+                            <label class="fs-3 text-start form-check-label"><?= $cont["cont_name"] ?></label>
                         </div>
                     <?php } ?>
                 </div>
@@ -305,8 +334,6 @@ require '../data/array.php';
 </footer>
 <!-- Footer end -->
 
-<script src="../assets/js/lightbox-plus-jquery.js"></script>
-<script src="../assets/script/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <!-- Footer script -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -337,24 +364,30 @@ require '../data/array.php';
         };
     })
 </script>
+
 <script>
-    var toastTrigger = document.getElementById('liveToastBtn')
-    var toastLiveExample = document.getElementById('liveToast')
-    // if (toastTrigger) {
-    //     toastTrigger.addEventListener('click', function() {
-    //         var toast = new bootstrap.Toast(toastLiveExample)
-
-    //         toast.show()
-    //     })
-    // }
-
-    if (<?= $modifyPrestaOk ?>) {
-        var toast = new bootstrap.Toast(toastLiveExample)
-
-        toast.show()
-    }
+    // creation d'une constante reprenant les bénefices initiales avant modif
+    const saveBenefits = <?= json_encode($arrayBenefits) ?>;
+    const optionsBenefits = document.getElementById("optionsBenefits");
+    const categories = document.getElementById("categories");
+    categories.addEventListener("change", function() {
+        let cat_id = this.value
+        let url = `../controllers/ajaxBenefits.php?getBenefits=${cat_id}`
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                optionsBenefits.innerHTML = "";
+                data.forEach(benefit => {
+                    optionsBenefits.innerHTML += `
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="benefits[]" value="${benefit.ben_id}" ${saveBenefits.includes(benefit.ben_id) ? 'checked' : ''} >
+                            <label class="text-start form-check-label" for="flexSwitchCheckDefault">${benefit.ben_names}</label>
+                        </div> `
+                })
+            })
+            .catch(error => console.log(error))
+    });
 </script>
-
 </body>
 
 </html>

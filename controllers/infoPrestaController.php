@@ -6,13 +6,17 @@ require '../models/services.php';
 $arrayError = [];
 
 $modifyPrestaOK = false;
-var_dump($_FILES);
+
 
 if (isset($_POST["idPresta"])) {
     $id = htmlspecialchars(trim($_POST["idPresta"]));
     $prestaObj = new Services();
     $prestaInfo = $prestaObj->getOneService($id);
+} else {
+    $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../index.php';
+    header("location: $referer");
 }
+
 
 if (isset($_POST["updateBtn"])) {
 
@@ -62,7 +66,7 @@ if (isset($_POST["updateBtn"])) {
 
 
     if (isset($_FILES['pictureToUpload'])) {
-        var_dump("01");
+
         $tmpName = $_FILES['pictureToUpload']['tmp_name'];
         $name = $_FILES['pictureToUpload']['name'];
         $size = $_FILES['pictureToUpload']['size'];
@@ -73,7 +77,7 @@ if (isset($_POST["updateBtn"])) {
         $extensions = ['jpg', 'jpeg', 'png',];
 
         if (in_array($extension, $extensions) && $size < $maxSize && $error == 0) {
-            var_dump('ok1');
+
             $uniqueName = uniqid('', true);
             $file = $uniqueName . "." . $extension;
             move_uploaded_file($tmpName, '../assets/img/' . $file);
@@ -85,7 +89,7 @@ if (isset($_POST["updateBtn"])) {
     }
 
     if (isset($_FILES['miniToUpload'])) {
-        var_dump("02");
+
         $tmpName = $_FILES['miniToUpload']['tmp_name'];
         $name = $_FILES['miniToUpload']['name'];
         $size = $_FILES['miniToUpload']['size'];
@@ -96,7 +100,7 @@ if (isset($_POST["updateBtn"])) {
         $extensions = ['jpg', 'jpeg', 'png',];
 
         if (in_array($extension, $extensions) && $size < $maxSize && $error == 0) {
-            var_dump('ok2');
+
             $uniqueName = uniqid('', true);
             $fileMini = $uniqueName . "." . $extension;
             move_uploaded_file($tmpName, '../assets/img/' . $fileMini);
@@ -154,5 +158,5 @@ if (isset($_POST["updateBtn"])) {
 $allContraindication = new Contraindication();
 $arrayCont = $allContraindication->allContraindication();
 
-$allBenefits = new Benefits();
-$arrayBen = $allBenefits->allBenefits();
+$services = new Services();
+$arrayBen = $services->selectBenefitsByCategories($prestaInfo['cat_id']);

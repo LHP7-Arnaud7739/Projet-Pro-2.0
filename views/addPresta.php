@@ -29,24 +29,57 @@ require '../controllers/adminConnexionController.php';
 
 </head>
 
-<body>
-    <div class="row d-sm-block fixed-top  ">
+<body class="test">
+    <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
-
-            <a href="../index.php" class="fs-1 col-2 text-center text-dark btn " value="Accueil">Accueil</a>
-            <a href="../views/aPropos.php" class="btn fs-1 col-2 text-center text-dark" value="A Propos">A Propos</a>
-            <a href="../views/tarifs.php" class="fs-1 col-2 text-center text-dark btn " value="Tarifs">Tarifs</a>
-            <a href="../views/adminOK.php" class="fs-1 col-2 text-center text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/100/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <a href="../index.php" class="btn fs-1 col text-dark">Accueil</a>
+            <div class="text-center dropdown col">
+                <button class="text-center btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Prestations
+                </button>
+                <div class=" dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a>
+                </div>
+            </div>
+            <div class="dropdown text-center col">
+                <button class=" btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tarifs
+                </button>
+                <div class="dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a>
+                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a>
+                </div>
+            </div>
+            <?php if (empty($_SESSION["login"])) { ?>
+                <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+            <?php } ?>
+            <?php if (isset($_SESSION["login"])) { ?>
+                <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
+            <?php } ?>
         </div>
     </div>
-    <header class="header border border-dark">
-        <!-- LOGO -->
-        <div class="p-5 ">
-            <a class="" href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
-            <!-- FIN LOGO -->
-            <img class="typo" src="../assets/img/Typo.png" alt="">
-        </div>
-    </header>
+    <div>
+        <header class="header border border-dark">
+            <!-- LOGO -->
+           
+           
+            <div class="p-5">
+                <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+                <div class="d-flex justify-content-end">
+                <!-- FIN LOGO -->
+                <img class="typo" src="../assets/img/typo2.png" alt="">
+            </div>
+            </div>
+
+           
+        </header>
     <div class="text-center  ">
         <div class="p-5col-8 m-4  justify-content-center  ">
             <?php if (!empty($_SESSION['login'])) {  ?>
@@ -69,11 +102,11 @@ require '../controllers/adminConnexionController.php';
 
 
         <form enctype="multipart/form-data" class="fs-3 d_flex justify-content-center row pt-5" action="" method="POST" novalidate>
-            <div class="boutons col-3 justify-content-center border border-dark mb-3 form-group">
+            <div class="shadow col-3 justify-content-center border border-dark mb-3 form-group">
 
                 <!-- SELECT CATEGORIES -->
                 <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?= $arrayError["categories"] ?? " "; ?></span>
-                <select name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <select id="categories" name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                     <option selected disabled>Choisir une categorie</option>
                     <?php foreach ($arrayCatName as $cat) { ?>
                         <option value="<?= $cat["cat_id"] ?>" <?= isset($_POST["categories"]) && $_POST["categories"] == $cat["cat_name"] ? "selected" : ""  ?>><?= $cat['cat_name'] ?></option>
@@ -85,14 +118,12 @@ require '../controllers/adminConnexionController.php';
                 <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : "" ?>" name="name" type="text" class="fs-2 form-control" id="name" required>
 
                 <!-- FORMULAIRE INTRO -->
-                <label for="intro" class="fs-1 form-label mt-3"> Introduction du soin: </label><span class="text-danger"><?= $arrayError["intro"] ?? " "; ?></span>
-                <input value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : "" ?>" name="intro" type="text" class="fs-2 form-control" id="intro" required>
+                <label for="intro" class="fs-1 form-label mt-3">intro: </label><span class="text-danger"> <?= $arrayError["intro"] ?? "";?> </span>
+                <textarea value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : "" ?>" id="intro" name="intro" rows="12" cols="35"></textarea>
 
                 <!-- FORMULAIRE DESCRIPTION -->
-                <label for="description" class="fs-1 form-label mt-3"> Descriptif du soin: </label><span class="text-danger"><?= $arrayError["description"] ?? " "; ?>
-                </span>
-                <input value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : "" ?>" name="description" type="text" class="fs-2 form-control" id="description" required>
-
+                <label for="description" class="fs-1 form-label mt-3">Description : </label><span class="text-danger"><?=$arrayError["description"] ?? "";?></span>
+                    <textarea value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : "" ?>" id="description" name="description" rows="12" cols="35"></textarea>              
                 <!-- SELECT DUREE SEANCE -->
                 <label for="time" class="fs-1 form-label mt-3">Durée du soin: </label><span class="text-danger"><?= $arrayError["time"] ?? " "; ?></span>
                 <select name="time" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
@@ -118,18 +149,21 @@ require '../controllers/adminConnexionController.php';
             </div>
             <!-- Bien-faits CHECKBOX -->
 
-            <div class="boutons text-start col-3 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
+            <div class="shadow text-start col-3 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
                 <label for="benefits" class="d-flex justify-content-center row fs-1 form-label mt-3">Biens-Faits: </label><span class="text-danger"> <?= $arrayError["benefits"] ?? " "; ?></span>
-                <?php foreach ($arrayBen as $ben) { ?>
-                    <div class="form-check form-switch">
-                    
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="benefits[]" value="<?= $ben["ben_id"] ?>">
-                        <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $ben["ben_names"] ?></label>
-                    </div>
-                <?php } ?>
-                
+                <div id="optionsBenefits">
+                    <!-- <?php foreach ($arrayBenz as $ben) { ?>
+                        <div class="form-check form-switch">
+
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="benefits[]" value="<?= $ben["ben_id"] ?>">
+                            <label class="text-start form-check-label" for="flexSwitchCheckDefault"><?= $ben["ben_names"] ?></label>
+                        </div>
+                    <?php } ?> -->
+                </div>
+
+
             </div>
-            <div class="boutons text-start col-3 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
+            <div class="shadow text-start col-3 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
 
                 <!-- CONTRE INDICATION CHECKBOX -->
                 <label for="text-start contraindication" class="d-flex justify-content-center fs-1 form-label mt-3">Contres-Indications: </label><span class="text-danger"> <?= $arrayError["contraindication"] ?? " "; ?></span>
@@ -140,16 +174,16 @@ require '../controllers/adminConnexionController.php';
                     </div>
                 <?php } ?>
             </div>
-            <div class="boutons col-3 border border-dark form-group">
+            <div class="shadow col-3 border border-dark form-group">
 
                 <!-- upload Picture -->
-                <label for="pictureToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
+                <label for="pictureToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"><?= $messageInfo ?? '' ?></span>
                 <p><input value="<?= isset($_POST["pictureToUpload"]) ? htmlspecialchars($_POST["pictureToUpload"]) : "" ?>" type="file" name="pictureToUpload" id="pictureToUpload"></p>
                 <p><img class="text-center" id="imgPreviewPicture"></p>
 
 
                 <!-- upload miniature -->
-                <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"></span>
+                <label for="miniToUpload" class="fs-1 form-label mt-3">Telecharger une miniature: </label><span class="text-danger"><?= $messageInfo ?? '' ?></span>
                 <p><input value="<?= isset($_POST["miniToUpload"]) ? htmlspecialchars($_POST["miniToUpload"]) : "" ?>" type="file" name="miniToUpload" id="miniToUpload"></p>
                 <p><img class="text-center" id="imgPreviewMini"></p>
                 <div class="wrap">
@@ -266,6 +300,28 @@ require '../controllers/adminConnexionController.php';
             imgPreviewMini.setAttribute('src', oFREvent.target.result);
         };
     })
+</script>
+
+<script>
+    const optionsBenefits = document.getElementById("optionsBenefits");
+    const categories = document.getElementById("categories");
+    categories.addEventListener("change", function() {
+        let cat_id = this.value
+        let url = `../controllers/ajaxBenefits.php?getBenefits=${cat_id}`
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                optionsBenefits.innerHTML = "";
+                data.forEach(benefit => {
+                    optionsBenefits.innerHTML += `
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="benefits[]" value="${benefit.ben_id}">
+                            <label class="text-start form-check-label" for="flexSwitchCheckDefault">${benefit.ben_names}</label>
+                        </div> `
+                })
+            })
+            .catch(error => console.log(error))
+    });
 </script>
 <script src="../assets/script.js"></script>
 </body>

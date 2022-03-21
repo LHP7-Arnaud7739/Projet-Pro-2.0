@@ -148,35 +148,35 @@ $arrayCat = [
     [
         'idCat' => '1',
         'nameCat' => 'Réflexologie ',
-        'introCat' => 'Découvrez les differents soin de réflexologie',
-        'pictureCat' => 'reflexoBois.jpg',
+        'introCat' => 'Plus qu un massage, une source de bien-être',
+        'pictureCat' => '622f3a3dcd51b5.62787674.jpeg',
     ],
 
     [
         'idCat' => '2',
         'nameCat' => 'Massages ',
-        'introCat' => 'Decouvrez les differents massage',
-        'pictureCat' => 'massageBois.jpg',
+        'introCat' => 'Accordez-vous un moment de bien-être',
+        'pictureCat' => '6231dac7027463.72634841.png',
     ],
 
     [
         'idCat' => '3',
         'nameCat' => 'Hypnose',
-        'introCat' => 'Découvrez ce que l hypnose peut vous apporter ',
-        'pictureCat' => 'hypnose_clé.jpeg',
+        'introCat' => 'Devenir une meilleur version de soi-même.',
+        'pictureCat' => 'hypnose11.jpg',
         
     ],
     [
         'idCat' => '4',
         'nameCat' => 'Auriculothérapie',
-        'introCat' => 'Avec des aimants ',
-        'pictureCat' => 'auriculothérapie.jpeg',
+        'introCat' => 'Une thérapie éfficace pour soulager douleur et anxiété ',
+        'pictureCat' => '623315bd2419b1.30392031.png',
     ],
 
     [
         'idCat' => '5',
         'nameCat' => 'Bougie Hopi ',
-        'introCat' => 'Methode de relaxation',
+        'introCat' => 'Appréciez le bien-être d une séance de bougies Hopi',
         'pictureCat' => 'hopi.jpeg',
     ],
 ];

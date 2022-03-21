@@ -13,6 +13,7 @@ $addServicesOk = false;
 
 if (isset($_POST["btn-submit-presta"])) {
 
+    
     if (!isset($_POST["categories"])) {
         $arrayError["categories"] = "Selectionner une categorie";
     }
@@ -57,7 +58,7 @@ if (isset($_POST["btn-submit-presta"])) {
         }
     }
     if (isset($_FILES['pictureToUpload'])) {
-  
+
         $tmpName = $_FILES['pictureToUpload']['tmp_name'];
         $name = $_FILES['pictureToUpload']['name'];
         $size = $_FILES['pictureToUpload']['size'];
@@ -75,7 +76,8 @@ if (isset($_POST["btn-submit-presta"])) {
     }
 
     if (isset($_FILES['miniToUpload'])) {
-   
+        $messageInfo =  'Désolé, une erreur est produite lors du téléchargement de votre fichier.';
+
         $tmpName = $_FILES['miniToUpload']['tmp_name'];
         $name = $_FILES['miniToUpload']['name'];
         $size = $_FILES['miniToUpload']['size'];
@@ -118,6 +120,9 @@ if (isset($_POST["btn-submit-presta"])) {
             $addContraindicationToService->addContraindicationToService($idService, $contraindication);
         }
         $addServicesOk = true;
+    }
+    else {
+        $messageInfo =  'Le fichier n\'est pas une image.';
     }
 };
 

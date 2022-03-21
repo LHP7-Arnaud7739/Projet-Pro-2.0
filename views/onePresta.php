@@ -1,12 +1,9 @@
 <?php
-require '../adminConfig.php';
-session_start();
-session_destroy();
+
+require '../controllers/infoPrestaController.php';
+require '../data/array.php';
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,7 +12,7 @@ session_destroy();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAGE TEST INDEX</title>
+    <title>modification prestation</title>
     <link rel="stylesheet" href="../assets/css/lightbox.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -26,7 +23,7 @@ session_destroy();
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
-<body class="test">
+<body class="">
     <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
             <a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a>
@@ -77,21 +74,129 @@ session_destroy();
 
            
         </header>
-    <div class="centrage row justify-content-center">
-        <div class=" col-8 text-center  ">
+    <!-- DEBUT TABLEAU 2 D -->
+    <div class="mt-5 pt-4 row g-6 d-flex justify-content-center">
+    <?php
+        // Nous mettons en place une condition pour s'assurer que nous avons selectionné un soin avec le bouton Modifier
+        if (isset($prestaInfo)) { ?>
+            <div class="pt-4 col-6 ">
+                <div class="shadow h-100 card">
 
-            <div class="p-5 ">
-                <p class="fs-1 justify-content-center">
-                <h2>Vous avez bien été déconnecté.<h2>
+                    <div id="carouselExampleFade" class="mx-auto text-center carousel slide carousel-fade " data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="p-2 carousel-item active">
+                                <img src="../assets/img/<?= $prestaInfo["ser_picture"] ?>" class="m-5 img-fluid photoCardCat " alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../assets/img/<?= $prestaInfo["ser_miniature"] ?>" class="m-5 img-fluid photoCardCat" alt="...">
+                            </div>
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="text-center card-title"><b><?= $prestaInfo['ser_name'] ?></b></h1>
+                        <p class="m-4 h4 descri card-text"><?= $prestaInfo['ser_description'] ?></p>
+                    </div>
+                    <hr>
+                    <!-- Recuperation et affichage des benefices lors de l'ajout -->
+                    <div class="h-50" id="global">
+                        <div id="left">
+                            <ul class="p-3 ">
+                                <p class="h3 text-center"><u>BÉNÉFICES</u></p>
+                                <?php $serviceBenefits = new Benefits();
+                                $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($prestaInfo['ser_id']);
+                                foreach ($arrayServiceBenefits as $ServiceBenefits) {
+
+                                ?>
+
+                                    <li class="m-4 h4 text-start"><?= $ServiceBenefits['ben_names'] ?></li>
+                                <?php
+                                }
+
+                                ?>
+                            </ul>
+
+                        </div>
+                        <!-- Recuperation et affichage des contres indications lors de l'ajout -->
+                        <div id="right">
+                            <ul class="p-3">
+                                <p class="h3 text-center"><u> CONTRES-INDICATIONS</u></p>
+                                <?php
+                                $serviceContraindication = new Contraindication();
+                                $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($prestaInfo['ser_id']);
+                                foreach ($arrayServiceContraindication as $ServiceContraindication) { ?>
+                                    <li class="m-4 h4"><?= $ServiceContraindication['cont_name'] ?></li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center card-footer">
+                        <p>
+                        <h3 class="card-text">Temps de la séance : <?= $prestaInfo['ser_time'] ?> Min</h3>
                         </p>
+                        <hr>
+                        <p>
+                        <h3 class="card-text">Prix de la séance : <?= $prestaInfo['ser_price'] ?> €</h3>
+                        </p>
+                    </div>
+
+
+                    <form class="text-center" action="infoPresta.php" method="POST">
+                        <div class="wrap">
+                            <?php if (isset($_SESSION["login"])) { ?>
+                                <input type="hidden" name="idPresta" value="<?= $$prestaInfo["ser_id"] ?>">
+                                <button type="submit" class="btn-lg btns m-4">Modifier le soin</button>
+
+                                <button type="button" class="btn-lg btnd " data-bs-toggle="modal" data-bs-target="#deleteModal-<?= $prestaInfo["ser_id"] ?>">
+                                    Supprimer le soin
+                                </button>
+                                <a href="../views/addPresta.php" class="m-4 btn-lg btn btns" type="button" value="accueil">Ajout d'un nouveau soin</a>
+
+                            <?php } ?>
+                            <a href="../index.php" class="m-4 btn-lg btn btnd" type="button" value="accueil">Retour</a>
+                    
+                    </form>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal-<?= $prestaInfo["ser_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-1" id="exampleModalLabel">Supprimer le soin</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="text-center fs-3 modal-body">
+                                    <p> Vous êtes sur le point de supprimer le soin</p>
+                                    <p> <b class="text-danger"> <?=$prestaInfo["ser_name"] ?></b></p>
+                                </div>
+                                <div class="wrap modal-footer">
+                                    <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Annuler</button>
+                                    <form action="" method="POST">
+                                        <input type="hidden" name="deleteService" value="<?= $prestaInfo["ser_id"] ?>">
+                                        <button type="submit" name="idDeleteService" class="btn-lg btn btnd ">Supprimer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="p-5 wrap">
-                <a href="../index.php" class="justify-content-start btn-lg btn btns" type="button" value="accueil">Accueil</a>
-            </div>
-        </div>
+
+
+    </div>
+
+<?php } ?>
 </body>
-
-
 
 <!-- JAVASCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -151,7 +256,6 @@ session_destroy();
             </div>
         </div>
     </div>
-
     <div class="text-center">
         <div class="">
             <a class="" href="../index.php"><input class="logoFooter" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
@@ -164,7 +268,6 @@ session_destroy();
 <!-- Footer end -->
 
 <script src="../assets/js/lightbox-plus-jquery.js"></script>
-
 <script src="../assets/script/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <!-- Footer script -->
@@ -173,7 +276,51 @@ session_destroy();
 <!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 </script>
-</body>
+<script>
+    // Aperçu de preview picture
+    pictureToUpload.addEventListener("change", function() {
+        let input = this;
+        let oFReader = new FileReader(); // on créé un nouvel objet FileReader
+        oFReader.readAsDataURL(this.files[0]);
+        oFReader.onload = function(oFREvent) {
+            imgPreviewPicture.setAttribute('src', oFREvent.target.result);
+        };
+    })
+</script>
 
+<script>
+    // Aperçu de preview miniature
+    miniToUpload.addEventListener("change", function() {
+        let input = this;
+        let oFReader = new FileReader(); // on créé un nouvel objet FileReader
+        oFReader.readAsDataURL(this.files[0]);
+        oFReader.onload = function(oFREvent) {
+            imgPreviewMini.setAttribute('src', oFREvent.target.result);
+        };
+    })
+</script>
+<script>
+    var toastTrigger = document.getElementById('liveToastBtn')
+    var toastLiveExample = document.getElementById('liveToast')
+    // if (toastTrigger) {
+    //     toastTrigger.addEventListener('click', function() {
+    //         var toast = new bootstrap.Toast(toastLiveExample)
+
+    //         toast.show()
+    //     })
+    // }
+
+    if (<?= $modifyPrestaOk ?>) {
+        var toast = new bootstrap.Toast(toastLiveExample)
+
+        toast.show()
+    }
+</script>
+<script>
+
+
+    
+</script>
+</body>
 
 </html>

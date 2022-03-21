@@ -10,8 +10,6 @@ class Categories extends DataBase
         $resultQuery = $db->query($sql);
         return $resultQuery->fetchAll();
     }
-
-   
 };
 
 
@@ -58,19 +56,18 @@ class Contraindication extends DataBase
         $resultQuery = $dB->prepare($sql);
         $resultQuery->bindValue(":ser_id", $ser_id, PDO::PARAM_INT);
         $resultQuery->execute();
-      
     }
 };
 
 class Benefits extends DataBase
 {
     // fonction qui permet d afficher les benefices
-    public function allBenefits(): array
+    public function allBenefits(): string
     {
         $dB = $this->connectDb();
         $sql = "SELECT `ben_id`, `ben_names` FROM `mp_benefits`;";
         $resultsQuery = $dB->query($sql);
-        return $resultsQuery->fetchAll();
+        return json_encode($resultsQuery->fetchAll());
     }
 
     // fonction qui permet d afficher les benefices lier aux categories
@@ -106,9 +103,7 @@ class Benefits extends DataBase
         $resultQuery = $dB->prepare($sql);
         $resultQuery->bindValue(":ser_id", $idPresta, PDO::PARAM_INT);
         $resultQuery->execute();
-      
     }
-
 };
 
 class Services extends DataBase
@@ -171,6 +166,17 @@ class Services extends DataBase
         $resultQuery->bindValue(':ser_id', $id, PDO::PARAM_STR);
         $resultQuery->execute();
     }
+
+    public function selectBenefitsByCategories(int $cat_id)
+    {
+        $dB = $this->connectDb();
+        $sql = "SELECT `ben_id`, `ben_names`, `cat_id` FROM `mp_benefits`
+        where `cat_id` = :cat_id";
+        $resultQuery = $dB->prepare($sql);
+        $resultQuery->bindValue(':cat_id', $cat_id, PDO::PARAM_INT);
+        $resultQuery->execute();
+        return $resultQuery->fetchAll(PDO::FETCH_ASSOC);
+    }
 };
 
 class Prestation extends DataBase
@@ -197,7 +203,7 @@ class Prestation extends DataBase
     }
 
 
-    
+
 
     public function deletePresta($Ser_id): void
     {
@@ -206,6 +212,5 @@ class Prestation extends DataBase
         $resultQuery = $dB->prepare($sql);
         $resultQuery->bindValue(":ser_id", $Ser_id, PDO::PARAM_INT);
         $resultQuery->execute();
-        
     }
 };
