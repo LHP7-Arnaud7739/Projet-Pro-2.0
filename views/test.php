@@ -25,81 +25,68 @@ session_start()
     <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 </head>
 
-<body class="test">
+<body class="">
     <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
-            <a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a>
-            <div class="text-center dropdown col">
-                <button class="text-center btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Prestations
-                </button>
-                <div class=" dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a>
-                </div>
-            </div>
-            <div class="dropdown text-center col">
-                <button class=" btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Tarifs
-                </button>
-                <div class="dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a>
-                </div>
-            </div>
-            <?php if (empty($_SESSION["login"])) { ?>
-                <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
-            <?php } ?>
-            <?php if (isset($_SESSION["login"])) { ?>
-                <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
-            <?php } ?>
+            <input type="checkbox" id="drop-down-cbox" />
+            <label for="drop-down-cbox">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="fs-1 main-nav">
+                <li><a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a></li>
+
+                <li class="">Prestations
+                    <ul>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a></li>
+
+                    </ul>
+                </li>
+                <li>Tarifs
+                    <ul>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a></li>
+
+                    </ul>
+                </li>
+                <?php if (empty($_SESSION["login"])) { ?>
+                    <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+                <?php } ?>
+                <?php if (isset($_SESSION["login"])) { ?>
+                    <form class="text-center" action="../views/deconnexion.php" method="POST">
+                    <button class="btn-lg btnd btn " href="../views/deconnexion.php">Déconnexion</button>
+                    </form>
+                <?php } ?>
+
         </div>
+        </nav>
     </div>
-    <div class="collapse" id="navbarToggleExternalContent">
-            <div class="offcanvas-body">
-                <ul class="navbar-nav pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">home.php</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="spots.php">Les spots</a>
-                    </li>
-                    <?php if (isset($_SESSION['users']["login"])) { ?>
-                        <li class="nav-item col-2">
-                            <a class="nav-link active fs-4" href="panelAdmin.php"></a>
-                        </li>
-                    <?php } ?>
-            </div>
-        </div>
     <div>
-        <header class="header border border-dark">
-            <!-- LOGO -->
-           
-           
+        <header class="header1 border border-dark">
+            <!-- LOGO -->                    
             <div class="p-5">
                 <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
                 <div class="d-flex justify-content-end">
                 <!-- FIN LOGO -->
                 <img class="typo" src="../assets/img/typo2.png" alt="">
             </div>
-            </div>
-
-           
-        </header>
-    </div>
+            </div>         
+        </header>   
     <div class="row d-flex justify-content-center mt-4">
         <h1 class="col-lg text-center"> Découvrez ici toutes les catégories proposées</h1>
     </div>
     <!-- CARDS -->
     <div class="d-flex justify-content-evenly">
 
-        <div class=" d-flex justify-content-center mt-5 row row-cols-1 row-cols-md-3 g-4">
+        <div class="px-3 d-flex justify-content-center mt-1 row row-cols-1 row-cols-md-3 g-4">
             <?php foreach ($arrayCat as $cat) { ?>
                 <div class="col">
                     <div class="p-4 shadow text-center card">
@@ -119,7 +106,7 @@ session_start()
     </div>
     <!-- FOOTER -->
     <footer class="footerHome border border-secondary">
-        <div class="row text-center">
+        <div class="coordonnees row text-center">
             <div class="p-4 vertical col-4 ">
                 <p class="adresse">COORDONNEES</p>
                 <p class="fs-4"> PESQUET Manuella </p>
@@ -182,10 +169,10 @@ session_start()
         </div>
     </footer>
     <!-- Footer end -->
-    <script src="js/popper.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.0/umd/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
     <script>
         $('h1').mouseover(function() {
             $(this).dropdown('toggle')
@@ -202,8 +189,7 @@ session_start()
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-    <script>
-    </script>
+
 </body>
 
 

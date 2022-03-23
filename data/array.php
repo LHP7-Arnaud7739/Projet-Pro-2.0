@@ -163,13 +163,13 @@ $arrayCat = [
         'idCat' => '3',
         'nameCat' => 'Hypnose',
         'introCat' => 'Devenir une meilleur version de soi-même.',
-        'pictureCat' => 'hypnose11.jpg',
+        'pictureCat' => 'hypn.jpeg',
         
     ],
     [
         'idCat' => '4',
         'nameCat' => 'Auriculothérapie',
-        'introCat' => 'Une thérapie éfficace pour soulager douleur et anxiété ',
+        'introCat' => 'Thérapie éfficace pour soulager douleur et anxiété ',
         'pictureCat' => '623315bd2419b1.30392031.png',
     ],
 
@@ -177,6 +177,6 @@ $arrayCat = [
         'idCat' => '5',
         'nameCat' => 'Bougie Hopi ',
         'introCat' => 'Appréciez le bien-être d une séance de bougies Hopi',
-        'pictureCat' => 'hopi.jpeg',
+        'pictureCat' => 'bougiesH1.jpeg',
     ],
 ];

@@ -185,7 +185,7 @@ class Prestation extends DataBase
     {
         $db = $this->connectDb();
         $sql = "SELECT `mp_services`.`ser_id`, `mp_category`.`cat_id`, `cat_name`, `ser_name`, `ser_intro`, `ser_description`, `ser_price`, `ser_time`, `ser_picture`, `ser_miniature` FROM mp_services
-        INNER JOIN `mp_category` ON `mp_category`.`cat_id` = `mp_services`.`cat_id`";
+        INNER JOIN `mp_category` ON `mp_category`.`cat_id` = `mp_services`.`cat_id` ";
         $resultQuery = $db->query($sql);
         return $resultQuery->fetchAll();
     }

@@ -22,53 +22,63 @@ session_start();
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
-<body class="test">
+<body class="">
     <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
-            <a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a>
-            <div class="text-center dropdown col">
-                <button class="text-center btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Prestations
-                </button>
-                <div class=" dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a>
-                </div>
-            </div>
-            <div class="dropdown text-center col">
-                <button class=" btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Tarifs
-                </button>
-                <div class="dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a>
-                </div>
-            </div>
-            <?php if (empty($_SESSION["login"])) { ?>
-                <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
-            <?php } ?>
-            <?php if (isset($_SESSION["login"])) { ?>
-                <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
-            <?php } ?>
-        </div>
-    </div>
+            <input type="checkbox" id="drop-down-cbox" />
+            <label for="drop-down-cbox">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="fs-1 main-nav">
+                <li><a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a></li>
 
-    <header class="header border border-dark">
-        <!-- LOGO -->
-        <div class="p-5">
-            <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+                <li class="">Prestations
+                    <ul>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a></li>
+
+                    </ul>
+                </li>
+                <li>Tarifs
+                    <ul>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a></li>
+
+                    </ul>
+                </li>
+                <?php if (empty($_SESSION["login"])) { ?>
+                    <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+                <?php } ?>
+                <?php if (isset($_SESSION["login"])) { ?>
+                    <form class="text-center" action="../views/deconnexion.php" method="POST">
+                    <button class="btn-lg btnd btn " href="../views/deconnexion.php">Déconnexion</button>
+                    </form>
+                <?php } ?>
+
         </div>
-        <div class="d-flex justify-content-end">
-            <!-- FIN LOGO -->
-            <img class="typo" src="../assets/img/typo2.png" alt="">
-        </div>
-    </header>
+        </nav>
+    </div>
+    <div>
+        <header class="header1 border border-dark">
+            <!-- LOGO -->                    
+            <div class="p-5">
+                <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+                <div class="d-flex justify-content-end">
+                <!-- FIN LOGO -->
+                <img class="typo" src="../assets/img/typo2.png" alt="">
+            </div>
+            </div>         
+        </header>   
+
+    </div>
     <!-- 
         <div class="container mycontainer col-12 mb-5 mt-5 shadow p-5"> -->
 
@@ -119,150 +129,147 @@ session_start();
                     </div>
 
                 </div>
-                <div class="shadow col-5 justify-content-center border border-dark m-4 form-group">
 
-                    <!-- SELECT CATEGORIES -->
+                    <div class="shadow col-5 justify-content-center border border-dark m-4 form-group">
 
-                    <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?= $arrayError["categories"] ?? " "; ?></span>
-                    <select id="categories" name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <?php foreach ($arrayCat as $category) { ?>
-                            <option value="<?= $category['idCat'] ?>" <?= $category['idCat'] == $prestaInfo['cat_id'] ? 'selected' : '' ?>><?= $category['nameCat'] ?></option>
-                        <?php } ?>
+                        <!-- SELECT CATEGORIES -->
 
-                    </select>
+                        <label for="category" class="fs-1 form-label mt-3">Categories: </label><span class="text-danger"><?= $arrayError["categories"] ?? " "; ?></span>
+                        <select id="categories" name="categories" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <?php foreach ($arrayCat as $category) { ?>
+                                <option value="<?= $category['idCat'] ?>" <?= $category['idCat'] == $prestaInfo['cat_id'] ? 'selected' : '' ?>><?= $category['nameCat'] ?></option>
+                            <?php } ?>
+
+                        </select>
 
 
-                    <label for="name" class="fs-1 form-label mt-3">Nom du soin : </label><span class="text-danger">
-                        <?=
-                        $arrayError["name"] ?? " ";
+                        <label for="name" class="fs-1 form-label mt-3">Nom du soin : </label><span class="text-danger">
+                            <?=
+                            $arrayError["name"] ?? " ";
+                            ?>
+                        </span>
+                        <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : $prestaInfo['ser_name'] ?>" name="name" type="text" class="fs-3 form-control" id="name">
+
+                        <label for="intro" class="fs-1 form-label mt-3">intro: </label><span class="text-danger">
+                            <?=
+                            $arrayError["intro"] ?? "";
+                            ?>
+                        </span>
+
+                        <textarea class="fs-3" value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : $prestaInfo['ser_intro'] ?>" id="intro" name="intro" rows="12" cols="65"> <?= $prestaInfo['ser_intro'] ?></textarea>
+
+                        <label for="description" class="fs-1 form-label mt-3">Description : </label><span class="text-danger">
+                            <?=
+                            $arrayError["description"] ?? "";
+                            ?>
+                        </span>
+
+                        <textarea class="fs-3" value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : $prestaInfo['ser_description'] ?>" id="description" name="description" rows="12" cols="65"> <?= $prestaInfo['ser_description'] ?></textarea>
+
+                        <label for="time" class="fs-1 form-label mt-3">Durée: </label><span class="text-danger">
+                            <?=
+                            $arrayError["time"] ?? " ";
+                            ?>
+                        </span>
+                        <select value="<?= isset($_POST["time"]) ? htmlspecialchars($_POST["time"]) : $prestaInfo['ser_time'] ?>" name="time" type="text" class="fs-3 form-control" id="time" name="time" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected><?= $prestaInfo['ser_time'] ?></option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                            <option value="60">60</option>
+                        </select>
+
+
+
+                        <label for="price" class="fs-1 form-label mt-3">Tarif: </label><span class="text-danger">
+                            <?=
+                            $arrayError["price"] ?? " ";
+                            ?>
+                        </span>
+                        <select name="price" type="text" class=" fs-3 form-control" id="price" name="price" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected><?= $prestaInfo['ser_price'] ?></option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="55">55</option>
+                        </select>
+                    </div>
+                    <div class="shadow fs-3 col-4 justify-content-center border border-dark m-4 form-group form-check checkbox-warning-filled">
+
+                        <!-- Bien-faits CHECKBOX -->
+
+                        <?php
+                        // Mise en place d'un tableau contenant uniquement les id des bénefices
+                        $serviceBenefits = new Benefits();
+                        // on recherche via l'id
+                        $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($prestaInfo['ser_id']);
+                        // nous allons stocker les id dans un tableau : arrayBenefits et via une boucle
+                        $arrayBenefits = [];
+                        foreach ($arrayServiceBenefits as $benefit) {
+                            // array push va nous permettre de remplir le tableau
+                            array_push($arrayBenefits, $benefit['ben_id']);
+                        };
                         ?>
-                    </span>
-                    <input value="<?= isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : $prestaInfo['ser_name'] ?>" name="name" type="text" class="fs-3 form-control" id="name">
 
-                    <label for="intro" class="fs-1 form-label mt-3">intro: </label><span class="text-danger">
-                        <?=
-                        $arrayError["intro"] ?? "";
-                        ?>
-                    </span>
+                        <label for="benefits" class=" row fs-1 form-label mt-3">Biens-Faits: </label><span class="text-danger"> <?= $arrayError["benefits"] ?? " "; ?></span>
+                        <div id="optionsBenefits">
+                            <?php foreach ($arrayBen as $ben) {
 
-                    <textarea class="fs-3" value="<?= isset($_POST["intro"]) ? htmlspecialchars($_POST["intro"]) : $prestaInfo['ser_intro'] ?>" id="intro" name="intro" rows="12" cols="65"> <?= $prestaInfo['ser_intro'] ?></textarea>
+                            ?>
 
-                    <label for="description" class="fs-1 form-label mt-3">Description : </label><span class="text-danger">
-                        <?=
-                        $arrayError["description"] ?? "";
-                        ?>
-                    </span>
+                                <div class="fs-3 form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="benefits[]" value="<?= $ben["ben_id"] ?>" <?= in_array($ben["ben_id"], $arrayBenefits) ? "checked" : "" ?>>
+                                    <label class="fs-3 text-start form-check-label"><?= $ben["ben_names"] ?></label>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="shadow text-start col-4 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
 
-                    <textarea class="fs-3" value="<?= isset($_POST["description"]) ? htmlspecialchars($_POST["description"]) : $prestaInfo['ser_description'] ?>" id="description" name="description" rows="12" cols="65"> <?= $prestaInfo['ser_description'] ?></textarea>
-
-                    <label for="time" class="fs-1 form-label mt-3">Durée: </label><span class="text-danger">
-                        <?=
-                        $arrayError["time"] ?? " ";
-                        ?>
-                    </span>
-                    <select value="<?= isset($_POST["time"]) ? htmlspecialchars($_POST["time"]) : $prestaInfo['ser_time'] ?>" name="time" type="text" class="fs-3 form-control" id="time" name="time" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected><?= $prestaInfo['ser_time'] ?></option>
-                        <option value="20">20</option>
-                        <option value="30">30</option>
-                        <option value="45">45</option>
-                        <option value="60">60</option>
-                    </select>
-
-
-
-                    <label for="price" class="fs-1 form-label mt-3">Tarif: </label><span class="text-danger">
-                        <?=
-                        $arrayError["price"] ?? " ";
-                        ?>
-                    </span>
-                    <select name="price" type="text" class=" fs-3 form-control" id="price" name="price" class="fs-2 form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected><?= $prestaInfo['ser_price'] ?></option>
-                        <option value="25">25</option>
-                        <option value="30">30</option>
-                        <option value="35">35</option>
-                        <option value="40">40</option>
-                        <option value="45">45</option>
-                        <option value="55">55</option>
-                    </select>
-                </div>
-                <div class="shadow col-4 justify-content-center border border-dark m-4 form-group form-check checkbox-warning-filled">
-
-                    <!-- Bien-faits CHECKBOX -->
-
-                    <?php
-                    // Mise en place d'un tableau contenant uniquement les id des bénefices
-                    $serviceBenefits = new Benefits();
-                    // on recherche via l'id
-                    $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($prestaInfo['ser_id']);
-                    // nous allons stocker les id dans un tableau : arrayBenefits et via une boucle
-                    $arrayBenefits = [];
-                    foreach ($arrayServiceBenefits as $benefit) {
-                        // array push va nous permettre de remplir le tableau
-                        array_push($arrayBenefits, $benefit['ben_id']);
-                    };
-                    ?>
-
-                    <label for="benefits" class=" row fs-1 form-label mt-3">Biens-Faits: </label><span class="text-danger"> <?= $arrayError["benefits"] ?? " "; ?></span>
-                    <div id="optionsBenefits">
-                        <?php foreach ($arrayBen as $ben) {
+                        <?php
+                        // Mise en place d'un tableau contenant uniquement les id des contres indications
+                        $serviceContraindication = new Contraindication();
+                        // on recherche via l'id
+                        $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($prestaInfo['ser_id']);
+                        // nous allons stocker les id dans un tableau : arrayServiceContraindication et via une boucle
+                        $arrayContraindications = [];
+                        foreach ($arrayServiceContraindication as $Contraindications) {
+                            // array push va nous permettre de remplir le tableau
+                            array_push($arrayContraindications, $Contraindications['cont_id']);
+                        };
 
                         ?>
+                        <!-- CONTRE INDICATION CHECKBOX -->
+
+                        <label for="text-start contraindication" class=" fs-1 form-label mt-3">Contres-Indications: </label><span class="text-danger"> <?= $arrayError["contraindication"] ?? " "; ?></span>
+                        <?php foreach ($arrayCont as $cont) { ?>
 
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" name="benefits[]" value="<?= $ben["ben_id"] ?>" <?= in_array($ben["ben_id"], $arrayBenefits) ? "checked" : "" ?>>
-                                <label class="fs-3 text-start form-check-label"><?= $ben["ben_names"] ?></label>
+                                <input class="form-check-input" type="checkbox" name="contraindication[]" value="<?= $cont["cont_id"] ?>" <?= in_array($cont["cont_id"], $arrayContraindications) ? "checked" : "" ?>>
+                                <label class="fs-3 text-start form-check-label"><?= $cont["cont_name"] ?></label>
                             </div>
                         <?php } ?>
                     </div>
-                </div>
-                <div class="shadow text-start col-4 justify-content-center border border-dark mb-3 form-group form-check checkbox-warning-filled">
+                    <div class="text-center">
 
-                    <?php
-                    // Mise en place d'un tableau contenant uniquement les id des contres indications
-                    $serviceContraindication = new Contraindication();
-                    // on recherche via l'id
-                    $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($prestaInfo['ser_id']);
-                    // nous allons stocker les id dans un tableau : arrayServiceContraindication et via une boucle
-                    $arrayContraindications = [];
-                    foreach ($arrayServiceContraindication as $Contraindications) {
-                        // array push va nous permettre de remplir le tableau
-                        array_push($arrayContraindications, $Contraindications['cont_id']);
-                    };
+                        <form>
+                            <input type="hidden" name="idPresta" value="<?= $prestaInfo['ser_id'] ?>">
+                            <button type="submit" name="updateBtn" value="" class="btn-lg btn btns">Enregistrer les modifications</button>
 
-                    ?>
-                    <!-- CONTRE INDICATION CHECKBOX -->
-
-                    <label for="text-start contraindication" class=" fs-1 form-label mt-3">Contres-Indications: </label><span class="text-danger"> <?= $arrayError["contraindication"] ?? " "; ?></span>
-                    <?php foreach ($arrayCont as $cont) { ?>
-
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="contraindication[]" value="<?= $cont["cont_id"] ?>" <?= in_array($cont["cont_id"], $arrayContraindications) ? "checked" : "" ?>>
-                            <label class="fs-3 text-start form-check-label"><?= $cont["cont_name"] ?></label>
-                        </div>
-                    <?php } ?>
-                </div>
+                        </form>
 
 
+                        <form class="text-center" action="../index.php" method="POST">
+                            <button class="m-4 btn-lg btn btnd" type="submit" value="accueil">Retour</button>
+                        </form>
+                    </div>
 
-
-                <div class="text-center mt-4">
-
-                    <a href="home.php" class="btn-lg btn btnd ">Retour aux soins</a>
-                    <input type="hidden" name="idPresta" value="<?= $prestaInfo['ser_id'] ?>">
-
-
-                    <button type="submit" name="updateBtn" value="" class="btn-lg btn btns">Enregistrer les modifications</button>
-
-                </div>
-
-            </form>
-    <?php }
+                
+        <?php }
     }
-
-    ?>
-
-
-
+        ?>
 </body>
 
 <!-- JAVASCRIPT -->

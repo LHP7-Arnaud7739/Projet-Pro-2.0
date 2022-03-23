@@ -24,47 +24,54 @@ session_start()
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
-<body class="test">
+<body class="">
     <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
-            <a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a>
-            <div class="text-center dropdown col">
-                <button class="text-center btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Prestations
-                </button>
-                <div class=" dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a>
-                </div>
-            </div>
-            <div class="dropdown text-center col">
-                <button class=" btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Tarifs
-                </button>
-                <div class="dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a>
-                </div>
-            </div>
-            <?php if (empty($_SESSION["login"])) { ?>
-                <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
-            <?php } ?>
-            <?php if (isset($_SESSION["login"])) { ?>
-                <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
-            <?php } ?>
+            <input type="checkbox" id="drop-down-cbox" />
+            <label for="drop-down-cbox">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="fs-1 main-nav">
+                <li><a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a></li>
+
+                <li class="">Prestations
+                    <ul>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a></li>
+
+                    </ul>
+                </li>
+                <li>Tarifs
+                    <ul>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a></li>
+
+                    </ul>
+                </li>
+                <?php if (empty($_SESSION["login"])) { ?>
+                    <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+
+                <?php } ?>
+                <?php if (isset($_SESSION["login"])) { ?>
+                    <form class="text-center" action="../views/deconnexion.php" method="POST">
+                        <button class="btn-lg btnd btn " href="../views/deconnexion.php">Déconnexion</button>
+                    </form>
+                <?php } ?>
+
         </div>
+        </nav>
     </div>
     <div>
-        <header class="header border border-dark">
+        <header class="header1 border border-dark">
             <!-- LOGO -->
-
-
             <div class="p-5">
                 <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
                 <div class="d-flex justify-content-end">
@@ -73,7 +80,6 @@ session_start()
                 </div>
             </div>
         </header>
-
         <!-- DEBUT TABLEAU 2 D -->
         <div class="mt-5 pt-4 px-4 row row-cols-md-2 g-6">
             <?php foreach ($arrayPresta as $allPresta) { ?>
@@ -131,14 +137,22 @@ session_start()
                                 <?php if (isset($_SESSION["login"])) { ?>
                                     <input type="hidden" name="idPresta" value="<?= $allPresta["ser_id"] ?>">
                                     <button type="submit" class="btn-lg btns m-4">Modifier le soin</button>
+                                </form>
+                                    <form class="text-center" action="../views/addPresta.php" method="POST">
+                                        <button href="../views/addPresta.php" class="m-4 btn-lg btn btns" type="submit" value="accueil">Ajout d'un soin</button>
+
+                                    </form>
+                             
 
                                     <button type="button" class="btn-lg btnd " data-bs-toggle="modal" data-bs-target="#deleteModal-<?= $allPresta["ser_id"] ?>">
                                         Supprimer le soin
-                                    </button>
-                                    <a href="../views/addPresta.php" class="m-4 btn-lg btn btns" type="button" value="accueil">Ajout d'un nouveau soin</a>
+                                    </button>    
                                 <?php } ?>
-                                <a href="../index.php" class="m-4 btn-lg btn btnd" type="button" value="accueil">Retour</a>
                         </form>
+                        <form class="text-center" action="../index.php" method="POST">
+                            <button class="m-4 btn-lg btn btnd" type="submit" value="accueil">Retour</button>
+                        </form>  
+
                         <!-- Modal -->
                         <div class="modal fade" id="deleteModal-<?= $allPresta["ser_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
@@ -165,6 +179,7 @@ session_start()
                 </div>
         </div>
     <?php } ?>
+
     <!-- FOOTER -->
     <footer class="footerHome border border-secondary">
         <div class="row text-center">
@@ -240,4 +255,5 @@ session_start()
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

@@ -26,106 +26,110 @@ require '../controllers/adminConnexionController.php';
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
-<body class="test">
+<body class="">
     <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
-            <a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a>
-            <div class="text-center dropdown col">
-                <button class="text-center btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Prestations
-                </button>
-                <div class=" dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a>
-                </div>
-            </div>
-            <div class="dropdown text-center col">
-                <button class=" btn dropdown-toggle fs-1 col text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Tarifs
-                </button>
-                <div class="dropdown-menu fs-1 col text-dark" aria-labelledby="dropdownMenuButton">
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a>
-                    <a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a>
-                </div>
-            </div>
-            <?php if (empty($_SESSION["login"])) { ?>
-                <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
-            <?php } ?>
-            <?php if (isset($_SESSION["login"])) { ?>
-                <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
-            <?php } ?>
+            <input type="checkbox" id="drop-down-cbox" />
+            <label for="drop-down-cbox">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="fs-1 main-nav">
+                <li><a href="../index.php" class=" btn fs-1 col text-dark">Accueil</a></li>
+
+                <li class="">Prestations
+                    <ul>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a></li>
+
+                    </ul>
+                </li>
+                <li>Tarifs
+                    <ul>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=1">Tarifs Réflexologies</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=2">Tarifs Massages</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=3">Tarifs Hypnoses</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=4">Tarifs Auriculothérapie</a></li>
+                        <li><a class="fs-3 text-start dropdown-item" href="../views/tarifs.php?category=5">Tarifs Bougies Hopi</a></li>
+
+                    </ul>
+                </li>
+                <?php if (empty($_SESSION["login"])) { ?>
+                    <a href="../views/adminOK.php" class="fs-1 col  text-dark btn " value="Forum"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/70/000000/external-buddha-diwali-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png" /></a>
+                <?php } ?>
+                <?php if (isset($_SESSION["login"])) { ?>
+                    <form class="text-center" action="../views/deconnexion.php" method="POST">
+                        <button class="btn-lg btnd btn " href="../views/deconnexion.php">Déconnexion</button>
+                    </form>
+                <?php } ?>
+
         </div>
+        </nav>
     </div>
-    <div>
-        <header class="header border border-dark">
-            <!-- LOGO -->
-           
-           
-            <div class="p-5">
-                <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
-                <div class="d-flex justify-content-end">
+
+    <header class="header1 border border-dark">
+        <!-- LOGO -->
+        <div class="p-5">
+            <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+            <div class="d-flex justify-content-end">
                 <!-- FIN LOGO -->
                 <img class="typo" src="../assets/img/typo2.png" alt="">
             </div>
-            </div>
-
-           
-        </header>
-
-
-    <div class="shadow h-100 card">
-        <div>
-            <div class="p-5 col-8 m-4">
-                <?php if (!empty($_SESSION)) {  ?>
-                    <p class="fs-1 d-flex justify-content-center">
-                        Bonjour <b class="fs-1 text-danger"> <?= $_SESSION['login'] ?></b> </p>
-            </div>
-        <?php } ?>
-        <div class="card-group ">
-            <div class="h-100 text-center card">
-                <div class="card-body">
-                    <h1 class="card-title">Accueil</h1>
-
-                    <a href="../index.php" class="justify-content-start btn-lg btn btns" type="button" value="accueil">Accueil</a>
-                </div>
-            </div>
-
-            <?php if (empty($_SESSION["login"])) { ?>
-                <div class="h-100 text-center card">
-                    <div class="card-body">
-                        <h1 class="card-title">Veuillez-vous connecter</h1>
-
-                        <a href="../views/adminConnexion.php" class="btn-lg btn btns" type="button">Connectez-vous</a>
-                    </div>
-                </div>
-            <?php   }  ?>
-            <?php if (isset($_SESSION["login"])) { ?>
-                <div class="h-100 text-center card">
-                    <div class="card-body">
-                        <h1 class="card-title">Ajoutez un nouveau soin</h1>
-
-                        <a href="../views/addPresta.php" class="m-4 btn-lg btn btns" type="button">Ajouter un nouveau soin</a>
-                    </div>
-                </div>
-
-                <div class="h-100 text-center card">
-                    <div class="card-body">
-                        <h1 class="card-title">Deconnexion</h1>
-
-                        <a class="m-4 btn btn-lg btnd" value="Deconnexion" type="button" href="../views/deconnexion.php">Déconnexion</a>
-                    </div>
-                </div>
-            <?php   }  ?>
         </div>
+    </header>
 
+
+    <div class="p-5 col-8 m-4">
+        <?php if (!empty($_SESSION)) {  ?>
+            <p class="fs-1 d-flex justify-content-center">
+                Bonjour <b class="fs-1 text-danger"> <?= $_SESSION['login'] ?></b> </p>
+    </div>
+<?php } ?>
+
+<div class="shadow h-100 card-group ">
+    <div class="text-center card">
+        <div class="card-body">
+            <h1 class="card-title">Accueil</h1>
+            <form class="text-center" action="../index.php" method="POST">
+                <button class="btn-lg btns btn " href="../index.php">Accueil</button>
+            </form>
         </div>
     </div>
+
+    <?php if (empty($_SESSION["login"])) { ?>
+
+
+        <div class="text-center card">
+        <div class="card-body">
+            <h1 class="card-title">Veuillez-vous connecter</h1>
+            <form class="text-center" action="../views/adminConnexion.php" method="POST">
+                <button class="btn-lg btns btn " href="../views/adminConnexion.php">Connectez-vous</button>
+            </form>
+        </div>
+    </div>
+
+    <?php   }  ?>
+    <?php if (isset($_SESSION["login"])) { ?>
+
+        <div class=" text-center card">
+            <div class="card-body">
+                <h1 class="card-title">Ajouter un soin</h1>
+                <form class="text-center" action="../views/addPresta.php" method="POST">
+                    <button class="btn-lg btns btn " href="../views/addPresta.php">Ajout d'un soin</button>
+                </form>
+            </div>
+        </div>
+
+
+    <?php   }  ?>
+</div>
+
+</div>
+
 
 </body>
 

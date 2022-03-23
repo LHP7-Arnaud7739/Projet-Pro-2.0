@@ -25,7 +25,6 @@ session_start()
     <!-- STYLE.CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
 </head>
-
 <body class="">
     <div class="row d-sm-block fixed-top justify-content-center">
         <div class="navbar border border-dark">
@@ -63,7 +62,7 @@ session_start()
                 <?php } ?>
                 <?php if (isset($_SESSION["login"])) { ?>
                     <form class="text-center" action="../views/deconnexion.php" method="POST">
-                        <button class="btn-lg btnd btn " href="../views/deconnexion.php">Déconnexion</button>
+                    <button class="btn-lg btnd btn " href="../views/deconnexion.php">Déconnexion</button>
                     </form>
                 <?php } ?>
 
@@ -72,14 +71,24 @@ session_start()
     </div>
     <div>
         <header class="header1 border border-dark">
-            <!-- LOGO -->
+            <!-- LOGO -->                    
+            <div class="p-5">
+                <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
+                <div class="d-flex justify-content-end">
+                <!-- FIN LOGO -->
+                <img class="typo" src="../assets/img/typo2.png" alt="">
+            </div>
+            </div>         
+        </header>   
             <div class="p-5">
                 <a href="../index.php"><input class="logo" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
                 <div class="d-flex justify-content-end">
                     <!-- FIN LOGO -->
-                    <img class="typo" src="../assets/img/typo2.png" alt="">
+                    <img class="typo img-fluid" src="../assets/img/typo2.png" alt="">
                 </div>
             </div>
+
+
         </header>
         <div class="corps text-center">
             <h1 class="pt-4">Tarifs</h1>
@@ -90,39 +99,34 @@ session_start()
                         <th scope="col">Nom du soin</th>
                         <th scope="col">Durée du soin</th>
                         <th scope="col">Prix du soin</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
 
+                        <?php if (isset($_SESSION["login"])) { ?>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($arrayPresta as $allPresta) { ?>
                         <tr>
-                            <td><img src="../assets/img/<?= $allPresta["ser_miniature"] ?>" class="mx-auto img-fluid miniatureTarif " alt="...">
+                            <td><img src="../assets/img/<?= $allPresta["ser_miniature"] ?>" class="mx-auto text-center miniatureTarif " alt="...">
                             </td>
                             <td><?= $allPresta['ser_name'] ?></td>
                             <td><?= $allPresta['ser_time'] ?> Min</td>
                             <td><?= $allPresta['ser_price'] ?> €</td>
                             <td>
-                                <form class="" action="../views/onePresta.php" method="POST">
+                                <form class="text-center" action="../views/onePresta.php" method="POST">
                                     <input type="hidden" name="idPresta" value="<?= $allPresta["ser_id"] ?>">
-                                    <button type="submit" class="btn-sm btns m-4">+ d'infos</button>
+                                    <button type="submit" class="btn-lg btns m-4">+ d'infos</button>
                                 </form>
-                            </td>
-                            <td>
 
-                                <form class="" action="infoPresta.php" method="POST">
+                                <form class="text-center" action="infoPresta.php" method="POST">
                                     <?php if (isset($_SESSION["login"])) { ?>
                                         <input type="hidden" name="idPresta" value="<?= $allPresta["ser_id"] ?>">
-                                        <button type="submit" class="btn-sm btns m-4">Modifier</button>
-                                        </td>
-                                        <td>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal1<?= $allPresta["ser_id"] ?>">
-                                            <img class="text-center" src="https://img.icons8.com/plasticine/40/000000/filled-trash.png" /></button>
+                                        <button type="submit" class="btn-lg btns m-4">Modifier</button>
+                                        <button type="button" class="btn-lg btnd " data-bs-toggle="modal" data-bs-target="#deleteModal1<?= $allPresta["ser_id"] ?>">
+                                            Supprimer</button>
                                 </form>
-
                             </td>
                         <?php } ?>
                         </tr>
