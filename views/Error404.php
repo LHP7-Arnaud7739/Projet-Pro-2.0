@@ -23,7 +23,7 @@
 <p><h1> Page introuvable</h1></p>
 
 <div class="d-flex justify-content-center">                            
-    <a href="../index.php" class="m-4 btn-lg btn btns" type="button" value="accueil">Retour</a>
+    <a href="../index.php" class="m-4 btn-lg btn btni" type="button" value="accueil">Retour</a>
 </div>
 
 

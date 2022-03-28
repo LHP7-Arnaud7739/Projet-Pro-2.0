@@ -179,4 +179,11 @@ $arrayCat = [
         'introCat' => 'Appréciez le bien-être d une séance de bougies Hopi',
         'pictureCat' => 'bougiesH1.jpeg',
     ],
+
+    [
+        'idCat' => '6',
+        'nameCat' => 'Carte cadeau',
+        'introCat' => 'Faites vivre l expérience unique d un soin à vos proches',
+        'pictureCat' => 'carteCadeau.jpeg',
+    ],
 ];

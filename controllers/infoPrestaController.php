@@ -8,14 +8,13 @@ $arrayError = [];
 $modifyPrestaOK = false;
 
 
+
+
 if (isset($_POST["idPresta"])) {
     $id = htmlspecialchars(trim($_POST["idPresta"]));
     $prestaObj = new Services();
     $prestaInfo = $prestaObj->getOneService($id);
-} else {
-    $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../index.php';
-    header("location: $referer");
-}
+} 
 
 
 if (isset($_POST["updateBtn"])) {
@@ -152,7 +151,14 @@ if (isset($_POST["updateBtn"])) {
         $modifyPrestaOK = true;
     }
 }
+if (isset($_POST["deleteService"])) {
+    $Ser_id = htmlspecialchars(trim($_POST["deleteService"]));
+    $prestaObj = new Prestation();
+    $prestaInfo = $prestaObj->deletePresta($Ser_id);
+    header('Location: ../views/home.php');
 
+    
+};
 
 
 $allContraindication = new Contraindication();
