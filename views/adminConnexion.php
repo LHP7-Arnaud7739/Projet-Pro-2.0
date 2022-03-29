@@ -56,6 +56,13 @@ require '../controllers/adminConnexionController.php';
                                 </form>
                             <?php } ?>
                         </li>
+                        <li>
+                            <?php if (isset($_SESSION["login"])) { ?>
+                                <form class="" action="../views/addPresta.php" method="POST">
+                                    <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
+                                </form>
+                            <?php } ?>
+                        </li>
                         <div class="btn-group dropend">
                             <button type="submit" class=" dropdown-toggle fs-3 btn-lg btn p-5" data-bs-toggle="dropdown" aria-expanded="false">
                                 Prestations
@@ -75,13 +82,7 @@ require '../controllers/adminConnexionController.php';
                                 <button class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Qui suis-je?</button>
                             </form>
                         </li>
-                        <li>
-                            <?php if (isset($_SESSION["login"])) { ?>
-                                <form class="" action="../views/addPresta.php" method="POST">
-                                    <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
-                                </form>
-                            <?php } ?>
-                        </li>
+                       
                         <li>
                             <a href="../views/mentionsLegales.php" class="fs-3 btn-lg btn p-5">Mentions légales</a>
 
@@ -119,22 +120,18 @@ require '../controllers/adminConnexionController.php';
         <form class="fs-1" action="" method="POST">
 
             <div class="text-center  ">
-                <label><b>Login</b></label>
-            </div>
+                <label><b>Nom d'utilisateur</b></label>
+            </div>                <div class="text-center"> <span class="text-danger"><?=$arrayError["login"] ?? " ";?></span></div>
+
             <div class="text-center">
                 <input class="fs-1" value="<?= isset($_POST['login']) ? htmlspecialchars($_POST["login"]) : ""   ?>" type="text" name="login">
-                <div class="text-center"> <span class="text-danger"><?=
-                                                                    $arrayError["login"] ?? " ";
-                                                                    ?></span></div>
             </div>
             <div class="text-center ">
-                <label><b>Password</b></label>
+                <label><b>Mot de passe</b></label>
             </div>
             <div class="text-center">
                 <input value="<?= isset($_POST['password']) ? htmlspecialchars($_POST["password"]) : ""   ?>" type="password" name="password">
-                <div class="text-center"> <span class="text-danger"><?=
-                                                                    $arrayError["password"] ?? " ";
-                                                                    ?></span> </div>
+                <div class="text-center"> <span class="text-danger"></span> </div>
             </div>
             <div class="text-center p-5 ">
                 <input class="btn-lg btn btns" type="submit" name="btn-connexion" value="CONNEXION">

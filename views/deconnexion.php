@@ -60,6 +60,13 @@ session_destroy();
                                 </form>
                             <?php } ?>
                         </li>
+                        <li>
+                            <?php if (isset($_SESSION["login"])) { ?>
+                                <form class="" action="../views/addPresta.php" method="POST">
+                                    <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
+                                </form>
+                            <?php } ?>
+                        </li>
                         <div class="btn-group dropend">
                             <button type="submit" class=" dropdown-toggle fs-3 btn-lg btn p-5" data-bs-toggle="dropdown" aria-expanded="false">
                                 Prestations
@@ -79,13 +86,7 @@ session_destroy();
                                 <button class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Qui suis-je?</button>
                             </form>
                         </li>
-                        <li>
-                            <?php if (isset($_SESSION["login"])) { ?>
-                                <form class="" action="../views/addPresta.php" method="POST">
-                                    <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
-                                </form>
-                            <?php } ?>
-                        </li>
+                        
                         <li>
                             <a href="../views/mentionsLegales.php" class="fs-3 btn-lg btn p-5">Mentions légales</a>
 
@@ -140,7 +141,7 @@ session_destroy();
 <footer class="footerTarifs border border-secondary">
     <div class="row text-center">
         <div class="p-4 vertical col-4 ">
-            <p class="adresse">COORDONNEES</p>
+            <p class="adresse">COORDONNÉES</p>
             <p class="fs-4"> PESQUET Manuella </p>
             <p class="fs-4">98 Route Des Hêtres </p>
             <p class="fs-4">76110 MANNEVILLE LA GOUPIL</p>
@@ -149,7 +150,7 @@ session_destroy();
           
         </div>
         <div class="p-4 col-4 ">
-            <p class="adresse">TEMOIGNAGE</p>
+            <p class="adresse">TÉMOIGNAGE</p>
             <div id="carouselExampleIndicators" class="text-center carousel slide mt-5" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

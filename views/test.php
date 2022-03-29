@@ -25,7 +25,22 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Poppins:600" rel="stylesheet">
 
 </head>
+<script>
+$("button").click(function () {
+  swal({
+    title: "Are you sure?",
+    text: "It will permanently deleted !",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then(function () {
+    swal("Deleted!", "Your file has been deleted.", "success");
+  });
+});
 
+</script>
 <body class="card">
     <div class="row d-sm-block fixed-top justify-content-center">
         <nav>
@@ -164,7 +179,12 @@ session_start();
         </div>
   
     </div>
-
+    <div class="text-center">
+<p>Click on Delete Button</p>
+<button type="button" class="btn btn-danger">
+  <i class="glyphicon glyphicon-trash"></i> Delete
+</button>
+</div>
 
 
 
@@ -232,13 +252,13 @@ session_start();
     </footer>
     <!-- Footer end -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script> -->
     <!-- Footer script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script> -->
     <!-- Bootstrap -->
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 </body>
 
 

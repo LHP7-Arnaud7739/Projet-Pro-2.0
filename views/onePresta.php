@@ -29,219 +29,214 @@ session_start();
     <div class="row d-sm-block fixed-top justify-content-center">
         <nav>
             <div class="navbar border border-dark">
-            <p class="fs-3"> <?php if (isset($_SESSION['login'])) {  ?>
+                <p class="fs-3"> <?php if (isset($_SESSION['login'])) {  ?>
                         Bonjour <b class="text-danger"><?= $_SESSION['login'] ?></b> </p>
             <?php }  ?></p>
-                <!-- MENU BURGER -->
-                <div class="hamburger-menu">
-                    <input id="menu__toggle" type="checkbox" />
-                    <label class="menu__btn" for="menu__toggle">
-                        <span></span>
-                    </label>
+            <!-- MENU BURGER -->
+            <div class="hamburger-menu">
+                <input id="menu__toggle" type="checkbox" />
+                <label class="menu__btn" for="menu__toggle">
+                    <span></span>
+                </label>
 
-                    <ul class="menu__box">
-                           <li><a class="p-4 text-center " href="https://www.facebook.com/Bien-%AAtre-des-pieds-%C3%AAte-555492944941100"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-                                </svg></a>
-                            <a class="p-4 " href="https://www.instagram.com/bien_etre_des_pieds_a_la_tete/?hl=fr"> <a class="p-4 " href="https://www.instagram.com/bien_etre_des_pieds_a_la_tete/?hl=fr"><img src="https://img.icons8.com/office/60/000000/instagram-new.png" /></a>
-                            </a>
-                        </li>
-                        <li> <?php if (empty($_SESSION["login"])) { ?>
-                                <a href="../views/adminConnexion.php" class="fs-3 btn-lg btn p-5" value="Forum">Connexion</a>
-                            <?php } ?>
-                            <?php if (isset($_SESSION["login"])) { ?>
-                                <form class="" action="../views/deconnexion.php" method="POST">
-                                    <button type="submit" class="fs-3 btn-lg btn p-5" href="../views/deconnexion.php">Déconnexion</button>
-                                </form>
-                            <?php } ?>
-                        </li>
-                        <div class="btn-group dropend">
-                        <button type="submit"  class=" dropdown-toggle fs-3 btn-lg btn p-5" data-bs-toggle="dropdown" aria-expanded="false">                                Prestations
-                            </button>
-                            <ul class="dropdown-menu">
-                                <div class="">
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a></li>
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a></li>
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a></li>
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a></li>
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a></li>
-                                </div>
-                            </ul>
-                        </div>
-                        <li>
-                            <form class="" action="../views/aPropos.php" method="POST">
-                                <button class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Qui suis-je?</button>
+                <ul class="menu__box">
+                    <li><a class="p-4 text-center " href="https://www.facebook.com/Bien-%AAtre-des-pieds-%C3%AAte-555492944941100"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                            </svg></a>
+                        <a class="p-4 " href="https://www.instagram.com/bien_etre_des_pieds_a_la_tete/?hl=fr"> <a class="p-4 " href="https://www.instagram.com/bien_etre_des_pieds_a_la_tete/?hl=fr"><img src="https://img.icons8.com/office/60/000000/instagram-new.png" /></a>
+                        </a>
+                    </li>
+                    <li> <?php if (empty($_SESSION["login"])) { ?>
+                            <a href="../views/adminConnexion.php" class="fs-3 btn-lg btn p-5" value="Forum">Connexion</a>
+                        <?php } ?>
+                        <?php if (isset($_SESSION["login"])) { ?>
+                            <form class="" action="../views/deconnexion.php" method="POST">
+                                <button type="submit" class="fs-3 btn-lg btn p-5" href="../views/deconnexion.php">Déconnexion</button>
                             </form>
-                        </li>
-                        <li>
-                            <?php if (isset($_SESSION["login"])) { ?>
-                                <form class="" action="../views/addPresta.php" method="POST">
-                                    <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
-                                </form>
-                            <?php } ?>
-                        </li>
-                        <li>
-                        <button class="fs-3 btn-lg btn p-5" data-bs-toggle="modal" data-bs-target="#cartesCadeaux">Catre cadeau</button>
-
-
-                        <div class="modal fade" id="cartesCadeaux" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">CARTES CADEAUX </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="row modal-body">
-                           <img src="../assets/img/carte-cadeaux-img.png" alt="">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-                        </li>
-                        <li>
-                            <a href="../views/mentionsLegales.php" class="fs-3 btn-lg btn p-5">Mentions légales</a>
-
-                        </li>
-                     
-                        <li>
-                            <form method="POST">
-                                <a href="javascript:history.back()" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Retour</a>
+                        <?php } ?>
+                    </li>
+                    <li>
+                        <?php if (isset($_SESSION["login"])) { ?>
+                            <form class="" action="../views/addPresta.php" method="POST">
+                                <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
                             </form>
-                        </li>
-                       
-                      
-                    </ul>
-                </div>
-                <!-- FIN MENU BURGER -->
-                <ul class=" main-nav">
-                    <div class="">
-                        <!-- FIN LOGO -->
-                        <img class="typo2" src="../assets/img/typo2.png" alt="">
+                        <?php } ?>
+                    </li>
+                    <div class="btn-group dropend">
+                        <button type="submit" class=" dropdown-toggle fs-3 btn-lg btn p-5" data-bs-toggle="dropdown" aria-expanded="false"> Prestations
+                        </button>
+                        <ul class="dropdown-menu">
+                            <div class="">
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a></li>
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a></li>
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a></li>
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a></li>
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a></li>
+                            </div>
+                        </ul>
                     </div>
+                    <li>
+                        <form class="" action="../views/aPropos.php" method="POST">
+                            <button class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Qui suis-je?</button>
+                        </form>
+                    </li>
 
-                    <a class="logoBtn  d-flex justify-content-end" href="../index.php"><img src="../assets/img/mon_logo-removebg-preview.png" class="logo" value="Accueil"></a>
+                    <li>
+                        <a href="../views/mentionsLegales.php" class="fs-3 btn-lg btn p-5">Mentions légales</a>
+
+                    </li>
+
+                    <li>
+                        <form method="POST">
+                            <a href="javascript:history.back()" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Retour</a>
+                        </form>
+                    </li>
+
+
                 </ul>
+            </div>
+            <!-- FIN MENU BURGER -->
+            <ul class=" main-nav">
+                <div class="">
+                    <!-- FIN LOGO -->
+                    <img class="typo2" src="../assets/img/typo2.png" alt="">
+                </div>
+
+                <a class="logoBtn  d-flex justify-content-end" href="../index.php"><img src="../assets/img/mon_logo-removebg-preview.png" class="logo" value="Accueil"></a>
+            </ul>
             </div>
         </nav>
     </div>
 
-    
+
 
 
 
     <div class="row">
-    <img class="col header1" src="../assets/img/background2.jpg" alt="">
+        <img class="col header1" src="../assets/img/background2.jpg" alt="">
     </div>
-        <!-- DEBUT TABLEAU 2 D -->
+    <!-- DEBUT TABLEAU 2 D -->
 
 
-        <div class="onePage mt-5 pt-4 row g-6 d-flex justify-content-center">
+    <div class="onePage mt-5 pt-4 row g-6 d-flex justify-content-center">
 
-                  <?php
-            // Nous mettons en place une condition pour s'assurer que nous avons selectionné un soin avec le bouton Modifier
-            if (isset($prestaInfo)) { ?>
-                <div class="pt-4 col-6 ">
-                    <div class="shadow card">
+        <?php
+        // Nous mettons en place une condition pour s'assurer que nous avons selectionné un soin avec le bouton Modifier
+        if (isset($prestaInfo)) { ?>
+            <div class="pt-4 col-6 ">
+                <div class="shadow card">
 
-                        <div id="carouselExampleFade" class="mx-auto text-center carousel slide carousel-fade " data-bs-ride="carousel">
-                            <div class="carousel-inner">
+                    <!-- ///////////////////////////////// -->
+                    <div id="carouselExampleControls" class="mx-auto text-center carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
                                 <div class="p-2 ">
-                                <img src="../assets/img/<?= $prestaInfo["ser_picture"] ?>" class="img-fluid  photoCardCat " alt="...">
+                                    <img src="../assets/img/<?= $prestaInfo["ser_picture"] ?>" class="img-fluid  photoCardCat " alt="...">
                                 </div>
                             </div>
+                            <div class="carousel-item">
+                                <div class="p-2 ">
+                                    <img src="../assets/img/<?= $prestaInfo["ser_miniature"] ?>" class="img-fluid  photoCardCat " alt="...">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
 
+                    <div class="card-body">
+                        <h1 class="text-center card-title"><b><?= $prestaInfo['ser_name'] ?></b></h1>
+                        <p class="m-4 h4 descri card-text"><?= $prestaInfo['ser_description'] ?></p>
+                    </div>
+                    <hr>
+                    <!-- Recuperation et affichage des benefices lors de l'ajout -->
+                    <div class="h-50" id="global">
+                        <div id="left">
+                            <ul class="p-3 ">
+                                <p class="h3 text-center"><u>BÉNÉFICES</u></p>
+                                <?php $serviceBenefits = new Benefits();
+                                $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($prestaInfo['ser_id']);
+                                foreach ($arrayServiceBenefits as $ServiceBenefits) {
+                                ?>
+                                    <li class="m-4 h4 text-start"><?= $ServiceBenefits['ben_names'] ?></li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
                         </div>
-                        <div class="card-body">
-                            <h1 class="text-center card-title"><b><?= $prestaInfo['ser_name'] ?></b></h1>
-                            <p class="m-4 h4 descri card-text"><?= $prestaInfo['ser_description'] ?></p>
+                        <!-- Recuperation et affichage des contres indications lors de l'ajout -->
+                        <div id="right ">
+                            <ul class="p-3">
+                                <p class="h3 text-center"><u> CONTRES-INDICATIONS</u></p>
+                                <?php
+                                $serviceContraindication = new Contraindication();
+                                $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($prestaInfo['ser_id']);
+                                foreach ($arrayServiceContraindication as $ServiceContraindication) { ?>
+                                    <li class="m-4 h4"><?= $ServiceContraindication['cont_name'] ?></li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
                         </div>
+                    </div>
+                    <div class="text-center card-footer">
+                        <p>
+                        <h3 class="card-text">Temps de la séance : <?= $prestaInfo['ser_time'] ?> Min</h3>
+                        </p>
                         <hr>
-                        <!-- Recuperation et affichage des benefices lors de l'ajout -->
-                        <div class="h-50" id="global">
-                            <div id="left">
-                                <ul class="p-3 ">
-                                    <p class="h3 text-center"><u>BÉNÉFICES</u></p>
-                                    <?php $serviceBenefits = new Benefits();
-                                    $arrayServiceBenefits = $serviceBenefits->getServiceBenefits($prestaInfo['ser_id']);
-                                    foreach ($arrayServiceBenefits as $ServiceBenefits) {
-                                    ?>
-                                        <li class="m-4 h4 text-start"><?= $ServiceBenefits['ben_names'] ?></li>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
-                            </div>
-                            <!-- Recuperation et affichage des contres indications lors de l'ajout -->
-                            <div id="right ">
-                                <ul class="p-3">
-                                    <p class="h3 text-center"><u> CONTRES-INDICATIONS</u></p>
-                                    <?php
-                                    $serviceContraindication = new Contraindication();
-                                    $arrayServiceContraindication = $serviceContraindication->getServiceContraindication($prestaInfo['ser_id']);
-                                    foreach ($arrayServiceContraindication as $ServiceContraindication) { ?>
-                                        <li class="m-4 h4"><?= $ServiceContraindication['cont_name'] ?></li>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="text-center card-footer">
-                            <p>
-                            <h3 class="card-text">Temps de la séance : <?= $prestaInfo['ser_time'] ?> Min</h3>
-                            </p>
-                            <hr>
-                            <p>
-                            <h3 class="card-text">Prix de la séance : <?= $prestaInfo['ser_price'] ?> €</h3>
-                            </p>
-                        </div>
-                        <form class="text-center" action="../index.php" method="POST">
+                        <p>
+                        <h3 class="card-text">Prix de la séance : <?= $prestaInfo['ser_price'] ?> €</h3>
+                        </p>
+                    </div>
+                    <form class="text-center" action="../index.php" method="POST">
                         <a href="javascript:history.back()" class="fs-3 btn-lg btn p-4" type="submit" value="accueil">Retour</a>
-                        </form>
-                        
-                        <form class="d-flex justify-content-center" action="infoPresta.php" method="POST">
-                            <?php if (isset($_SESSION["login"])) { ?>
-                                <input type="hidden" name="idPresta" value="<?= $prestaInfo["ser_id"] ?>">
-                                <button type="submit" class="btn-lg m-4">Modifier</button>
+                    </form>
 
-                                <button type="button" class="btn-lg m-4" data-bs-toggle="modal" data-bs-target="#deleteModal1<?= $prestaInfo["ser_id"] ?>"> Supprimer le soin </button>
-                        </form>
-                    <?php } ?>
+                    <form class="d-flex justify-content-center" action="infoPresta.php" method="POST">
+                        <?php if (isset($_SESSION["login"])) { ?>
+                            <input type="hidden" name="idPresta" value="<?= $prestaInfo["ser_id"] ?>">
+                            <button type="submit" class="btn-lg btns m-4">Modifier</button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="deleteModal1<?= $prestaInfo["ser_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title fs-1" id="exampleModalLabel">Supprimer le soin</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="text-center fs-3 modal-body">
-                                        <p> Vous êtes sur le point de supprimer le soin</p>
-                                        <p> <b class="text-danger"> <?= $prestaInfo["ser_name"] ?></b></p>
-                                    </div>
-                                    <div class="wrap modal-footer">
-                                        <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Annuler</button>
-                                        <form action="" method="POST">
-                                            <input type="hidden" name="deleteService" value="<?= $prestaInfo["ser_id"] ?>">
-                                            <button type="submit" name="idDeleteService" class="btn-lg btn btnd ">Supprimer</button>
-                                        </form>
-                                    </div>
-                                </div>
+                            <button type="button" class="btn-lg btnd m-4" data-bs-toggle="modal" data-bs-target="#deleteModal1<?= $prestaInfo["ser_id"] ?>"> Supprimer le soin </button>
+                    </form>
+                <?php } ?>
+
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal1<?= $prestaInfo["ser_id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title fs-1" id="exampleModalLabel">Supprimer le soin</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="text-center fs-3 modal-body">
+                                <p> Vous êtes sur le point de supprimer le soin</p>
+                                <p> <b class="text-danger"> <?= $prestaInfo["ser_name"] ?></b></p>
+                            </div>
+                            <div class="wrap modal-footer">
+                                <button type="button" class="btn-lg btn btns" data-bs-dismiss="modal">Annuler</button>
+                                <form action="" method="POST">
+                                    <input type="hidden" name="deleteService" value="<?= $prestaInfo["ser_id"] ?>">
+                                    <button type="submit" name="idDeleteService" class="btn-lg btn btnd ">Supprimer</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
+            </div>
 
 
-        </div>
+    </div>
 
-    <?php } ?>
-   
+<?php } ?>
+
 </body>
 
 
@@ -256,7 +251,7 @@ session_start();
             <p class="fs-4">76110 MANNEVILLE LA GOUPIL</p>
             <p class="fs-4">06 52 94 20 39</p>
             <p class="fs-4">09 51 11 09 18</p>
-     
+
         </div>
         <div class="p-4 col-4 ">
             <p class="adresse">TEMOIGNAGE</p>
@@ -336,28 +331,7 @@ session_start();
         };
     })
 </script>
-<script>
-    var toastTrigger = document.getElementById('liveToastBtn')
-    var toastLiveExample = document.getElementById('liveToast')
-    // if (toastTrigger) {
-    //     toastTrigger.addEventListener('click', function() {
-    //         var toast = new bootstrap.Toast(toastLiveExample)
 
-    //         toast.show()
-    //     })
-    // }
-
-    if (<?= $modifyPrestaOk ?>) {
-        var toast = new bootstrap.Toast(toastLiveExample)
-
-        toast.show()
-    }
-</script>
-<script>
-
-
-
-</script>
 </body>
 
 </html>

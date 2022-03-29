@@ -168,11 +168,11 @@ width: 100%;
 
 .photoCardCat {
     height: 40rem;
-    width: 50rem;
+    width: 60rem;
 }
 .photoCardCatArray {
-    height: 30rem;
-    width: 30rem;
+  height: 20rem;
+  width: 70rem;
 }
 
 .cardTarif {
@@ -229,7 +229,6 @@ width: 100%;
 
     background: #2c2b29
 }
-
 
 
 

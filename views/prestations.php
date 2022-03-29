@@ -1,4 +1,5 @@
 <?php
+require '../data/array.php';
 require '../controllers/prestaController.php';
 require '../controllers/adminConnexionController.php';
 session_start()
@@ -56,6 +57,13 @@ session_start()
                             </form>
                         <?php } ?>
                     </li>
+                    <li>
+                        <?php if (isset($_SESSION["login"])) { ?>
+                            <form class="" action="../views/addPresta.php" method="POST">
+                                <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
+                            </form>
+                        <?php } ?>
+                    </li>
                     <div class="btn-group dropend">
                         <button type="submit" class="dropdown-toggle fs-3 btn-lg btn p-5" data-bs-toggle="dropdown" aria-expanded="false">
                             Prestations
@@ -75,16 +83,9 @@ session_start()
                             <button class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Qui suis-je?</button>
                         </form>
                     </li>
-                    <li>
-                        <?php if (isset($_SESSION["login"])) { ?>
-                            <form class="" action="../views/addPresta.php" method="POST">
-                                <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
-                            </form>
-                        <?php } ?>
-                    </li>
+                    
                     <li>
                         <a href="../views/mentionsLegales.php" class="fs-3 btn-lg btn p-5">Mentions légales</a>
-
                     </li>
                     <li>
                         <form class="" action="../index.php" method="POST">
@@ -99,7 +100,6 @@ session_start()
                     <!-- FIN LOGO -->
                     <img class="typo2" src="../assets/img/typo2.png" alt="">
                 </div>
-
                 <a class="logoBtn  d-flex justify-content-end" href="../index.php"><img src="../assets/img/mon_logo-removebg-preview.png" class="logo" value="Accueil"></a>
             </ul>
             </div>
@@ -110,7 +110,7 @@ session_start()
     </div>
 
     <!-- /////////////////////////////////: -->
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center pt-4">
         <div class="card mb-3 " style="max-width: 1500px;">
             <?php foreach ($arrayPresta as $allPresta) { ?>
                 <div class="row g-0 border border-dark mb-5">
@@ -122,24 +122,17 @@ session_start()
                             <h1 class="card-title text-center"><?= $allPresta['ser_name'] ?></h1>
                             <p class="text-center p-5 fs-4"><?= $allPresta['ser_intro'] ?></p>
                         </div>
-
                     </div>
                     <div class="d-flex justify-content-end">
                         <form class="" action="../views/onePresta.php" method="POST">
                             <input type="hidden" name="idPresta" value="<?= $allPresta["ser_id"] ?>">
-                            <button type="submit" class="btn-lg m-4">+ d'infos</button>
+                            <button type="submit" class="btn-lg btni m-4">+ d'infos</button>
                         </form>
-
                     </div>
-
                 </div>
             <?php } ?>
         </div>
-
     </div>
-
-
-   
 
     <!-- FOOTER -->
     <footer class="footerTarifs border border-secondary">

@@ -6,8 +6,8 @@ if (isset($_POST['btn-connexion'])) {
 
     // On vérifie que les POST ne sont pas vides
     if (!empty($_POST['login']) && !empty($_POST['password'])) {
-        $arrayError["login"] = "login ou mot de passe incorrect";
-        $arrayError["password"] = "login ou mot de passe incorrect";
+        $arrayError["login"] = "Nom d'utilisateur ou mot de passe incorrect";
+        $arrayError["password"] = "Nom d'utilisateur ou mot de passe incorrect";
 
         // On stock les post dans des variables explicites
         $login = $_POST['login'];
@@ -27,7 +27,7 @@ if (isset($_POST['btn-connexion'])) {
                 echo 'Mot de passe incorrect';
             }
         } else {
-            echo 'login incorrect';
+            echo 'Nom d utilisateur incorrect';
         }
     } else {
         echo 'il manque un / des champ(s)';

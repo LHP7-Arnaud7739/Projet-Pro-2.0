@@ -27,80 +27,81 @@
     <div class="row d-sm-block fixed-top justify-content-center">
         <nav>
             <div class="navbar border border-dark">
-            <p class="fs-3"> <?php if (isset($_SESSION['login'])) {  ?>
+                <p class="fs-3"> <?php if (isset($_SESSION['login'])) {  ?>
                         Bonjour <b class="text-danger"><?= $_SESSION['login'] ?></b> </p>
             <?php }  ?></p>
-                <!-- MENU BURGER -->
-                <div class="hamburger-menu">
-                    <input id="menu__toggle" type="checkbox" />
-                    <label class="menu__btn" for="menu__toggle">
-                        <span></span>
-                    </label>
+            <!-- MENU BURGER -->
+            <div class="hamburger-menu">
+                <input id="menu__toggle" type="checkbox" />
+                <label class="menu__btn" for="menu__toggle">
+                    <span></span>
+                </label>
 
-                    <ul class="menu__box">
+                <ul class="menu__box">
                     <li><a class="p-4 text-center " href="https://www.facebook.com/Bien-%AAtre-des-pieds-%C3%AAte-555492944941100"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                             </svg></a>
                         <a class="p-4 " href="https://www.instagram.com/bien_etre_des_pieds_a_la_tete/?hl=fr"> <a class="p-4 " href="https://www.instagram.com/bien_etre_des_pieds_a_la_tete/?hl=fr"><img src="https://img.icons8.com/office/60/000000/instagram-new.png" /></a>
                         </a>
                     </li>
-                        <li> <?php if (empty($_SESSION["login"])) { ?>
-                                <a href="../views/adminConnexion.php" class="fs-3 btn-lg btn p-5" value="Forum">Connexion</a>
-                            <?php } ?>
-                            <?php if (isset($_SESSION["login"])) { ?>
-                                <form class="" action="../views/deconnexion.php" method="POST">
-                                    <button type="submit" class="fs-3 btn-lg btn p-5" href="../views/deconnexion.php">Déconnexion</button>
-                                </form>
-                            <?php } ?>
-                        </li>
-                        <div class="btn-group dropend">
-                            <button type="submit" class=" dropdown-toggle fs-3 btn-lg btn p-5" data-bs-toggle="dropdown" aria-expanded="false">
-                                Prestations
-                            </button>
-                            <ul class="dropdown-menu">
-                                <div class="">
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a></li>
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a></li>
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a></li>
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a></li>
-                                    <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a></li>
-                                </div>
-                            </ul>
-                        </div>
-                        <li>
-                            <form class="" action="../views/aPropos.php" method="POST">
-                                <button class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Qui suis-je?</button>
+                    <li> <?php if (empty($_SESSION["login"])) { ?>
+                            <a href="../views/adminConnexion.php" class="fs-3 btn-lg btn p-5" value="Forum">Connexion</a>
+                        <?php } ?>
+                        <?php if (isset($_SESSION["login"])) { ?>
+                            <form class="" action="../views/deconnexion.php" method="POST">
+                                <button type="submit" class="fs-3 btn-lg btn p-5" href="../views/deconnexion.php">Déconnexion</button>
                             </form>
-                        </li>
-                        <li>
-                            <?php if (isset($_SESSION["login"])) { ?>
-                                <form class="" action="../views/addPresta.php" method="POST">
-                                    <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
-                                </form>
-                            <?php } ?>
-                        </li>
-                        <li>
-                            <a href="../views/mentionsLegales.php" class="fs-3 btn-lg btn p-5">Mentions légales</a>
-
-                        </li>
-                        <li>
-                            <form class="" action="../index.php" method="POST">
-                            <a href="javascript:history.back()" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Retour</a>
+                        <?php } ?>
+                    </li>
+                    <li>
+                        <?php if (isset($_SESSION["login"])) { ?>
+                            <form class="" action="../views/addPresta.php" method="POST">
+                                <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
                             </form>
-                        </li>
-                       
-                   
-                    </ul>
-                </div>
-                <!-- FIN MENU BURGER -->
-                <ul class=" main-nav">
-                    <div class="">
-                        <!-- FIN LOGO -->
-                        <img class="typo2" src="../assets/img/typo2.png" alt="">
+                        <?php } ?>
+                    </li>
+                    <div class="btn-group dropend">
+                        <button type="submit" class=" dropdown-toggle fs-3 btn-lg btn p-5" data-bs-toggle="dropdown" aria-expanded="false">
+                            Prestations
+                        </button>
+                        <ul class="dropdown-menu">
+                            <div class="">
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=1">Réflexologies</a></li>
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=2">Massages</a></li>
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=3">Hypnoses</a></li>
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=4">Auriculothérapie</a></li>
+                                <li><a class="fs-2 text-start dropdown-item" href="../views/prestations.php?category=5">Bougies Hopi</a></li>
+                            </div>
+                        </ul>
                     </div>
+                    <li>
+                        <form class="" action="../views/aPropos.php" method="POST">
+                            <button class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Qui suis-je?</button>
+                        </form>
+                    </li>
 
-                    <a class="logoBtn  d-flex justify-content-end" href="../index.php"><img src="../assets/img/mon_logo-removebg-preview.png" class="logo" value="Accueil"></a>
+                    <li>
+                        <a href="../views/mentionsLegales.php" class="fs-3 btn-lg btn p-5">Mentions légales</a>
+
+                    </li>
+                    <li>
+                        <form class="" action="../index.php" method="POST">
+                            <a href="javascript:history.back()" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Retour</a>
+                        </form>
+                    </li>
+
+
                 </ul>
+            </div>
+            <!-- FIN MENU BURGER -->
+            <ul class=" main-nav">
+                <div class="">
+                    <!-- FIN LOGO -->
+                    <img class="typo2" src="../assets/img/typo2.png" alt="">
+                </div>
+
+                <a class="logoBtn  d-flex justify-content-end" href="../index.php"><img src="../assets/img/mon_logo-removebg-preview.png" class="logo" value="Accueil"></a>
+            </ul>
             </div>
         </nav>
     </div>
@@ -116,16 +117,23 @@
                 </div>
                 <div class=" col-md-8">
                     <div class="card-body">
-                        <h1 class="fs-1 card-title">A Propos de moi</h1>
-                        <p class="fs-2 card-text"> Aller voir un réflexologue est une démarche responsable, de prise de conscience personnelle.<br>
-                            Le massage est une aide au travail personnel que chacun doit faire.<br> Le praticien est un jardinier qui arrache les mauvaises herbes et met de l’engrais. <br>À chacun le soin de replanter les fleurs. Dans le cadre d’une prise en charge globale de la personne et non du problème isolé, il est indispensable d’associer des conseils aux massages.<br>
-                            Chez moi vous ne trouverez pas de jugement, que du soutient, de la compassion, une main tendu sur la voie de la guérison.</p>
+                        <h1 class="fs-1 card-title">Qui suis-je ?</h1>
+                        <p class="fs-2 card-text">
+
+                            Je m’appelle Manuella PESQUET<br> j’ai commencé mon parcours professionnel en travaillant comme infirmière .<br>
+                            Puis mon anxiété et ma spasmophilie m’ont fait me rapprocher de la médecine douce, en particulier la réflexologie et l’hypnose.<br> C’est grâce à ces techniques que j’ai pu retrouver un équilibre, une sérénité.<br> C’est donc devenu une évidence, me former à ces techniques pour à mon tour partager tous les bienfaits de ces médecines douces. <br>
+                            Je vous propose un accompagnement individuel et personnalisé pour une prise en charge optimale.<br>
+                            Je me dois de préciser que les séances ne peuvent en aucun cas se substituer à un traitement médical.<br>
+                            Je vous dis à très bientôt <br>
+                            Manuella
+
+
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center p-4">
-            <a href="javascript:history.back()" class="fs-3 btn-lg btn p-4" type="submit" value="accueil">Retour</a>
-            <a class="btn-lg fs-3 btn p-4" href="../index.php">Accueil</a>
+                <a href="javascript:history.back()" class="fs-3 btn-lg btn p-4" type="submit" value="accueil">Retour</a>
+                <a class="btn-lg fs-3 btn p-4" href="../index.php">Accueil</a>
 
             </div>
         </div>
@@ -145,7 +153,7 @@
                 <p class="fs-4">76110 MANNEVILLE LA GOUPIL</p>
                 <p class="fs-4">06 52 94 20 39</p>
                 <p class="fs-4">09 51 11 09 18</p>
-        
+
             </div>
             <div class="p-4 col-4 ">
                 <p class="adresse">TEMOIGNAGE</p>
@@ -189,20 +197,20 @@
             <div class="">
                 <a class="" href="../index.php"><input class="logoFooter" type="image" src="../assets/img/mon_logo-removebg-preview.png" value="Accueil"></a>
             </div>
-   
+
             <p class="copyright">©Bien-être des pieds à la tête 2022</p>
         </div>
     </footer>
     <!-- Footer end -->
     <script src="../assets/js/lightbox-plus-jquery.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-<!-- Footer script -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-<!-- Bootstrap -->
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <!-- Footer script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap -->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 

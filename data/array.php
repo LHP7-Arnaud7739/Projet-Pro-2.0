@@ -148,7 +148,7 @@ $arrayCat = [
     [
         'idCat' => '1',
         'nameCat' => 'Réflexologie ',
-        'introCat' => 'Plus qu un massage, une source de bien-être',
+        'introCat' => 'Plus qu\'un massage, une source de bien-être',
         'pictureCat' => '622f3a3dcd51b5.62787674.jpeg',
     ],
 
@@ -169,21 +169,16 @@ $arrayCat = [
     [
         'idCat' => '4',
         'nameCat' => 'Auriculothérapie',
-        'introCat' => 'Thérapie éfficace pour soulager douleur et anxiété ',
+        'introCat' => 'Thérapie efficace pour soulager douleur et anxiété ',
         'pictureCat' => '623315bd2419b1.30392031.png',
     ],
 
     [
         'idCat' => '5',
         'nameCat' => 'Bougie Hopi ',
-        'introCat' => 'Appréciez le bien-être d une séance de bougies Hopi',
+        'introCat' => 'Appréciez le bien-être d\'une séance de bougies Hopi',
         'pictureCat' => 'bougiesH1.jpeg',
     ],
 
-    [
-        'idCat' => '6',
-        'nameCat' => 'Carte cadeau',
-        'introCat' => 'Faites vivre l expérience unique d un soin à vos proches',
-        'pictureCat' => 'carteCadeau.jpeg',
-    ],
+    
 ];

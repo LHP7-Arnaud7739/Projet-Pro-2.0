@@ -60,6 +60,13 @@ session_start();
                                 </form>
                             <?php } ?>
                         </li>
+                        <li>
+                            <?php if (isset($_SESSION["login"])) { ?>
+                                <form class="" action="../views/addPresta.php" method="POST">
+                                    <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
+                                </form>
+                            <?php } ?>
+                        </li>
                         <div class="btn-group dropend">
                             <button type="submit" class=" dropdown-toggle fs-3 btn-lg btn p-5" data-bs-toggle="dropdown" aria-expanded="false">
                                 Prestations
@@ -79,13 +86,7 @@ session_start();
                                 <button class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Qui suis-je?</button>
                             </form>
                         </li>
-                        <li>
-                            <?php if (isset($_SESSION["login"])) { ?>
-                                <form class="" action="../views/addPresta.php" method="POST">
-                                    <button href="../views/addPresta.php" class="fs-3 btn-lg btn p-5" type="submit" value="accueil">Ajout d'un soin</button>
-                                </form>
-                            <?php } ?>
-                        </li>
+                       
                         <li>
                             <a href="../views/mentionsLegales.php" class="fs-3 btn-lg btn p-5">Mentions légales</a>
 
@@ -122,7 +123,7 @@ session_start();
            <p class="fs-1"> Rajouts de nouveaux soins</p>
         <?php if ($addServicesOk) { ?>
             <p class="fs-1 text-success">Le soin a bien été enregistré</p>
-            <a href="../views/addPresta.php" class="btn-lg btn btnAccessPresta text-white">Ajout d'un nouveau soin</a>
+           
             <a href="../views/home.php" class="btn-lg btn btnAccessPresta text-white">Acceder aux soins</a>
 
         <?php } else { ?>

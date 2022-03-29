@@ -9,7 +9,6 @@ $modifyPrestaOK = false;
 
 
 
-
 if (isset($_POST["idPresta"])) {
     $id = htmlspecialchars(trim($_POST["idPresta"]));
     $prestaObj = new Services();
@@ -151,13 +150,14 @@ if (isset($_POST["updateBtn"])) {
         $modifyPrestaOK = true;
     }
 }
+
 if (isset($_POST["deleteService"])) {
     $Ser_id = htmlspecialchars(trim($_POST["deleteService"]));
     $prestaObj = new Prestation();
     $prestaInfo = $prestaObj->deletePresta($Ser_id);
     header('Location: ../views/home.php');
 
-    
+   
 };
 
 
